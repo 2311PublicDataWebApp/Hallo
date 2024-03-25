@@ -6,12 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>1:1문의</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <link href="../resources/css_qna/qna.css" rel="stylesheet" />
+
 </head>
 <body>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 	<!-- 공통 / 헤더 -->
-	<%-- 	<jsp:include page="../inc/header.jsp"></jsp:include> --%>
+	<jsp:include page="../inc/header.jsp"></jsp:include>
 	<div class="tempheader"></div>
 
 	<!-- LNB 영역 -->
@@ -19,7 +21,7 @@
 
 
 	<!-- QNA 등록 -->
-	<form action="/qna/qnaregist.do" method="post" name="qna_form" onSubmit="return Checkform()">
+	<form action="/qna/regist.do" method="post" name="qna_form" onSubmit="return Checkform()">
 
 		<div class="qna_regist_all">
 			<div class="title qnatitle">
@@ -43,18 +45,16 @@
 				</tr>
 				<tr class="qna_content_area">
 					<td class="qna_content">내용</td>
-					<td><textarea cols="50" rows="10" name="qnaContent"></textarea></td>
+					<td><textarea cols="50" rows="10" name="qnaContent" style="margin-top:10px;"></textarea></td>
 				</tr>
 			</table>
 
 				
 				<div class="btn_qna_submit">
-<!-- 					<button type="button" class="qna_reset_btn" onClick="goBack();">이전으로</button> -->
-<!-- 					<button type="button" class="qna_submit_btn1" onclick="qnaSubmit();">등록하기</button> -->
 					<input type="reset" class="qna_reset_btn" value="이전으로"
 					onClick="goBack();">
 					<input type="submit" class="qna_submit_btn" 
-					value="등록하기" onclick="qnaSubmit();">
+					value="등록하기" onclick="return qnaSubmit();">
 				</div>
 			</div>
 			<!-- qna_input 영역 닫히는 곳 -->
@@ -66,7 +66,9 @@
 			
 			function qnaSubmit(){
 				if(confirm("등록하시겠습니까?")){
-					location.href = "/qna/qnalist.do";
+					return true;
+				} else{
+					return false;
 				}
 			}
 			
@@ -76,7 +78,6 @@
 			    
 			    	qna_form.qnaTitle.focus();
 			        alert("제목을 입력해주세요.");
-			        
 			        return false;
 			        
 			    }
@@ -85,7 +86,6 @@
 				    
 			    	qna_form.qnaPhone.focus();
 			        alert("휴대폰 번호를 입력해주세요.");
-			        
 			        return false;
 			        
 			    }
@@ -93,7 +93,6 @@
 				    
 			    	qna_form.qnaContent.focus();
 			        alert("내용을 입력해주세요.");
-			        
 			        return false;
 			        
 			    }
@@ -111,6 +110,7 @@
 		</div>
 		<!--qna all 닫히는 부분-->
 	</form>
+	<jsp:include page="../inc/footer.jsp"></jsp:include>
 	<div class="tempfooter"></div>
 </body>
 </html>

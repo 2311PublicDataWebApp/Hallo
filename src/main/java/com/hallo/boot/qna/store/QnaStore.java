@@ -27,4 +27,9 @@ public interface QnaStore {
 
 	int selectqnaCount(String memberId);
 
+	
+	
+	////////////////////////////////// ADMIN 코드 시작
+	List<QnaVO> selectAdminQnaList(SqlSession session, PageInfo pInfo);
+
 }

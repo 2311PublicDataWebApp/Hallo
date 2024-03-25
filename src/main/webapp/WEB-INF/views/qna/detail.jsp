@@ -6,11 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>1:1문의</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <link href="../resources/css_qna/qna.css" rel="stylesheet" />
+
 </head>
 <body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 	<!-- 공통 / 헤더 -->
-	<%-- 	<jsp:include page="../inc/header.jsp"></jsp:include> --%>
+	<jsp:include page="../inc/header.jsp"></jsp:include>
 	<div class="tempheader"></div>
 
 
@@ -19,7 +22,7 @@
 
 
 	<!-- contents 영역 -->
-	<form action="/qna/qnadetail.do" method="GET">
+	<form action="/qna/detail.do" method="GET">
 
 		<div class="qna_detail_all">
 
@@ -63,35 +66,35 @@
 			<c:if test="${qna.qnaStatus == 'NEW'}"> 
 			<div class="detail_btn">
 				<button type="button" class="del_btn" onClick="deleteQna(${qna.qnaNo })">삭제하기</button>
-				<button type="button" class="list_btn" onClick="location.href='/qna/qnalist.do';">목록으로</button>
+				<button type="button" class="list_btn" onClick="location.href='/qna/list.do';">목록으로</button>
 				<button type="button" class="modify_btn" onClick="showModifyPage()">수정하기</button>
 			</div>
 			</c:if>
 			<c:if test="${qna.qnaStatus != 'NEW'}"> 
 			<div class="detail_btn">
 				<button type="button" class="del_btn" onClick="deleteQna(${qna.qnaNo })">삭제하기</button>
-				<button type="button" class="list_btn" onClick="location.href='/qna/qnalist.do';">목록으로</button>
+				<button type="button" class="list_btn" onClick="location.href='/qna/list.do';">목록으로</button>
 			</div>
 			</c:if>
 			<script>
 				function deleteQna(qnaNo){
 			
 					if(confirm("삭제하시겠습니까?")){
-						location.href = "/qna/qnadelete.do?qnaNo="+qnaNo;
+						location.href = "/qna/delete.do?qnaNo="+qnaNo;
 						alert("정상적으로 삭제되었습니다.");
 					}else{
-						alert("오류가 발생하였습니다.");
+						alert("삭제를 취소하셨습니다.");
 					}
 					
 				}
 				
 				function showModifyPage() {
 					var qnaNo = "${qna.qnaNo }";
-					location.href = "/qna/qnamodify.do?qnaNo="+qnaNo;
+					location.href = "/qna/modify.do?qnaNo="+qnaNo;
 				}
 		</script>
 
-
+			<jsp:include page="../inc/footer.jsp"></jsp:include>
 			<div class="tempfooter"></div>
 		</div>
 	</form>

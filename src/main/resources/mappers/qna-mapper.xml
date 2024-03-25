@@ -61,17 +61,25 @@
 		WHERE QNA_NO = #{qnaNo}
 	</delete>
 
-	<update id="updateReply">
+	<update id="updateQna">
 		UPDATE QNA_TBL
 		SET
 		QNA_TITLE=#{qnaTitle},
 		QNA_PHONE=#{qnaPhone},
 		QNA_CONTENT=#{qnaContent},
 		QNA_DATE=DEFAULT
-		WHERE QNA_NO = #{QnaNo}
+		WHERE QNA_NO = #{qnaNo}
 	</update>
 
 
+
+
+
+				<!-- Admin 코드 시작-->
+	<select id="selectAdminQnaList" resultMap="qnaResultMap">
+		SELECT * FROM QNA_TBL 
+		ORDER BY QNA_NO DESC
+	</select>
 </mapper>
 
 

@@ -77,6 +77,20 @@ public class QnaStoreLogic implements QnaStore{
 		return mytotalCount;
 	}
 	
+	
+	
+	
+	/////////////////////////////////// Admin 코드 시작
+	@Override
+	public List<QnaVO> selectAdminQnaList(SqlSession session, PageInfo pInfo) {
+		int limit = pInfo.getRecordCountPerPage();
+		int offset = (pInfo.getCurrentPage()-1)*limit;
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		List<QnaVO> aList 
+		= session.selectList("QnaMapper.selectAdminQnaList", null, rowBounds);
+		return aList;
+	}
+	
 
 
 		

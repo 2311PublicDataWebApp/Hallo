@@ -23,5 +23,13 @@ public interface QnaService {
 
 		int getqnaCount(String memberId);
 
+		
+		
+		
+		
+		
+		////////// Admin Q&A 시작
+		List<QnaVO> selectAdminQnaList(PageInfo pInfo);
+
 
 }

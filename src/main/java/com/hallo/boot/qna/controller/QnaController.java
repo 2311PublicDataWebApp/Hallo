@@ -29,14 +29,14 @@ public class QnaController {
 	@Autowired
 	private QnaService qService;
 
-	@GetMapping("/qna/qnaregist.do")
+	@GetMapping("/qna/regist.do")
 	public String showQnaForm() {
-		return "qna/qnaregist";
+		return "qna/regist";
 
 	}
 
 	// Q&A 등록
-	@PostMapping("/qna/qnaregist.do")
+	@PostMapping("/qna/regist.do")
 	public String insertQna(@ModelAttribute QnaVO qna, 
 			Model model, HttpServletRequest request, HttpSession session) {
 		try {
@@ -48,7 +48,7 @@ public class QnaController {
 			}
 			int result = qService.insertQna(qna);
 			if (result > 0) {
-				return "redirect:/qna/qnalist.do";
+				return "redirect:/qna/list.do";
 			} else {
 				model.addAttribute("msg", "문의 등록이 완료되지 않았습니다.");
 				return "common/errorPage";
@@ -60,12 +60,12 @@ public class QnaController {
 	}
 
 	// Q&A 상세
-	@RequestMapping(value = "/qna/qnadetail.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/qna/detail.do", method = RequestMethod.GET)
 	public ModelAndView showQnaDetail(ModelAndView mv, int qnaNo) {
 		try {
 			QnaVO qna = qService.selectQnaByNo(qnaNo);
 			if (qna != null) {
-				mv.addObject("qna", qna).setViewName("qna/qnadetail");
+				mv.addObject("qna", qna).setViewName("qna/detail");
 			} else {
 				mv.addObject("msg", "데이터가 존재하지 않습니다.").setViewName("common/errorPage");
 			}
@@ -76,12 +76,12 @@ public class QnaController {
 	}
 
 	// Q&A 삭제
-	@GetMapping("/qna/qnadelete.do")
+	@GetMapping("/qna/delete.do")
 	public ModelAndView deleteQna(ModelAndView mv, int qnaNo) {
 		try {
 			int result = qService.deleteQna(qnaNo);
 			if (result > 0) {
-				mv.setViewName("redirect:/qna/qnalist.do");
+				mv.setViewName("redirect:/qna/list.do");
 			} else {
 				mv.addObject("msg", "데이터가 조회되지 않습니다.");
 				mv.setViewName("common/errorPage");
@@ -92,34 +92,8 @@ public class QnaController {
 		return mv;
 	}
 
-//	// Q&A 리스트
-//	@GetMapping("/qna/qnalist.do")
-//	public ModelAndView showQnaList(ModelAndView mv,
-//			Model model,
-//			@RequestParam(value = "page", required = false, defaultValue = "10") Integer currentPage) {
-//		try {
-//			int totalCount = qService.getTotalCount();
-//			PageInfo pInfo = this.getPageInfo(currentPage, totalCount);
-//			List<QnaVO> myqList = qService.selectmyQnaList(pInfo);
-////
-////			if (!myqList.isEmpty()) {
-//				mv.addObject("myqList", myqList);
-//				mv.addObject("pInfo", pInfo);
-//				mv.setViewName("qna/qnalist");
-////			}
-////			else {
-////				model.addAttribute("qlistCheck", "empty");
-////			}
-//
-//		} catch (Exception e) {
-//			mv.addObject("msg", e.getMessage());
-//			mv.setViewName("common/errorPage");
-//		}
-//		return mv;
-//	}
-//
 	// Q&A 리스트
-	@GetMapping("/qna/qnalist.do")
+	@GetMapping("/qna/list.do")
 		public ModelAndView showQnaList(ModelAndView mv
 				,@RequestParam(value="page", required=false, defaultValue="1") 
 					Integer currentPage
@@ -133,7 +107,7 @@ public class QnaController {
 				mv.addObject("qList", qList);
 				mv.addObject("mytotalCount", mytotalCount);
 				mv.addObject("pInfo", pInfo);
-				mv.setViewName("qna/qnalist");
+				mv.setViewName("qna/list");
 			} catch (Exception e) {
 				mv.addObject("msg", e.getMessage());
 				mv.setViewName("common/errorPage");
@@ -165,15 +139,15 @@ public class QnaController {
 	}
 
 	//문의 수정s
-	@GetMapping("/qna/qnamodify.do")
+	@GetMapping("/qna/modify.do")
 	public ModelAndView showModifyForm(ModelAndView mv, int qnaNo) {
 		try {
 			QnaVO qna = qService.selectQnaByNo(qnaNo);
 			if(qna != null) {
 				mv.addObject("qna", qna);
-				mv.setViewName("qna/qnamodify");
+				mv.setViewName("qna/modify");
 			}else {
-				mv.addObject("msg", "데이터가 존재하지 않았습니다.");
+				mv.addObject("msg", "11데이터가 존재하지 않았습니다.");
 				mv.setViewName("common/errorPage");
 			}
 		} catch (Exception e) {
@@ -184,30 +158,65 @@ public class QnaController {
 	}
 	
 
-		@PostMapping("/qna/qnamodify.do")
-		public ModelAndView modifyQna(
-				ModelAndView mv
-				, @ModelAttribute QnaVO qna
-				, HttpServletRequest request) {
-			try {
-				int result = qService.modifyQna(qna);
-				if(result > 0) {
-					mv.setViewName("redirect:/qna/qnadetail.do?qnaNo="+qna.getQnaNo());
-				}else {
-					mv.addObject("msg", "데이터가 존재하지 않습니다.");
-					mv.setViewName("common/errorPage");
-				}
-			} catch(Exception e) {
-				mv.addObject("msg", e.getMessage());
+	@PostMapping("/qna/modify.do")
+	public ModelAndView modifyQna(
+			ModelAndView mv
+			, @ModelAttribute QnaVO qna
+			, HttpServletRequest request) {
+		try {
+			int result = qService.modifyQna(qna);
+			if(result > 0) {
+				mv.setViewName("redirect:/qna/detail.do?qnaNo="+qna.getQnaNo());
+			}else {
+				mv.addObject("msg", "22데이터가 존재하지 않습니다.");
 				mv.setViewName("common/errorPage");
 			}
-			return mv;
+		} catch(Exception e) {
+			mv.addObject("msg", e.getMessage());
+			mv.setViewName("common/errorPage");
 		}
+		return mv;
+	}
 	
 	
 	
-	
-	
+		
+		
+		
+		
+////////////////////////		ADMIN 코드 시작 /////////////////////////////////////
+		
+		
+		//ADMIN_Q&A_조회
+		@GetMapping("/admin/qnaAdminList.do")
+		public String showQnaAdminForm() {
+			return "admin/qnaAdminList";
+
+		}
+		
+		//ADMIN_Q&A_조회_리스트
+		@PostMapping("/admin/qnaAdminList.do")
+			public ModelAndView showQnaAdminList(ModelAndView mv
+					,@RequestParam(value="page", required=false, defaultValue="1") 
+						Integer currentPage
+						,HttpSession session) {
+				try {
+					String memberId = (String) session.getAttribute("memberId");
+					int totalCount = qService.getTotalCount();
+					PageInfo pInfo = this.getPageInfo(currentPage, totalCount);
+					List<QnaVO> aList = qService.selectAdminQnaList(pInfo);
+					mv.addObject("aList", aList);
+					mv.addObject("totalCount", totalCount);
+					mv.addObject("pInfo", pInfo);
+					mv.setViewName("admin/qnaAdminList");
+				} catch (Exception e) {
+					mv.addObject("msg", e.getMessage());
+					mv.setViewName("common/errorPage");
+				}
+				return mv;
+			}
+		
+
 	
 	
 	

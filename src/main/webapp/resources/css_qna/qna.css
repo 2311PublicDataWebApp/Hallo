@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+/* Q&A_공통 */							/* Q&A_공통 */
 
 button {
 	cursor: pointer;
@@ -16,8 +17,6 @@ input[type="reset"] {
 	background-color:white;
 	color:#4F1271;
 	cursor: pointer;
-	
-	
 }
 a {
 	text-decoration: none;
@@ -29,7 +28,6 @@ a:hover {
 	font-weight: 540;
 }
 
-/* Q&A_공통 */
 .tempheader {
 	display: block;
 	width: 100%;
@@ -55,28 +53,36 @@ a:hover {
 
 
 .qna_main_title {
-	margin-left: 250px;
+	margin-left: 300px;
+	margin-top:30px;
+	
 }
 
 .qna_sub_title {
-	margin-left: 42%;
-	color: #000;
-	font-weight: 540;
+	margin-left: 44%;
+	color: #778;
+	font-weight: 400;
+	font-size:1.5em;
 }
 
-/* Q&A_Regist */
+
+
+
+/* Q&A_Regist */						/* Q&A_Regist */
 
 
 .qna_input {
 	margin-left: 33%;
 	margin-top: 3%;
+	
 }
 
 .qna_input_table td:first-child {
 	text-align: right;
-	padding: 10px;
+	padding: 20px;
 	font-size: 0.9em;
 }
+
 
 .qna_input_table input, textarea {
 	border-radius: 4px;
@@ -88,8 +94,9 @@ a:hover {
 	vertical-align: top;
 }
 
+
 .btn_qna_submit {
-	margin: 5% 0px 5% 180px;
+	margin: 4% 0px 5% 200px;
 }
 
 .btn_qna_submit .qna_submit_btn {
@@ -110,7 +117,7 @@ a:hover {
 }
 
 
-/* Q&A_Detail */
+/* Q&A_Detail */						/* Q&A_Detail */
 .qna_detail .qna_detail_table{
 	margin-left:32%;
 	margin-top:5%;
@@ -170,7 +177,7 @@ a:hover {
 	color:#4F1271;
 }
 
-/* Q&A modify */
+/* Q&A modify */						/* Q&A modify */										
 .qna_modify_table th{
 	text-align:right;
 	font-weight:500;
@@ -219,9 +226,9 @@ a:hover {
 
 
 
-/* Q&A_List */
+/* Q&A_List */								/* Q&A_List */         								
 .qna_list .list_reg_btn {
-	margin-left: 49%;
+	margin-left: 54%;
 	padding: 5px 10px;
 	border-radius: 4px;
 	border: 2px solid #4F1271;
@@ -232,14 +239,14 @@ a:hover {
 
 .myTotal{
 	width:100px;
-	margin-left:51%;
+	margin-left:55%;
 	font-size:0.9em;
 	margin-bottom:10px;
 }
 
 
 .qna_list_table {
-	width: 600px;
+	width: 800px;
 	margin-left: 30%;
 	margin-bottom: 30px;
 	border-top: 1px solid #444444;
@@ -249,13 +256,20 @@ a:hover {
 .qna_list_table th {
 	padding: 10px 0px;
 	border-bottom: 1px solid #444444;
+	text-align:center;
 }
 
  .qna_list_table th, td{
     border-left: none;
   }
-.qna_list_table .list_second_td{
-	width: 250px;
+.qna_list_table .list_first_th{
+	width: 50px;
+}
+
+
+
+.qna_list_table .list_second_th{
+	width: 500px;
 }
 
 .qna_list_table  td {
