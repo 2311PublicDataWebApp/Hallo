@@ -29,7 +29,7 @@ public class MemberController {
 			if (member != null) {
 				session.setAttribute("memberId", member.getMemberId());
 				session.setAttribute("memberName", member.getMemberName());
-				return "redirect:/";
+				return "redirect:/qna/qnalist.do";
 			} else {
 				model.addAttribute("msg", "No Data Found");
 				return "common/errorPage";

@@ -1,0 +1,100 @@
+@charset "UTF-8";
+
+			/* 어드민 공통 */
+*{margin:0 auto;
+  font-family: 'SUITE-Regular', sans-serif,'Nanum Gothic' ;
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: 'SUITE-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+			/* 어드민 헤더영역 */
+#adminheader {
+	width: 100%;
+	height: 20vh;
+	
+}
+
+.adminlogo {
+	width: 200px;
+	height: 130px;
+	float: left;
+}
+
+.admlogout {
+	display: block;
+	width: 80px;
+	margin-right: 20px;
+	padding-top: 10px;
+	
+}
+
+.headerhr {
+	width: 95%;
+	border: 1px solid black;
+	background-color: black;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+			/*어드민 LNB*/
+.adm_all {
+	margin-top:50px;
+	display:block;
+	float:left;
+	width: 100%;
+}
+
+.admlnb {
+	margin-left:20px;
+	display:block;
+	width: 15%;
+	float:left;
+	
+}
+.admlnb ul li
+{
+	list-style:none;
+}
+
+
+.adm_content {
+	display:block;
+	width: 80%;
+	float:left;
+	margin-left: 20%;
+}
+
+
+/* 타이틀 영역 */
+.section_title{
+	
+}
+				/* 그리드 공통 */
+.gridSection {
+	width:90%;
+}
+
+.gridSection table{
+	border-radius:8px;
+}
+
+.gridtd td{
+	padding:0.2rem;
+	font-size:0.8em;
+}
+
+.gridtr th{
+	background-color:#686477;
+	text-align:center;
+	color:white;
+	padding:0.3rem;
+	
+
+}

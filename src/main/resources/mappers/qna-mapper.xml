@@ -3,4 +3,75 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="QnaMapper">
+	<resultMap type="QnaVO" id="qnaResultMap">
+		<id property="qnaNo" column="QNA_NO" />
+		<result property="memberId" column="MEMBER_ID" />
+		<result property="qnaTitle" column="QNA_TITLE" />
+		<result property="qnaContent" column="QNA_CONTENT" />
+		<result property="qnaDate" column="QNA_DATE" />
+		<result property="qnaCategory" column="QNA_CATEGORY" />
+		<result property="qnaStatus" column="QNA_STATUS" />
+		<result property="qnaPhone" column="QNA_PHONE" />
+	</resultMap>
+
+	<insert id="insertQna">
+		INSERT INTO QNA_TBL
+		VALUES(SEQ_QNA_NO.NEXTVAL, #{memberId}, #{qnaTitle},#{qnaContent},
+		DEFAULT, 'Q', DEFAULT, #{qnaPhone})
+
+	</insert>
+
+	<select id="selectTotalCount" resultType="_int">
+		SELECT COUNT(*) FROM
+		QNA_TBL
+	
+	</select>
+	
+		<select id="selectmyQnaCount" resultType="_int">
+		SELECT COUNT(*) FROM
+		QNA_TBL
+		<if test="memberId != null">
+			WHERE MEMBER_ID = #{memberId }
+		</if>
+	</select>
+	
+	
+	
+
+	<select id="selectmyQnaList" resultMap="qnaResultMap">
+		SELECT * FROM QNA_TBL 
+		WHERE
+		MEMBER_ID = #{memberId}
+		ORDER BY QNA_NO DESC
+	</select>
+
+	<select id="selectQnaByNo" resultMap="qnaResultMap">
+		SELECT * FROM QNA_TBL WHERE
+		QNA_NO= #{qnaNo}
+	</select>
+
+	<select id="selectOneById" resultMap="qnaResultMap">
+		SELECT * FROM QNA_TBL
+		WHERE
+		MEMBER_ID = #{memberId}
+	</select>
+
+	<delete id="deleteQna">
+		DELETE FROM QNA_TBL
+		WHERE QNA_NO = #{qnaNo}
+	</delete>
+
+	<update id="updateReply">
+		UPDATE QNA_TBL
+		SET
+		QNA_TITLE=#{qnaTitle},
+		QNA_PHONE=#{qnaPhone},
+		QNA_CONTENT=#{qnaContent},
+		QNA_DATE=DEFAULT
+		WHERE QNA_NO = #{QnaNo}
+	</update>
+
+
 </mapper>
+
+

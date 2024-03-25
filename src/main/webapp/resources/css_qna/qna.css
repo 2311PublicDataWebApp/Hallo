@@ -1,0 +1,302 @@
+@charset "UTF-8";
+
+
+button {
+	cursor: pointer;
+}
+
+input[type="submit"] {
+	cursor: pointer;
+}
+input[type="button"] {
+	cursor: pointer;
+}
+input[type="reset"] {
+	border: 2px solid #4F1271;
+	background-color:white;
+	color:#4F1271;
+	cursor: pointer;
+	
+	
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+
+a:hover {
+	font-size: 1.005em;
+	font-weight: 540;
+}
+
+/* Q&A_공통 */
+.tempheader {
+	display: block;
+	width: 100%;
+	height: 150px;
+	background-color: #DFDFDF;
+}
+
+.tempLnb {
+	display: block;
+	width: 200px;
+	height: 550px;
+	float: left;
+	background-color: #DABFFF;
+}
+
+.tempfooter {
+	background-color: #DFDFDF;
+	width: 100%;
+	height: 150px;
+	display: block;
+}
+
+
+
+.qna_main_title {
+	margin-left: 250px;
+}
+
+.qna_sub_title {
+	margin-left: 42%;
+	color: #000;
+	font-weight: 540;
+}
+
+/* Q&A_Regist */
+
+
+.qna_input {
+	margin-left: 33%;
+	margin-top: 3%;
+}
+
+.qna_input_table td:first-child {
+	text-align: right;
+	padding: 10px;
+	font-size: 0.9em;
+}
+
+.qna_input_table input, textarea {
+	border-radius: 4px;
+	border: 1px solid #778;
+	padding: 4px;
+}
+
+.qna_content_area td:first-child {
+	vertical-align: top;
+}
+
+.btn_qna_submit {
+	margin: 5% 0px 5% 180px;
+}
+
+.btn_qna_submit .qna_submit_btn {
+	padding: 10px;
+	background-color: #4F1271;
+	color: white;
+	letter-spacing: 1px;
+	border-radius: 4px;
+}
+
+.btn_qna_submit .qna_reset_btn {
+	padding: 10px;
+	background-color: white;
+	color: #4F1271;
+	border:2px solid #4F1271;
+	letter-spacing: 1px;
+	border-radius: 4px;
+}
+
+
+/* Q&A_Detail */
+.qna_detail .qna_detail_table{
+	margin-left:32%;
+	margin-top:5%;
+	width:600px;
+}
+
+.qna_detail_table th{
+	text-align:right;
+	font-weight:500;
+	padding-top:20px;
+	width:100px;
+}
+
+
+.qna_detail_table th, td{
+	border-bottom:1px solid #D9D9D9;
+}
+
+.qna_detail_table td{
+	text-align:left;
+	font-weight:300;
+	padding-top:20px;
+	padding-left:30px;
+}
+
+.qna_detail_table .qna_detail_last_td{
+	height:300px;
+	vertical-align:top;
+}
+
+
+.detail_btn{
+	margin-left:42%;
+	margin-top:20px;
+	margin-bottom:50px;
+}
+.detail_btn button{
+	margin:10px;
+	padding:12px 10px;
+	border-radius:4px;
+}
+
+.detail_btn .list_btn{
+	border: 2px solid #4F1271;
+	background-color:white;
+	color:#4F1271;
+}
+
+.detail_btn .del_btn{
+	border: 2px solid #4F1271;
+	background-color:#4F1271;
+	color:white;
+}
+.modify_btn{
+	background-color:white;
+	border: 2px solid #4F1271;
+	color:#4F1271;
+}
+
+/* Q&A modify */
+.qna_modify_table th{
+	text-align:right;
+	font-weight:500;
+	padding-top:20px;
+	width:100px;
+}
+
+
+.qna_modify_table th, td{
+	border-bottom:1px solid #D9D9D9;
+}
+
+.qna_modify_table td{
+	text-align:left;
+	font-weight:300;
+	padding-top:20px;
+	padding-left:30px;
+}
+
+
+.btn_qna_submit .reset_btn,.modify_btn{
+	padding: 10px;
+	letter-spacing: 1px;
+	border-radius: 4px;
+}
+
+
+
+.btn_qna_submit .reset_btn{
+	border: 2px solid #4F1271;
+	background-color:#4F1271;
+	color:white;
+
+}
+
+
+.btn_qna_submit .modify_btn{
+	padding: 10px;
+	letter-spacing: 1px;
+	border-radius: 4px;
+}
+
+
+
+
+
+
+
+/* Q&A_List */
+.qna_list .list_reg_btn {
+	margin-left: 49%;
+	padding: 5px 10px;
+	border-radius: 4px;
+	border: 2px solid #4F1271;
+	background-color: white;
+	color: #4F1271;
+	margin-bottom: 30px;
+}
+
+.myTotal{
+	width:100px;
+	margin-left:51%;
+	font-size:0.9em;
+	margin-bottom:10px;
+}
+
+
+.qna_list_table {
+	width: 600px;
+	margin-left: 30%;
+	margin-bottom: 30px;
+	border-top: 1px solid #444444;
+	border-collapse: collapse;
+}
+
+.qna_list_table th {
+	padding: 10px 0px;
+	border-bottom: 1px solid #444444;
+}
+
+ .qna_list_table th, td{
+    border-left: none;
+  }
+.qna_list_table .list_second_td{
+	width: 250px;
+}
+
+.qna_list_table  td {
+	padding: 6px 0px;
+	text-align: center;
+	font-size: 0.9em;
+	border-bottom: 1px solid #444444;
+}
+
+.qna_list_table .list_third_td, .list_fourth_td {
+	font-size: 0.8em;
+}
+.qna_list_table .list_fourth_td {
+	font-size: 0.7em;
+}
+
+.qna_pgn>td{
+	margin-top:5px;
+	border:0;
+}
+
+.qna_nullmsg
+{font-size:1.3em;
+font-weight:300;
+text-align:center;
+margin:60px 0 40px 30px;
+border-bottom:0;}
+
+.empty_reg_btn{
+	margin-top:8px;
+	background-color:white;
+	border:2px solid #4F1271;
+	color:#4F1271;
+	border-radius:3px;
+	padding: 8px 6px;
+	margin-bottom:20px;
+}
+
+.qna_nullmsg .list_fifth_td{
+	border-bottom:0;
+}
+
+
+

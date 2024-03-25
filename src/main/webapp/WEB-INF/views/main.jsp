@@ -8,7 +8,7 @@
 		<title>메인</title>
 	</head>
 	<body>
-		<jsp:include page="./inc/header.jsp"></jsp:include>
+		<jsp:include page="./inc/tempheader.jsp.jsp"></jsp:include>
 		<div class="container">
 			${memberId }
 			<c:if test="${memberId eq null }">
@@ -18,7 +18,11 @@
 				<button type="button" onclick="memberLogout();">로그아웃</button>				
 			</c:if>
 		</div>
-		<jsp:include page="./inc/footer.jsp"></jsp:include>
+		<div class="temp">
+			<h3><a href="/qna/qnalist.do">QNA 목록</a></h3>
+		</div>
+		
+		<jsp:include page="./inc/tempfooter.jsp"></jsp:include>
 		<script>
 			function memberLogin() {
 				location.href="/member/login.do";

@@ -29,4 +29,6 @@ public class MemberVO {
 	@NonNull
 	private String memberPhone;
 	private Date memberDate;
+	
+	
 }
