@@ -40,42 +40,36 @@
 
 
 			<div class="qna_list">
-				<c:choose>
-					<c:when test="${fn:length(qList) !=0 }">
-						<input type="button" class="list_reg_btn"
-							onclick="location.href='/qna/regist.do';" value="등록하기" />
-					</c:when>
-					<c:otherwise>
-						<input type="hidden" class="list_reg_btn"
-							onclick="location.href='/qna/regist.do';" value="등록하기" />
-					</c:otherwise>
-				</c:choose>
 
-				<br>
-				<c:choose>
-					<c:when test="${fn:length(qList) !=0 }">
-						<span class="myTotal">총 ${mytotalCount }개</span>
-					</c:when>
-					<c:otherwise>
-						<span class="myTotal" style="visibility: hidden">
-						총 ${mytotalCount }개</span>
-					</c:otherwise>
-				</c:choose>
+				<table class="qna_list_table" style="border-top: 0;">
+					<thead style="border-top: 0;">
+						<c:choose>
+							<c:when test="${fn:length(qList) !=0 }">
+								<tr>
+									<td class="myTotal" style="text-align: right;" colspan="5">총
+										${mytotalCount }개</td>
+								</tr>
+							</c:when>
+							<c:otherwise>
+								<tr>
+									<td class="myTotal" style="visibility: hidden;" colspan="5">총
+										${mytotalCount }개</td>
+								</tr>
+							</c:otherwise>
+						</c:choose>
 
-
-
-
-				<table class="qna_list_table">
-					<thead>
 						<tr>
-							<th class="list_first_th">번호</th>
-							<th class="list_second_th">제목</th>
-							<th class="list_third_th">상태</th>
-							<th class="list_fourth_th">작성일시</th>
+							<td class="list_first_th">번호
+							</th>
+							<td class="list_second_th">제목
+							</th>
+							<td class="list_third_th">상태
+							</th>
+							<td class="list_fourth_th">작성일시
+							</th>
 						</tr>
 					</thead>
 					<tbody>
-
 						<c:choose>
 							<c:when test="${fn:length(qList) !=0 }">
 								<c:forEach items="${qList }" var="qna" varStatus="i">
@@ -83,7 +77,15 @@
 										<td class="list_first_td">${i.count }</td>
 										<td class="list_second_td"><a
 											href="/qna/detail.do?qnaNo=${qna.qnaNo }">${qna.qnaTitle }</a></td>
-										<td class="list_third_td">${qna.qnaStatus }</td>
+										
+											<c:set var="qStatus" value="${qna.qnaStatus }" />
+											<c:if test="${qStatus eq 'NEW' }">
+											<td class="list_third_td">신규등록</td>
+											</c:if>
+											<c:if test="${qStatus eq 'END'}">
+											<td class="list_third_td">답변완료</td>
+											</c:if>
+										
 										<td class="list_fourth_td">${qna.qnaDate}</td>
 									</tr>
 								</c:forEach>

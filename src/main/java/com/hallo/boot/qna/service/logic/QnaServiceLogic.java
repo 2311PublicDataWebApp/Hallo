@@ -75,8 +75,8 @@ public class QnaServiceLogic implements QnaService{
 		////////////////////////// Admin 코드 시작
 		@Override
 		public List<QnaVO> selectAdminQnaList(PageInfo pInfo) {
-			List<QnaVO> aList = qStore.selectAdminQnaList(session,pInfo);
-			return aList;
+			List<QnaVO> qList = qStore.selectAdminQnaList(session,pInfo);
+			return qList;
 		}
 
 		

@@ -187,34 +187,27 @@ public class QnaController {
 ////////////////////////		ADMIN 코드 시작 /////////////////////////////////////
 		
 		
-		//ADMIN_Q&A_조회
-		@GetMapping("/admin/qnaAdminList.do")
-		public String showQnaAdminForm() {
-			return "admin/qnaAdminList";
 
+	//ADMIN_Q&A_조회_리스트
+	@GetMapping("/admin/qnaAdminList.do")
+	public ModelAndView showQnaAdminList(ModelAndView mv
+			,@RequestParam(value="page", required=false, defaultValue="1") 
+				Integer currentPage
+				,HttpSession session) {
+		try {
+			int totalCount = qService.getTotalCount();
+			PageInfo pInfo = this.getPageInfo(currentPage, totalCount);
+			List<QnaVO> qList = qService.selectAdminQnaList(pInfo);
+			mv.addObject("qList", qList);
+			mv.addObject("totalCount", totalCount);
+			mv.addObject("pInfo", pInfo);
+			mv.setViewName("admin/qnaAdminList");
+		} catch (Exception e) {
+			mv.addObject("msg", e.getMessage());
+			mv.setViewName("common/errorPage");
 		}
-		
-		//ADMIN_Q&A_조회_리스트
-		@PostMapping("/admin/qnaAdminList.do")
-			public ModelAndView showQnaAdminList(ModelAndView mv
-					,@RequestParam(value="page", required=false, defaultValue="1") 
-						Integer currentPage
-						,HttpSession session) {
-				try {
-					String memberId = (String) session.getAttribute("memberId");
-					int totalCount = qService.getTotalCount();
-					PageInfo pInfo = this.getPageInfo(currentPage, totalCount);
-					List<QnaVO> aList = qService.selectAdminQnaList(pInfo);
-					mv.addObject("aList", aList);
-					mv.addObject("totalCount", totalCount);
-					mv.addObject("pInfo", pInfo);
-					mv.setViewName("admin/qnaAdminList");
-				} catch (Exception e) {
-					mv.addObject("msg", e.getMessage());
-					mv.setViewName("common/errorPage");
-				}
-				return mv;
-			}
+		return mv;
+	}
 		
 
 	

@@ -12,6 +12,7 @@
 		<result property="qnaCategory" column="QNA_CATEGORY" />
 		<result property="qnaStatus" column="QNA_STATUS" />
 		<result property="qnaPhone" column="QNA_PHONE" />
+		<result property="memberName" column="MEMBER_NAME" />
 	</resultMap>
 
 	<insert id="insertQna">
@@ -22,8 +23,7 @@
 	</insert>
 
 	<select id="selectTotalCount" resultType="_int">
-		SELECT COUNT(*) FROM
-		QNA_TBL
+		SELECT COUNT(*) FROM QNA_TBL
 	
 	</select>
 	
@@ -75,10 +75,11 @@
 
 
 
-				<!-- Admin 코드 시작-->
+	<!-- Admin 코드 시작-->
 	<select id="selectAdminQnaList" resultMap="qnaResultMap">
-		SELECT * FROM QNA_TBL 
-		ORDER BY QNA_NO DESC
+		SELECT * FROM QNA_TBL Q
+		INNER JOIN MEMBER_TBL M
+		ON Q.MEMBER_ID = M.MEMBER_ID
 	</select>
 </mapper>
 

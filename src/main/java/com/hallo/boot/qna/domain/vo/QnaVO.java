@@ -33,7 +33,8 @@ public class QnaVO {
 	private String qnaCategory;
 	@NonNull
 	private String qnaStatus;
-	@NonNull
-	private String qnaMembername;
-	private String qnaCount;
+	private String memberName;
+	private String qnaComment;
+	
+	
 }
