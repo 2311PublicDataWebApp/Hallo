@@ -17,9 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.hallo.boot.member.domain.vo.MemberVO;
-import com.hallo.boot.qna.domain.vo.PageInfo;
+import com.hallo.boot.qna.domain.vo.QnaPageInfo;
 import com.hallo.boot.qna.domain.vo.QnaVO;
 import com.hallo.boot.qna.service.QnaService;
 
@@ -102,7 +101,7 @@ public class QnaController {
 				String memberId = (String) session.getAttribute("memberId");
 				int totalCount = qService.getTotalCount();
 				int mytotalCount = qService.getqnaCount(memberId);
-				PageInfo pInfo = this.getPageInfo(currentPage, totalCount);
+				QnaPageInfo pInfo = this.getQnaPageInfo(currentPage, totalCount);
 				List<QnaVO> qList = qService.selectmyQnaList(memberId, pInfo);
 				mv.addObject("qList", qList);
 				mv.addObject("mytotalCount", mytotalCount);
@@ -117,10 +116,9 @@ public class QnaController {
 	
 	
 	
-	
 	// 페이징 처리
-	private PageInfo getPageInfo(Integer currentPage, int totalCount) {
-		PageInfo pi = null;
+	private QnaPageInfo getQnaPageInfo(Integer currentPage, int totalCount) {
+		QnaPageInfo pi = null;
 		int recordCountPerPage = 10;
 		int naviCountPerPage = 5;
 		int naviTotalCount;
@@ -133,10 +131,12 @@ public class QnaController {
 		if (endNavi > naviTotalCount) {
 			endNavi = naviTotalCount;
 		}
-		pi = new PageInfo(currentPage, totalCount, naviTotalCount, recordCountPerPage, naviCountPerPage, startNavi,
+		pi = new QnaPageInfo(currentPage, totalCount, naviTotalCount, recordCountPerPage, naviCountPerPage, startNavi,
 				endNavi);
 		return pi;
 	}
+
+
 
 	//문의 수정s
 	@GetMapping("/qna/modify.do")
@@ -196,7 +196,7 @@ public class QnaController {
 				,HttpSession session) {
 		try {
 			int totalCount = qService.getTotalCount();
-			PageInfo pInfo = this.getPageInfo(currentPage, totalCount);
+			QnaPageInfo pInfo = this.getQnaPageInfo(currentPage, totalCount);
 			List<QnaVO> qList = qService.selectAdminQnaList(pInfo);
 			mv.addObject("qList", qList);
 			mv.addObject("totalCount", totalCount);

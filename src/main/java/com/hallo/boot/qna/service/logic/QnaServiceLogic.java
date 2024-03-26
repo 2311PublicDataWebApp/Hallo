@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hallo.boot.qna.domain.vo.PageInfo;
+import com.hallo.boot.qna.domain.vo.QnaPageInfo;
 import com.hallo.boot.qna.domain.vo.QnaVO;
 import com.hallo.boot.qna.service.QnaService;
 import com.hallo.boot.qna.store.QnaStore;
@@ -33,7 +33,7 @@ public class QnaServiceLogic implements QnaService{
 		}
 
 		@Override
-		public List<QnaVO> selectmyQnaList(String memberId,PageInfo pInfo) {
+		public List<QnaVO> selectmyQnaList(String memberId,QnaPageInfo pInfo) {
 			List<QnaVO> qList = qStore.selectmyQnaList(session, memberId, pInfo);
 			return qList;
 		}
@@ -74,7 +74,7 @@ public class QnaServiceLogic implements QnaService{
 		
 		////////////////////////// Admin 코드 시작
 		@Override
-		public List<QnaVO> selectAdminQnaList(PageInfo pInfo) {
+		public List<QnaVO> selectAdminQnaList(QnaPageInfo pInfo) {
 			List<QnaVO> qList = qStore.selectAdminQnaList(session,pInfo);
 			return qList;
 		}

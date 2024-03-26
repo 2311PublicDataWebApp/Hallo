@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.hallo.boot.qna.domain.vo.PageInfo;
+import com.hallo.boot.qna.domain.vo.QnaPageInfo;
 import com.hallo.boot.qna.domain.vo.QnaVO;
 
 public interface QnaStore {
@@ -13,7 +13,7 @@ public interface QnaStore {
 	
 	int insertQna(SqlSession session, QnaVO qna);
 
-	List<QnaVO> selectmyQnaList(SqlSession session, String memberId, PageInfo pInfo);
+	List<QnaVO> selectmyQnaList(SqlSession session, String memberId, QnaPageInfo pInfo);
 
 	int selectTotalCount(SqlSession session);
 
@@ -30,6 +30,6 @@ public interface QnaStore {
 	
 	
 	////////////////////////////////// ADMIN 코드 시작
-	List<QnaVO> selectAdminQnaList(SqlSession session, PageInfo pInfo);
+	List<QnaVO> selectAdminQnaList(SqlSession session, QnaPageInfo pInfo);
 
 }

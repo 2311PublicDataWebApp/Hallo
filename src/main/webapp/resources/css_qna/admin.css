@@ -70,7 +70,7 @@ a {
 .admlnb {
 	margin-left: 20px;
 	display: block;
-	width: 10%;
+	width: 11%;
 	float: left;
 }
 
@@ -96,19 +96,19 @@ a {
 
 .adm_lnb_ul li a {
 	text-decoration: none;
-	font-size: 1.15em;
+	font-size: 1.13em;
 	color: #999;
 }
 
 .adm_lnb_ul li a:hover {
 	text-decoration: none;
-	font-size: 1.16em;
+	font-size: 1.15em;
 	color: #6c6b6b;
 }
 
 .adm_lnb_ul li a:active {
 	text-decoration: none;
-	font-size: 1.16em;
+	font-size: 1.15em;
 	color: #6c6b6b;
 }
 

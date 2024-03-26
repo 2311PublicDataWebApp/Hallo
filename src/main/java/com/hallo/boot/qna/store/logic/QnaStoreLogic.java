@@ -7,7 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.hallo.boot.qna.domain.vo.PageInfo;
+import com.hallo.boot.qna.domain.vo.QnaPageInfo;
 import com.hallo.boot.qna.domain.vo.QnaVO;
 import com.hallo.boot.qna.store.QnaStore;
 
@@ -25,7 +25,7 @@ public class QnaStoreLogic implements QnaStore{
 	
 	//리스트 보기
 	@Override
-	public List<QnaVO> selectmyQnaList(SqlSession session, String memberId, PageInfo pInfo) {
+	public List<QnaVO> selectmyQnaList(SqlSession session, String memberId, QnaPageInfo pInfo) {
 		int limit = pInfo.getRecordCountPerPage();
 		int offset = (pInfo.getCurrentPage()-1)*limit;
 		RowBounds rowBounds = new RowBounds(offset, limit);
@@ -82,7 +82,7 @@ public class QnaStoreLogic implements QnaStore{
 	
 	/////////////////////////////////// Admin 코드 시작
 	@Override
-	public List<QnaVO> selectAdminQnaList(SqlSession session, PageInfo pInfo) {
+	public List<QnaVO> selectAdminQnaList(SqlSession session, QnaPageInfo pInfo) {
 		int limit = pInfo.getRecordCountPerPage();
 		int offset = (pInfo.getCurrentPage()-1)*limit;
 		RowBounds rowBounds = new RowBounds(offset, limit);

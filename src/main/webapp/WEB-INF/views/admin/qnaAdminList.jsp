@@ -31,8 +31,8 @@
 					class="table table-hover table-striped table-bordered">
 					<thead class="thead">
 						<tr style="border-top:0;">
-							<td style="border:0; text-align:left; vertical-align:bottom; font-size:small; padding-bottom:20px;" colspan="">총 ${totalCount}명</td>
-							<td style="border:0; text-align:center;padding-bottom:20px; " colspan="4">
+							<td style="border:0; text-align:left; vertical-align:bottom; font-size:small; padding-bottom:20px;" colspan="2">총 ${totalCount}명</td>
+							<td style="border:0; text-align:center; padding-bottom:20px; " colspan="3">
 							<div class="admsearch">
 					<form action="/admin/searchCondition.do" method="post">
 						<select name="searchCondition" id="searchcon">

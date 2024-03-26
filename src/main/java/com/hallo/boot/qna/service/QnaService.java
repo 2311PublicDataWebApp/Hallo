@@ -2,7 +2,7 @@ package com.hallo.boot.qna.service;
 
 import java.util.List;
 
-import com.hallo.boot.qna.domain.vo.PageInfo;
+import com.hallo.boot.qna.domain.vo.QnaPageInfo;
 import com.hallo.boot.qna.domain.vo.QnaVO;
 
 public interface QnaService {
@@ -11,7 +11,7 @@ public interface QnaService {
 
 		int getTotalCount();
 
-		List<QnaVO> selectmyQnaList(String memberId,PageInfo pInfo);
+		List<QnaVO> selectmyQnaList(String memberId,QnaPageInfo pInfo);
 
 		QnaVO selectQnaByNo(int qnaNo);
 
@@ -29,7 +29,7 @@ public interface QnaService {
 		
 		
 		////////// Admin Q&A 시작
-		List<QnaVO> selectAdminQnaList(PageInfo pInfo);
+		List<QnaVO> selectAdminQnaList(QnaPageInfo pInfo);
 
 
 }
