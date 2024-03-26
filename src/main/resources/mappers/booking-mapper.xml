@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BookingMapper">
+	<select id="selectOneByNo" resultType="BookingVO">
+		SELECT * FROM BOOKING_TBL WHERE BOOKING_NO = #{bookingNo }
+	</select>
+	<select id="selectBookingList" resultType="BookingVO">
+		SELECT * FROM BOOKING_TBL ORDER BY BOOKING_NO DESC
+	</select>
+	<insert id="insertBooking">
+		INSERT INTO BOOKING_TBL VALUES(SEQ_BOOKING_NO.NEXTVAL, #{bookingStartTime }, #{bookingEndTime }, #{paymentNo }, #{memberId }, #{hallNo })
+	</insert>
+	<update id="updateBooking">
+		UPDATE BOOKING_TBL SET HALL_NAME = #{bookingStartTime }, HALL_SPACENAME = #{bookingEndTime }, HALL_ADDRESS = #{paymentNo }, HALL_PEOPLE = #{memberId }, HALL_FEE = #{hallNo } WHERE BOOKING_NO = #{bookingNo }
+	</update>
+	<delete id="deleteBooking">
+		DELETE FROM BOOKING_TBL WHERE BOOKING_NO = #{bookingNo }
+	</delete>
+</mapper>
