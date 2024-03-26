@@ -7,14 +7,12 @@
 	font-weight: 500;
 	font-style: normal;
 }
-a{cursor:pointer;}
 
-
-
-
+a {
+	cursor: pointer;
+}
 
 /* 어드민 헤더영역 */
-
 .adminheader {
 	font-family: "Graduate", serif;
 	font-weight: 600;
@@ -26,8 +24,9 @@ a{cursor:pointer;}
 	line-height: 0.3em;
 	padding-top: 35px;
 }
-.logotxt{
-	margin-top:20px;
+
+.logotxt {
+	margin-top: 20px;
 }
 
 .adminheader a {
@@ -41,7 +40,6 @@ a{cursor:pointer;}
 	padding-top: 30px;
 }
 
-
 .admintxt {
 	color: white;
 	font-family: "Graduate", serif;
@@ -51,17 +49,15 @@ a{cursor:pointer;}
 	margin-left: 210px;
 }
 
-
 .admlogout {
-	border:0;
-	width:80px;
-	height:30px;
-	background-color:#4F1271;
-	color:white;
-	margin-left:95%;
-	margin-top:-50px;
+	border: 0;
+	width: 80px;
+	height: 30px;
+	background-color: #4F1271;
+	color: white;
+	margin-left: 95%;
+	margin-top: -50px;
 }
-
 
 /*어드민 LNB*/
 .adm_all {
@@ -74,53 +70,52 @@ a{cursor:pointer;}
 .admlnb {
 	margin-left: 20px;
 	display: block;
-	width: 15%;
+	width: 10%;
 	float: left;
 }
-
-
-.admlnb ul li {
-	list-style: none;
-	padding-bottom:15px;
-}
-.admlnb ul .adm_lnb_li_first{
-	font-size: x-large;
-    font-weight: 600;
-    color: #6c6b6b;
-    padding-bottom:20px;
-}
-
-.adm_lnb_ul li a{
-	text-decoration:none;
-	font-size:1.15em;
-	color:#999;
-}
-
-.adm_lnb_ul li a:hover{
-	text-decoration:none;
-	font-size:1.16em;
-	color:#6c6b6b;
-}
-
-.adm_lnb_ul li a:active{
-	text-decoration:none;
-	font-size:1.16em;
-	color:#6c6b6b;
-}
-
-
-
 
 .adm_content {
 	display: block;
 	width: 80%;
 	float: left;
-	margin-left: 20%;
+	margin-left: 6%;
+	margin-top: 30px;
+}
+
+.admlnb ul li {
+	list-style: none;
+	padding-bottom: 15px;
+}
+
+.admlnb ul .adm_lnb_li_first {
+	font-size: x-large;
+	font-weight: 600;
+	color: #6c6b6b;
+	padding-bottom: 20px;
+}
+
+.adm_lnb_ul li a {
+	text-decoration: none;
+	font-size: 1.15em;
+	color: #999;
+}
+
+.adm_lnb_ul li a:hover {
+	text-decoration: none;
+	font-size: 1.16em;
+	color: #6c6b6b;
+}
+
+.adm_lnb_ul li a:active {
+	text-decoration: none;
+	font-size: 1.16em;
+	color: #6c6b6b;
 }
 
 /* 타이틀 영역 */
-.section_title {
-	
+.section_sub_title {
+	margin-left: 45%;
+	margin-bottom: 50px;
 }
 /* 그리드 공통 */
 .gridSection {
@@ -131,9 +126,12 @@ a{cursor:pointer;}
 	border-radius: 8px;
 }
 
+
+
 .gridtd td {
 	padding: 0.2rem;
 	font-size: 0.8em;
+	text-align: center;
 }
 
 .gridtr th {
@@ -141,4 +139,28 @@ a{cursor:pointer;}
 	text-align: center;
 	color: white;
 	padding: 0.3rem;
+}
+
+.gridtr .firstsection {
+	width: 50px;
+}
+
+.gridtr .secondsection {
+	width: 100px;
+}
+
+.gridtr .thirdsection {
+	width: 400px
+}
+
+.gridtr .fourthsection {
+	width: 100px;
+}
+
+.gridtr .fifthsection {
+	width: 150px;
+}
+
+.gridtr .sixthsection {
+	width: 200px;
 }

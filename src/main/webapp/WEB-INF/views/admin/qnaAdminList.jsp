@@ -24,9 +24,16 @@
 			<h4 class="section_title">고객센터관리</h4>
 			<h5 class="section_sub_title">1:1문의 관리</h5>
 
-			<div class="gridinfo">
-				<p class="totalcount">총 ${totalCount}명</p>
-				<div class="admsearch">
+
+			<div class="gridSection">
+
+				<table style="border-radius: 8px;"
+					class="table table-hover table-striped table-bordered">
+					<thead class="thead">
+						<tr style="border-top:0;">
+							<td style="border:0; text-align:left; vertical-align:bottom; font-size:small; padding-bottom:20px;" colspan="">총 ${totalCount}명</td>
+							<td style="border:0; text-align:center;padding-bottom:20px; " colspan="4">
+							<div class="admsearch">
 					<form action="/admin/searchCondition.do" method="post">
 						<select name="searchCondition" id="searchcon">
 							<option value="SearchCondition">검색조건</option>
@@ -35,27 +42,22 @@
 							<option value="qnaStatus">상태</option>
 							<option value="qnaTitle">제목</option>
 							<option value="qnaDate">작성일시</option>
-						</select> <input type="text" name="SearchValue" placeholder="검색어를 입력해주세요">
+						</select> 
+						<input type="text" name="SearchValue" placeholder="검색어를 입력해주세요">
 						<button onclick="#">조회</button>
 					</form>
-				</div>
-				<!--Search 영역 닫히는 부분  -->
-				<p class="scdefaultview">기본 가입일 최신 순</p>
-			</div>
-
-
-			<div class="gridSection">
-
-				<table style="border-radius: 8px;"
-					class="table table-hover table-striped table-bordered">
-					<thead class="thead">
+					</div>
+					
+					</td>
+							<td style="border:0; text-align:right; vertical-align:bottom; padding-bottom:20px;">기본 가입일 최신 순</td>
+						</tr>
 						<tr class="gridtr">
-							<th class="firstsection">번호</th>
-							<th class="secondsection">상태</th>
-							<th class="thirdsection">제목</th>
-							<th class="fourthsection">작성자</th>
-							<th class="fifthsection">휴대폰번호</th>
-							<th class="sixthsection">작성일</th>
+							<th style="width:50px;" class="firstsection">번호</th>
+							<th style="width:100px;" class="secondsection">상태</th>
+							<th style="width:400px;" class="thirdsection">제목</th>
+							<th style="width:100px;" class="fourthsection">작성자</th>
+							<th style="width:150px;" class="fifthsection">휴대폰번호</th>
+							<th style="width:200px;" class="sixthsection">작성일</th>
 						</tr>
 					</thead>
 					<tbody class="gridtd">

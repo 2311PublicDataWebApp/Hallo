@@ -10,15 +10,16 @@
 	
 	
 	<c:if test="${memberId ne null }">
-			 <div>    <input type="button" onclick="confirmLogout();">로그아웃</input></div>
+			 <button type="button" class="admlogout" onclick="memberLogout();">로그아웃</button>	
 	</c:if>
 	</div>
 	
 	
 	<script>
-	function confirmLogout() {        
+	function memberLogout() {        
 		if( confirm("정말 로그아웃 하시겠습니까?") )
-		 {location.href="/member/logout.do";
+		 {
+			location.href="/admin/logout.do";
 			return true;     
 		 } else{
 			return false;
