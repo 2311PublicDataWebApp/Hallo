@@ -52,14 +52,14 @@ a{cursor:pointer;}
 }
 
 
-.admlogout a {
-	font-family: "Nanum Gothic", serif;
-	font-size: 10pt;
-	font-weight: 500;
-	display: block;
-	width: 80px;
-	margin-left:90%;
-	margin-top:20px;
+.admlogout {
+	border:0;
+	width:80px;
+	height:30px;
+	background-color:#4F1271;
+	color:white;
+	margin-left:95%;
+	margin-top:-50px;
 }
 
 
