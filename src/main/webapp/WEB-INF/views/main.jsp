@@ -8,21 +8,56 @@
 		<title>메인</title>
 	</head>
 	<body>
-		<jsp:include page="./inc/tempheader.jsp.jsp"></jsp:include>
-		<div class="container">
-			${memberId }
-			<c:if test="${memberId eq null }">
-				<button type="button" onclick="memberLogin();">로그인</button>				
-			</c:if>
-			<c:if test="${memberId ne null }">
-				<button type="button" onclick="memberLogout();">로그아웃</button>				
-			</c:if>
-		</div>
-		<div class="temp">
-			<h3><a href="/qna/qnalist.do">QNA 목록</a></h3>
-		</div>
-		
-		<jsp:include page="./inc/tempfooter.jsp"></jsp:include>
+		<section id="hero">
+			<div class="hero-container">
+				<a href="index.html" class="hero-logo" data-aos="zoom-in"><img src="../../resources/assets/img/H-logo1.png" style="width:150px; height:150px;" alt=""></a>
+				<h1 data-aos="zoom-in">Welcome To HALLO</h1>
+				<h2 data-aos="fade-up">If you want to reserve a concert hall, get started</h2>
+				<a data-aos="fade-up" data-aos-delay="200" href="#about" class="btn-get-started scrollto">Get Started</a>
+			</div>
+		</section>
+		<jsp:include page="./inc/header.jsp"></jsp:include>
+		<!-- ======= Hero Section ======= -->
+		<main id="main">
+			<!-- ======= About Us Section ======= -->
+			<section id="about" class="about">
+				<div class="section-title" data-aos="fade-up"></div>
+				<div class="container">
+					${memberId }
+					<c:if test="${memberId eq null }">
+						<button type="button" onclick="memberLogin();">로그인</button>				
+					</c:if>
+					<c:if test="${memberId ne null }">
+						<button type="button" onclick="memberLogout();">로그아웃</button>				
+					</c:if>
+				</div>
+			</section>
+			<section id="service" class="about">
+				<div class="section-title" data-aos="fade-up"></div>
+				<div class="container">
+					${memberId }
+					<c:if test="${memberId eq null }">
+						<button type="button" onclick="memberLogin();">로그인</button>				
+					</c:if>
+					<c:if test="${memberId ne null }">
+						<button type="button" onclick="memberLogout();">로그아웃</button>				
+					</c:if>
+				</div>
+			</section>
+			<section id="portfolio" class="about">
+				<div class="section-title" data-aos="fade-up"></div>
+				<div class="container">
+					${memberId }
+					<c:if test="${memberId eq null }">
+						<button type="button" onclick="memberLogin();">로그인</button>				
+					</c:if>
+					<c:if test="${memberId ne null }">
+						<button type="button" onclick="memberLogout();">로그아웃</button>				
+					</c:if>
+				</div>
+			</section>
+		</main>
+		<jsp:include page="./inc/footer.jsp"></jsp:include>
 		<script>
 			function memberLogin() {
 				location.href="/member/login.do";

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MapMapper">
+	<!-- <resultMap type="MapVO" id="mapResultMap">
+		<id 	property="hallNo" 		column="HALL_NO"/>
+		<result property="hallName" 	column="HALL_NAME"/>
+		<result property="hallSpaceName" 	column="HALL_SPACENAME"/>
+		<result property="hallAddress" 	column="HALL_ADDRESS"/>
+		<result property="hallPeople" 		column="HALL_PEOPLE"/>
+		<result property="hallFee" 		column="HALL_FEE"/>
+		<result property="hallCautions" 	column="HALL_CAUTIONS"/>
+		<result property="hallRefunds" column="HALL_REFUNDS"/>
+		<result property="hallAgentName" 	column="HALL_AGENT_NAME"/>
+		<result property="hallAgentPhone" column="HALL_AGENT_PHONE"/>
+		<result property="hallAgentEmail" column="HALL_AGENT_EMAIL"/>
+		<result property="hallX" column="HALL_X"/>
+		<result property="hallY" column="HALL_Y"/>
+	</resultMap> -->
+	<select id="selectTotalCount" resultType="_int">
+		SELECT COUNT(*) FROM HALL_TBL
+	</select>
+	
+	<select id="selectMapList" resultType="MapVO">
+		SELECT * FROM HALL_TBL ORDER BY HALL_NO
+	</select>
+	
+</mapper>
