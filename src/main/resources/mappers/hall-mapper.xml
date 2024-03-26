@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="HallMapper">
+	<select id="selectOneByNo" resultType="HallVO">
+		SELECT * FROM HALL_TBL WHERE HALL_NO = #{hallNo }
+	</select>
+	<select id="selectHallList" resultType="HallVO">
+		SELECT * FROM HALL_TBL ORDER BY HALL_NO DESC
+	</select>
+	<select id="getTotalCount" resultType="_int">
+		SELECT COUNT(*) FROM HALL_TBL
+	</select>
+	<insert id="insertHall">
+		INSERT INTO HALL_TBL VALUES(SEQ_HALL_NO.NEXTVAL, #{hallName }, #{hallSpaceName }, #{hallAddress }, #{hallPeople }, #{hallFee }, #{hallCautions }, #{hallRefunds }, #{hallAgentName }, #{hallAgentPhone }, #{hallAgentEmail }, #{hallX }, #{hallY })
+	</insert>
+	<update id="updateHall">
+		UPDATE HALL_TBL SET HALL_NAME = #{hallName }, HALL_SPACENAME = #{hallSpaceName }, HALL_ADDRESS = #{hallAddress }, HALL_PEOPLE = #{hallPeople }, HALL_FEE = #{hallFee }, HALL_CAUTIONS = #{hallCautions }, HALL_REFUNDS = #{hallRefunds }, HALL_AGENT_NAME = #{hallAgentName }, HALL_AGENT_PHONE = #{hallAgentPhone }, HALL_AGENT_EMAIL = #{hallAgentEmail }, HALL_X = #{hallX }, HALL_Y = #{hallY } WHERE HALL_NO = #{hallNo }
+	</update>
+	<delete id="deleteHall">
+		DELETE FROM HALL_TBL WHERE HALL_NO = #{hallNo }
+	</delete>
+</mapper>
