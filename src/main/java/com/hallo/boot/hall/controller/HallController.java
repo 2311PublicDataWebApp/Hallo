@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.hallo.boot.common.PageInfo;
+import com.hallo.boot.common.Pagination;
 import com.hallo.boot.hall.domain.vo.HallVO;
 import com.hallo.boot.hall.service.HallService;
 
@@ -42,7 +42,7 @@ public class HallController {
 		try {
 			int boardLimit = 10;
 			int totalCount = hService.getTotalCount();
-			PageInfo pi = new PageInfo(currentPage, totalCount, boardLimit);
+			Pagination pi = new Pagination(currentPage, totalCount, boardLimit);
 			List<HallVO> hList = hService.selectHallList(pi);
 			if (hList != null) {
 				model.addAttribute("hList", hList);

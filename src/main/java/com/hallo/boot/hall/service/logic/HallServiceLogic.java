@@ -7,7 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hallo.boot.common.PageInfo;
+import com.hallo.boot.common.Pagination;
 import com.hallo.boot.hall.domain.vo.HallVO;
 import com.hallo.boot.hall.service.HallService;
 import com.hallo.boot.hall.store.HallStore;
@@ -27,7 +27,7 @@ public class HallServiceLogic implements HallService {
 	}
 
 	@Override
-	public List<HallVO> selectHallList(PageInfo pi) {
+	public List<HallVO> selectHallList(Pagination pi) {
 		int limit = pi.getBoardLimit();
 		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
 		RowBounds rowBounds = new RowBounds(offset, limit);

@@ -2,7 +2,7 @@ package com.hallo.boot.hall.service;
 
 import java.util.List;
 
-import com.hallo.boot.common.PageInfo;
+import com.hallo.boot.common.Pagination;
 import com.hallo.boot.hall.domain.vo.HallVO;
 
 public interface HallService {
@@ -19,7 +19,7 @@ public interface HallService {
 	 * @param pi 
 	 * @return List<HallVO>
 	 */
-	List<HallVO> selectHallList(PageInfo pi);
+	List<HallVO> selectHallList(Pagination pi);
 
 	/**
 	 * 공연장 등록 Service

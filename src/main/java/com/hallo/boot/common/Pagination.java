@@ -7,7 +7,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class PageInfo {
+public class Pagination {
 	private int currentPage;
 	private int totalCount;
 	private int naviTotalCount;
@@ -16,10 +16,10 @@ public class PageInfo {
 	private int startNavi;
 	private int endNavi;
 
-	public PageInfo() {
+	public Pagination() {
 	}
 
-	public PageInfo(int currentPage, int totalCount, int boardLimit) {
+	public Pagination(int currentPage, int totalCount, int boardLimit) {
 		super();
 		this.currentPage = currentPage;
 		this.totalCount = totalCount;
