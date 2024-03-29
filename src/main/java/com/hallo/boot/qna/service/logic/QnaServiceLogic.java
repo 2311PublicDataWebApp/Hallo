@@ -1,11 +1,16 @@
 package com.hallo.boot.qna.service.logic;
 
 import java.util.List;
+import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hallo.boot.common.Pagination;
+import com.hallo.boot.map.domain.vo.MapVO;
+import com.hallo.boot.notice.domain.vo.NoticePageInfo;
 import com.hallo.boot.qna.domain.vo.QnaPageInfo;
 import com.hallo.boot.qna.domain.vo.QnaVO;
 import com.hallo.boot.qna.service.QnaService;
@@ -33,7 +38,7 @@ public class QnaServiceLogic implements QnaService{
 		}
 
 		@Override
-		public List<QnaVO> selectmyQnaList(String memberId,QnaPageInfo pInfo) {
+		public List<QnaVO> selectmyQnaList(String memberId, QnaPageInfo pInfo) {
 			List<QnaVO> qList = qStore.selectmyQnaList(session, memberId, pInfo);
 			return qList;
 		}
@@ -78,6 +83,41 @@ public class QnaServiceLogic implements QnaService{
 			List<QnaVO> qList = qStore.selectAdminQnaList(session,pInfo);
 			return qList;
 		}
+
+		@Override
+		public int adminModifyQna(QnaVO qna) {
+			int result = qStore.adminModifyQna(session, qna);
+			return result;
+		}
+
+		@Override
+		public QnaVO selectAdminQnaByNo(int qnaNo) {
+			QnaVO qna = qStore.selectAdminQnaByNo(session, qnaNo);
+			return qna; 
+		}
+
+		@Override
+		public int getAdminQnaTotalCount(Map<String, String> paramMap) {
+			int totalCount = qStore.selectAdminQnaTotalCount(session, paramMap);
+			return totalCount;
+		}
+
+		@Override
+		public List<QnaVO> searchAdminQnaByKeyword(QnaPageInfo pInfo, Map<String, String> paramMap) {
+			List<QnaVO> adminqnasearchqList = qStore.searchAdminQnaByKeyword(session, pInfo, paramMap);
+			return adminqnasearchqList;
+		}
+
+		
+		@Override
+		public List<QnaVO> selectDBQnaList(NoticePageInfo pi) {
+			int limit = pi.getBoardLimit();
+			int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+			RowBounds rowBounds = new RowBounds(offset, limit);
+			List<QnaVO> qList = qStore.selectDBQnaList(session, rowBounds);
+			return qList;
+		}
+
 
 		
 

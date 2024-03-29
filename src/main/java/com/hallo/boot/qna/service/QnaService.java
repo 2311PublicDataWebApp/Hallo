@@ -1,7 +1,10 @@
 package com.hallo.boot.qna.service;
 
 import java.util.List;
+import java.util.Map;
 
+import com.hallo.boot.booking.domain.vo.BookingVO;
+import com.hallo.boot.notice.domain.vo.NoticePageInfo;
 import com.hallo.boot.qna.domain.vo.QnaPageInfo;
 import com.hallo.boot.qna.domain.vo.QnaVO;
 
@@ -11,7 +14,7 @@ public interface QnaService {
 
 		int getTotalCount();
 
-		List<QnaVO> selectmyQnaList(String memberId,QnaPageInfo pInfo);
+		List<QnaVO> selectmyQnaList(String memberId, QnaPageInfo pInfo);
 
 		QnaVO selectQnaByNo(int qnaNo);
 
@@ -30,6 +33,18 @@ public interface QnaService {
 		
 		////////// Admin Q&A 시작
 		List<QnaVO> selectAdminQnaList(QnaPageInfo pInfo);
+
+		int adminModifyQna(QnaVO qna);
+
+		QnaVO selectAdminQnaByNo(int qnaNo);
+
+		int getAdminQnaTotalCount(Map<String, String> paramMap);
+
+		List<QnaVO> searchAdminQnaByKeyword(QnaPageInfo pInfo, Map<String, String> paramMap);
+
+		List<QnaVO> selectDBQnaList(NoticePageInfo pi);
+
+
 
 
 }

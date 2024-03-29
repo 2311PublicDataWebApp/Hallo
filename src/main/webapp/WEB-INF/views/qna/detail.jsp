@@ -15,17 +15,11 @@
 
 </head>
 <body>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
 		crossorigin="anonymous"></script>
 	<!-- 공통 / 헤더 -->
 	<jsp:include page="../inc/header.jsp"></jsp:include>
-	<div class="tempheader"></div>
-
-
-	<!-- LNB 영역 -->
-	<diV class="tempLnb" style=""></diV>
 
 
 	<!-- contents 영역 -->
@@ -35,20 +29,22 @@
 
 			<!-- 타이틀 영역 -->
 			<div class="title qnatitle">
-				<h2 class="qna_main_title">1:1문의</h2>
-				<h3 class="qna_sub_title">1:1문의 상세</h3>
+				<table class="titletbl">
+					<tr>
+						<td class="qna_main_td">
+							<h2 class="qna_main_title">1:1 문의</h2>
+						</td>
+					</tr>
+					<tr>
+						<td> 
+							<h3 class="qna_sub_title">1:1문의 상세</h3>
+						</td>
+					</tr>
+				</table>
 			</div>
 			<!-- 타이틀 닫히는 곳 -->
 			<div class="qna_detail">
 				<table class='qna_detail_table'>
-					<input type="hidden" name="qnaNo" value="${qna.qnaNo }" id="qnaNo">
-
-
-					<input type="hidden" name="qnaStatus" value="${qna.qnaStatus }"
-						id="qnaStatus">
-					<input type="hidden" name="memberId" value="${qna.memberId }"
-						id="memberId">
-
 					<tr class="detail_tr">
 						<th>제목</th>
 						<td>${qna.qnaTitle }</td>
@@ -114,14 +110,12 @@
 			</c:if>
 			<script>
 				function deleteQna(qnaNo){
-			
 					if(confirm("삭제하시겠습니까?")){
 						location.href = "/qna/delete.do?qnaNo="+qnaNo;
 						alert("정상적으로 삭제되었습니다.");
 					}else{
 						alert("삭제를 취소하셨습니다.");
 					}
-					
 				}
 				
 				function showModifyPage() {
@@ -131,7 +125,6 @@
 		</script>
 
 			<jsp:include page="../inc/footer.jsp"></jsp:include>
-			<div class="tempfooter"></div>
 		</div>
 	</form>
 </body>

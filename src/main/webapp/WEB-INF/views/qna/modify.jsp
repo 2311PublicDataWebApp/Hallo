@@ -21,50 +21,57 @@
 		crossorigin="anonymous"></script>
 	<!-- 공통 / 헤더 -->
 	<jsp:include page="../inc/header.jsp"></jsp:include>
-	<div class="tempheader"></div>
 
 	<!-- LNB 영역 -->
-	<diV class="tempLnb" style=""></diV>
 
 
 	<!-- QNA 등록 -->
-	<form action="/qna/modify.do" method="post" name="qna_form"
-		onSubmit="return Checkform()">
+	<form action="/qna/modify.do" method="post" name="qna_form" onSubmit="return Checkform()">
 
 		<div class="qna_modify_all qna_regist_all">
-			<div class="title qnatitle">
-				<h2 class="qna_main_title">1:1문의</h2>
-				<h3 class="qna_sub_title">1:1문의 수정</h3>
-			</div>
+			<table class="titletbl">
+				<tr>
+					<td class="qna_main_td">
+						<h2 class="qna_main_title">1:1 문의</h2>
+					</td>
+				</tr>
+				<tr>
+					<td> 
+						<h3 class="qna_sub_title">1:1문의 수정</h3>
+					</td>
+				</tr>
+			</table>
 			<!-- 타이틀 닫히는 곳 -->
 
 			<div class="qna_input">
-				<input type="hidden" name="memberId" value="${memberId }"
-					id="memberId"> <input type="hidden" name="qnaNo"
-					value="${qna.qnaNo }" id="qnaNo">
+				<input type="hidden" name="memberId" value="${memberId }" id="memberId"> 
+				<input type="hidden" name="qnaNo" value="${qna.qnaNo }" id="qnaNo">
 
 				<table class="qna_modify_table">
 					<tr class="qna_title_area">
 						<td class="qna_title">제목</td>
-						<td><input type="text" name="qnaTitle" size="48px"
-							value="${qna.qnaTitle }"></td>
+						<td>
+							<input type="text" name="qnaTitle" size="48px" value="${qna.qnaTitle }">
+						</td>
 					</tr>
 					<tr class="qna_phone_area">
 						<td class="qna_phone">휴대폰번호</td>
-						<td><input type="text" name="qnaPhone"
-							value="${qna.qnaPhone }"></td>
+						<td>
+							<input type="text" name="qnaPhone" value="${qna.qnaPhone }">
+						</td>
 					</tr>
 					<tr class="qna_content_area">
 						<td class="qna_content">내용</td>
-						<td><textarea cols="50" rows="10" name="qnaContent">${qna.qnaContent }</textarea></td>
+						<td>
+							<textarea cols="50" rows="10" name="qnaContent">${qna.qnaContent }</textarea>
+						</td>
 					</tr>
 				</table>
 
 
 				<div class="btn_qna_submit">
 					<button type="button" class="reset_btn" onClick="goBack();">이전으로</button>
-					<input type="submit" class="modify_btn"
-						onClick="return modifyAlert();" value="수정하기" />
+					<input type="submit" class="modify_btn" onClick="return modifyAlert();" value="수정하기" />
 				</div>
 			</div>
 			<!-- qna_input 영역 닫히는 곳 -->
@@ -72,7 +79,6 @@
 		<!--qna all 닫히는 부분-->
 	</form>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
-	<div class="tempfooter"></div>
 	<script>
 		function goBack() {
 			history.back();

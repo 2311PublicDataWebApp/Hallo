@@ -2,7 +2,9 @@ package com.hallo.boot.qna.controller;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
 import com.hallo.boot.member.domain.vo.MemberVO;
 import com.hallo.boot.qna.domain.vo.QnaPageInfo;
 import com.hallo.boot.qna.domain.vo.QnaVO;
@@ -59,7 +62,7 @@ public class QnaController {
 	}
 
 	// Q&A 상세
-	@RequestMapping(value = "/qna/detail.do", method = RequestMethod.GET)
+	@GetMapping("/qna/detail.do")
 	public ModelAndView showQnaDetail(ModelAndView mv, int qnaNo) {
 		try {
 			QnaVO qna = qService.selectQnaByNo(qnaNo);
@@ -131,14 +134,13 @@ public class QnaController {
 		if (endNavi > naviTotalCount) {
 			endNavi = naviTotalCount;
 		}
-		pi = new QnaPageInfo(currentPage, totalCount, naviTotalCount, recordCountPerPage, naviCountPerPage, startNavi,
-				endNavi);
+		pi = new QnaPageInfo(currentPage, totalCount, naviTotalCount, recordCountPerPage, naviCountPerPage, startNavi, endNavi);
 		return pi;
 	}
 
 
 
-	//문의 수정s
+	//문의 수정
 	@GetMapping("/qna/modify.do")
 	public ModelAndView showModifyForm(ModelAndView mv, int qnaNo) {
 		try {
@@ -168,7 +170,7 @@ public class QnaController {
 			if(result > 0) {
 				mv.setViewName("redirect:/qna/detail.do?qnaNo="+qna.getQnaNo());
 			}else {
-				mv.addObject("msg", "22데이터가 존재하지 않습니다.");
+				mv.addObject("msg", "데이터가 존재하지 않습니다.");
 				mv.setViewName("common/errorPage");
 			}
 		} catch(Exception e) {
@@ -184,32 +186,10 @@ public class QnaController {
 		
 		
 		
-////////////////////////		ADMIN 코드 시작 /////////////////////////////////////
-		
-		
 
-	//ADMIN_Q&A_조회_리스트
-	@GetMapping("/admin/qnaAdminList.do")
-	public ModelAndView showQnaAdminList(ModelAndView mv
-			,@RequestParam(value="page", required=false, defaultValue="1") 
-				Integer currentPage
-				,HttpSession session) {
-		try {
-			int totalCount = qService.getTotalCount();
-			QnaPageInfo pInfo = this.getQnaPageInfo(currentPage, totalCount);
-			List<QnaVO> qList = qService.selectAdminQnaList(pInfo);
-			mv.addObject("qList", qList);
-			mv.addObject("totalCount", totalCount);
-			mv.addObject("pInfo", pInfo);
-			mv.setViewName("admin/qnaAdminList");
-		} catch (Exception e) {
-			mv.addObject("msg", e.getMessage());
-			mv.setViewName("common/errorPage");
-		}
-		return mv;
-	}
-		
 
+	
+	
 	
 	
 	

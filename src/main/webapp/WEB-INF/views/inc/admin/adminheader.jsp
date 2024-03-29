@@ -4,7 +4,7 @@
 			<div class="adminheader">
 			
 				<div class="logotxt">
-				<a href="location.href='qna/qnaAdminList.do'">HALLO<br>
+				<a href="/admin/qnaAdminList.do">HALLO<br>
 				<span class="admintxt">[ADMIN]</span></a></div> 
 			
 	
