@@ -217,76 +217,76 @@ public class AdminController {
 	
 	
 	
-//////////////예약관리 ////////////// 예약관리 ////////////// 예약관리 ////////////// 예약관리 //////////////
-
-	//예약 리스트
-	@GetMapping("/admin/booklist.do")
-	public ModelAndView showBookAdminList(ModelAndView mv,
-			@RequestParam(value = "page", required = false, defaultValue = "1") Integer currentPage,
-			HttpSession session) {
-		try {
-			int totalCount = bService.getTotalCount();
-			QnaPageInfo pInfo = this.getPageInfo(currentPage, totalCount);
-			List<BookingVO> bList = bService.selectAdminBookingList(pInfo);
-			mv.addObject("bList", bList);
-			mv.addObject("totalCount", totalCount);
-			mv.addObject("pInfo", pInfo);
-			mv.setViewName("admin/booklist");
-		} catch (Exception e) {
-			mv.addObject("msg", e.getMessage());
-			mv.setViewName("common/errorPage");
-		}
-		return mv;
-	}
-	
-	//getPageInfo
-	private QnaPageInfo getPageInfo(Integer currentPage, int totalCount) {
-		QnaPageInfo pInfo = null;
-		int recordCountPerPage = 10;
-		int naviCountPerPage = 5;
-		int naviTotalCount;
-		int startNavi;
-		int endNavi;
-
-		naviTotalCount = (int) ((double) totalCount / recordCountPerPage + 0.9);
-		startNavi = (((int) ((double) currentPage / naviCountPerPage + 0.9)) - 1) * naviCountPerPage + 1;
-		endNavi = startNavi + naviCountPerPage - 1;
-		if (endNavi > naviTotalCount) {
-			endNavi = naviTotalCount;
-		}
-		pInfo = new QnaPageInfo(currentPage, totalCount, naviTotalCount, recordCountPerPage, naviCountPerPage, startNavi, endNavi);
-		return pInfo;
-	}
-
-	//검색 시 이동 페이지
-	@GetMapping("/admin/booksearch.do")
-	public ModelAndView searchAdminBookList(ModelAndView mv,
-			@RequestParam("searchCondition") String searchCondition,
-			@RequestParam("searchKeyword") String searchKeyword,
-			@RequestParam(value = "page", required = false, defaultValue = "1") Integer currentPage) {
-		try {
-			Map<String, String> paramMap = new HashMap<String, String>();
-			paramMap.put("searchCondition", searchCondition);
-			paramMap.put("searchKeyword", searchKeyword);
-			int totalCount = bService.getAdminBookingTotalCount(paramMap);
-			QnaPageInfo pInfo = this.getPageInfo(currentPage, totalCount);
-			List<BookingVO> searchList = bService.searchAdminBookingByKeyword(pInfo, paramMap);
-			mv.addObject("searchList", searchList);
-			mv.addObject("pInfo", pInfo);
-			mv.addObject("totalCount", totalCount);
-			mv.addObject("searchCondition", searchCondition);
-			mv.addObject("searchKeyword", searchKeyword);
-			mv.setViewName("admin/booksearch");
-
-		} catch (Exception e) {
-			mv.addObject("msg", e.getMessage());
-			mv.setViewName("common/errorPage");
-		}
-		return mv;
-	}
-	
-	
-	
+////////////////예약관리 ////////////// 예약관리 ////////////// 예약관리 ////////////// 예약관리 //////////////
+//
+//	//예약 리스트
+//	@GetMapping("/admin/booklist.do")
+//	public ModelAndView showBookAdminList(ModelAndView mv,
+//			@RequestParam(value = "page", required = false, defaultValue = "1") Integer currentPage,
+//			HttpSession session) {
+//		try {
+//			int totalCount = bService.getTotalCount();
+//			QnaPageInfo pInfo = this.getPageInfo(currentPage, totalCount);
+//			List<BookingVO> bList = bService.selectAdminBookingList(pInfo);
+//			mv.addObject("bList", bList);
+//			mv.addObject("totalCount", totalCount);
+//			mv.addObject("pInfo", pInfo);
+//			mv.setViewName("admin/booklist");
+//		} catch (Exception e) {
+//			mv.addObject("msg", e.getMessage());
+//			mv.setViewName("common/errorPage");
+//		}
+//		return mv;
+//	}
+//	
+//	//getPageInfo
+//	private QnaPageInfo getPageInfo(Integer currentPage, int totalCount) {
+//		QnaPageInfo pInfo = null;
+//		int recordCountPerPage = 10;
+//		int naviCountPerPage = 5;
+//		int naviTotalCount;
+//		int startNavi;
+//		int endNavi;
+//
+//		naviTotalCount = (int) ((double) totalCount / recordCountPerPage + 0.9);
+//		startNavi = (((int) ((double) currentPage / naviCountPerPage + 0.9)) - 1) * naviCountPerPage + 1;
+//		endNavi = startNavi + naviCountPerPage - 1;
+//		if (endNavi > naviTotalCount) {
+//			endNavi = naviTotalCount;
+//		}
+//		pInfo = new QnaPageInfo(currentPage, totalCount, naviTotalCount, recordCountPerPage, naviCountPerPage, startNavi, endNavi);
+//		return pInfo;
+//	}
+//
+//	//검색 시 이동 페이지
+//	@GetMapping("/admin/booksearch.do")
+//	public ModelAndView searchAdminBookList(ModelAndView mv,
+//			@RequestParam("searchCondition") String searchCondition,
+//			@RequestParam("searchKeyword") String searchKeyword,
+//			@RequestParam(value = "page", required = false, defaultValue = "1") Integer currentPage) {
+//		try {
+//			Map<String, String> paramMap = new HashMap<String, String>();
+//			paramMap.put("searchCondition", searchCondition);
+//			paramMap.put("searchKeyword", searchKeyword);
+//			int totalCount = bService.getAdminBookingTotalCount(paramMap);
+//			QnaPageInfo pInfo = this.getPageInfo(currentPage, totalCount);
+//			List<BookingVO> searchList = bService.searchAdminBookingByKeyword(pInfo, paramMap);
+//			mv.addObject("searchList", searchList);
+//			mv.addObject("pInfo", pInfo);
+//			mv.addObject("totalCount", totalCount);
+//			mv.addObject("searchCondition", searchCondition);
+//			mv.addObject("searchKeyword", searchKeyword);
+//			mv.setViewName("admin/booksearch");
+//
+//		} catch (Exception e) {
+//			mv.addObject("msg", e.getMessage());
+//			mv.setViewName("common/errorPage");
+//		}
+//		return mv;
+//	}
+//	
+//	
+//	
 	
 	
 	
