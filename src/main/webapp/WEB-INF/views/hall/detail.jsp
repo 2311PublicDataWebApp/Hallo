@@ -72,7 +72,7 @@
 									</div>
 								</div>
 								<div class="row px-4">
-									<a href="#" class="btn btn-primary">예약하기</a>
+									<a href="/booking/insert.do?hallNo=${hall.hallNo }" class="btn btn-primary">예약하기</a>
 								</div>
 							</div>
 						</div>

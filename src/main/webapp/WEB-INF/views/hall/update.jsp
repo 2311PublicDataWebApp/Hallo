@@ -5,8 +5,10 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>공연장 수정</title>
+		<%@ include file="../inc/head.jsp"%>
 	</head>
 	<body>
+		<jsp:include page="../inc/header.jsp"></jsp:include>
 		<form action="/hall/update.do" method="post">
 			<input type="hidden" name="hallNo" value="${hall.hallNo }">
             hall name<input type="text" name="hallName" id="" value="${hall.hallName }"> <br>
@@ -23,5 +25,6 @@
             hall y <input type="text" name="hallY" id=""><br>
             <input type="submit" value="입력">
         </form>
+        <jsp:include page="../inc/footer.jsp"></jsp:include>
 	</body>
 </html>
