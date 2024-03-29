@@ -8,22 +8,22 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="../../../resources/assets/img/favicon.png" rel="icon">
-  <link href="../../../resources/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="../resources/assets/img/favicon.png" rel="icon">
+  <link href="../resources/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="../../../resources/assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="../../../resources/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../../../resources/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="../../../resources/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="../../../resources/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="../../../resources/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../resources/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../resources/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../resources/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../resources/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../resources/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../resources/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="../../../resources/assets/css/style.css" rel="stylesheet">
+  <link href="../resources/assets/css/style.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: Knight
@@ -33,7 +33,7 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
   <!-- ======= Footer ======= -->
   <footer id="footer">
 
@@ -45,7 +45,7 @@
           <div class="col-lg-6">
             <a href="#header" class="scrollto footer-logo"><img src="../../../resources/assets/img/H-logo1.png" alt=""></a>
             <h3>HALLO</h3>
-            <p>Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi fuga maxime saepe commodi placeat.</p>
+            <p>more faster, more simpler, more happier, Enjoy a cultural life with the HALLO</p>
           </div>
         </div>
 
@@ -65,7 +65,7 @@
 <!--           <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a> -->
 <!--         </div> -->
 
-      </div>
+    </div>
     </div>
 
     <div class="container footer-bottom clearfix">
@@ -82,12 +82,12 @@
     </div>
   </footer>
   <!-- Vendor JS Files -->
-  <script src="../../../resources/assets/vendor/aos/aos.js"></script>
-  <script src="../../../resources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../../../resources/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="../../../resources/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="../../../resources/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="../../../resources/assets/vendor/php-email-form/validate.js"></script>
+  <script src="../resources/assets/vendor/aos/aos.js"></script>
+  <script src="../resources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../resources/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../resources/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../resources/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../resources/assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="../../../resources/assets/js/main.js"></script>
+  <script src="../resources/assets/js/main.js"></script>

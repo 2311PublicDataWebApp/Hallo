@@ -69,7 +69,7 @@ public class NoticeReplyController {
 		}
     }
     
-    // 댓글 삭제
+    // 댓글 수정
     @ResponseBody
     @RequestMapping(value="/notice/reply/update.do", method=RequestMethod.POST)
     public String updateReply(@ModelAttribute NoticeReplyVO reply) {

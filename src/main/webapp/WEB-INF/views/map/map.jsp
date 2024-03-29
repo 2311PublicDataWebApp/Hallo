@@ -14,7 +14,7 @@ html, body {
 }
 
 #map {
-	width: 1500px;
+	width: 1300px;
 	height: 500px;
 	margin: auto;
 }
@@ -23,116 +23,8 @@ html, body {
 	margin: auto;
 	width: 1200px;
 }
-
-.wrap {
-	position: absolute;
-	left: 0;
-	bottom: 40px;
-	width: 288px;
-	height: 132px;
-	margin-left: -144px;
-	text-align: left;
-	overflow: hidden;
-	font-size: 12px;
-	font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
-	line-height: 1.5;
-}
-
-.wrap * {
-	padding: 0;
-	margin: 0;
-}
-
-.wrap .info {
-	width: 286px;
-	height: 120px;
-	border-radius: 5px;
-	border-bottom: 2px solid #ccc;
-	border-right: 1px solid #ccc;
-	overflow: hidden;
-	background: #fff;
-}
-
-.wrap .info:nth-child(1) {
-	border: 0;
-	box-shadow: 0px 1px 2px #888;
-}
-
-.info .title {
-	padding: 5px 0 0 10px;
-	height: 30px;
-	background: #eee;
-	border-bottom: 1px solid #ddd;
-	font-size: 18px;
-	font-weight: bold;
-}
-
-.info .close {
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	color: #888;
-	width: 17px;
-	height: 17px;
-	background:
-		url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');
-}
-
-.info .close:hover {
-	cursor: pointer;
-}
-
-.info .body {
-	position: relative;
-	overflow: hidden;
-}
-
-.info .desc {
-	position: relative;
-	margin: 13px 0 0 90px;
-	height: 75px;
-}
-
-.desc .ellipsis {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-}
-
-.desc .jibun {
-	font-size: 11px;
-	color: #888;
-	margin-top: -2px;
-}
-
-.info .img {
-	position: absolute;
-	top: 6px;
-	left: 5px;
-	width: 73px;
-	height: 71px;
-	border: 1px solid #ddd;
-	color: #888;
-	overflow: hidden;
-}
-
-.info:after {
-	content: '';
-	position: absolute;
-	margin-left: -12px;
-	left: 50%;
-	bottom: 0;
-	width: 22px;
-	height: 12px;
-	background:
-		url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
-}
-
-.info .link {
-	color: #5085BB;
-}
-
 </style>
+<link rel="stylesheet" href="../resources/css/map.css">
 </head>
 <body>
 	<jsp:include page="../inc/header.jsp"></jsp:include>
@@ -141,7 +33,7 @@ html, body {
 		<br>
 		<br>
 		<br>
-		<table id="hallTable" class="table table-hover table-borderless">
+		<table id="hallTable" class="table table-hover" style="border: 0px solid #EEEEEE; box-shadow: 5px 5px 5px #EEEEEE;">
 			<thead>
 				<tr>
 					<th scope="col">번호</th>
@@ -162,19 +54,40 @@ html, body {
 					</tr>
 				</c:forEach>
 			</tbody>
-			<tfoot>
-				<tr>
-					<td colspan="5" style="text-align: center;"><c:if
-							test="${pi.startNavi ne '1' }">
-							<a href="/map.do?page=${pi.startNavi - 1 }">[이전]</a>
-						</c:if> <c:forEach begin="${pi.startNavi }" end="${pi.endNavi }" var="p">
-							<a href="/map.do?page=${p }">${p }</a>
-						</c:forEach> <c:if test="${pi.endNavi ne pi.naviTotalCount }">
-							<a href="/map.do?page=${pi.endNavi + 1 }">[다음]</a>
-						</c:if></td>
-				</tr>
-			</tfoot>
 		</table>
+		<br>
+						<div class="row mt-3 mb-5" style="margin-top:300px;">
+							<div class="col-md-12">
+								<nav aria-label="Page navigation example">					
+									<ul class="pagination justify-content-center" style="font-weight: 600; ">
+										<c:if test="${pi.startNavi ne '1' }">
+				<%-- 							<a href="/map.do?page=${pi.startNavi - 1 }">[이전]</a> --%>
+											<li class="page-item">
+						                       <a class="page-link rounded-circle" href="/map.do?page=${pi.startNavi - 1 }" aria-label="Previous">
+						                           <span aria-hidden="true">&laquo;</span>
+						                       </a>
+											</li>
+										</c:if>
+										<c:forEach begin="${pi.startNavi }" end="${pi.endNavi }" var="p">
+											 <li class="page-item">
+			                                     <a class="page-link rounded-circle mx-2" href="/map.do?page=${p }" style="border: none; color: #313131;">
+			                                         ${p }
+			                                     </a>
+		                                 	</li>
+<%-- 											<a href="/map.do?page=${p }">${p }</a> --%>
+										</c:forEach>
+										<c:if test="${pi.endNavi ne pi.naviTotalCount }">
+											<li class="page-item">
+			                                     <a class="page-link rounded-circle" href="/map.do?page=${pi.endNavi + 1 }" aria-label="Next">
+			                                         <span aria-hidden="true">&raquo;</span>
+			                                     </a>
+		                                 	</li>
+<%-- 											<a href="/map.do?page=${pi.endNavi + 1 }">[다음]</a> --%>
+										</c:if>
+									</ul>
+								</nav>
+							</div>
+						</div>
 	</div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 
@@ -217,12 +130,13 @@ html, body {
 		} ]; */
 		
 		let positions = [];
-		<c:forEach items="${mList }" var="map" varStatus="i">
+		<c:forEach items="${allList }" var="all" varStatus="i">
 			positions.push({
-				title : '${map.hallName }',
-				address : '${map.hallAddress }',
-				hallPeople : '${map.hallPeople }',
-				latlng : new kakao.maps.LatLng('${map.hallX }', '${map.hallY }')
+				no : '${all.hallNo }',
+				title : '${all.hallName }',
+				address : '${all.hallAddress }',
+				hallPeople : '${all.hallPeople }',
+				latlng : new kakao.maps.LatLng('${all.hallX }', '${all.hallY }')
 			});
 		</c:forEach>
 		
@@ -272,14 +186,14 @@ html, body {
             '            <div class="desc">' + 
             '                <div class="ellipsis">'+positions[i].address+'</div>' + 
             '                <div class="jibun ellipsis">수용인원: '+ positions[i].hallPeople +'명</div>' + 
-            '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' + 
+            '                <div><a href="/hall/detail.do?hallNo=' + positions[i].no + '" target="_blank" class="link">상세페이지</a></div>' + 
             '            </div>' + 
             '        </div>' + 
             '    </div>' +    
             '</div>';
             let overlay = new kakao.maps.CustomOverlay({
                 content: content,
-              	map: map,
+              	//map: map,
                 position: marker.getPosition()       
             });
             const closeBtn = document.createElement('div'); 
@@ -310,7 +224,7 @@ html, body {
 			var moveLatLon = new kakao.maps.LatLng(x, y); 
 			// 지도 중심을 부드럽게 이동시킵니다 
 			// 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다 
-			map.panTo(moveLatLon); 
+			map.panTo(moveLatLon);
 		};
 	</script>
 </body>

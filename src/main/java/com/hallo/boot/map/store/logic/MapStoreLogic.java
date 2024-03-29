@@ -18,9 +18,15 @@ public class MapStoreLogic implements MapStore {
 	}
 
 	@Override
-	public List<MapVO> selectNoticeList(SqlSession session, RowBounds rowBounds) {
+	public List<MapVO> selectMapList(SqlSession session, RowBounds rowBounds) {
 		List<MapVO> mList = session.selectList("MapMapper.selectMapList", null, rowBounds);
 		return mList;
+	}
+
+	@Override
+	public List<MapVO> selectMapList(SqlSession session) {
+		List<MapVO> allList = session.selectList("MapMapper.selectMapList");
+		return allList;
 	}
 
 }

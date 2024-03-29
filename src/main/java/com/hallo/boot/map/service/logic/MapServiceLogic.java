@@ -31,8 +31,14 @@ public class MapServiceLogic implements MapService {
 		int limit = pi.getBoardLimit();
 		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
 		RowBounds rowBounds = new RowBounds(offset, limit);
-		List<MapVO> mList = mapStore.selectNoticeList(session, rowBounds);
+		List<MapVO> mList = mapStore.selectMapList(session, rowBounds);
 		return mList;
+	}
+
+	@Override
+	public List<MapVO> selectHallList() {
+		List<MapVO> allList = mapStore.selectMapList(session);
+		return allList;
 	}
 
 }

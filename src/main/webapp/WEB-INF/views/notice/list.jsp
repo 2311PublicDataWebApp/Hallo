@@ -8,76 +8,135 @@
         <title>공지사항 목록</title>
 <!--         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/> -->
     	<link rel="stylesheet" href="../resources/css/main.css">
-    	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    	<style>
+    		#notice-list {
+    			width: 1200px;
+    			margin: auto;
+    		}
+    	</style>
     </head>
     <body>
-        <h1>공지사항 목록</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>번호</th>
-                    <th>제목</th>
-                    <th>작성자</th>
-                    <th>작성날짜</th>
-                    <th>첨부파일</th>
-                </tr>
-            </thead>
-            <tbody>
-            <c:forEach items="${nList }" var="notice" varStatus="i">            
-                <tr>
-                    <td>${notice.noticeNo }</td>
-                    <td><a href="/notice/detail.do?noticeNo=${notice.noticeNo }">
-                    ${notice.noticeSubject }
-                    </a></td>
-                    <td>${notice.noticeWriter }</td>
-                    <td>${notice.noticeDate }</td>
-                    <td>${notice.noticeFileName }</td>
-                </tr>
-            </c:forEach>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="5" style="text-align: center;">
-                        <c:if test="${pi.startNavi ne '1' }">
-							<a href="/notice/list.do?page=${pi.startNavi - 1 }">[이전]</a>
-						</c:if>
-						<c:forEach begin="${pi.startNavi }" end="${pi.endNavi }" var="p">
-							<a href="/notice/list.do?page=${p }">${p }</a>
-						</c:forEach>
-						<c:if test="${pi.endNavi ne pi.naviTotalCount }">
-							<a href="/notice/list.do?page=${pi.endNavi + 1 }">[다음]</a>
-						</c:if>
-                    </td>
-                </tr>
-                <tr>
-					<td colspan="4">
-						<form action="/notice/search.do" method="get">
-							<select name="searchCondition">
-								<option value="all">전체</option>
-								<option value="writer" selected>작성자</option>
-								<option value="title">제목</option>
-								<option value="content">내용</option>
-							</select>
-							<input type="text" name="searchKeyword" placeholder="검색어를 입력해주세요">
-							<input type="submit" value="검색">
-						</form>
-					</td>
-					<td>
-						<button type="button" onclick="showInsertForm();">글쓰기</button>
-					</td>
-				</tr>
-            </tfoot>
-        </table>
+    	<jsp:include page="../inc/header.jsp"></jsp:include>
+    	
+	    	<div id="notice-list">
+		        <h1><b>공지사항</b></h1>
+		        <br><br><br>
+		        <table class="table table-hover">
+		            <thead>
+		                <tr>
+		                    <th>번호</th>
+		                    <th>제목</th>
+		                    <th>작성자</th>
+		                    <th>작성날짜</th>
+		                    
+		                </tr>
+		            </thead>
+		            <tbody>
+		            <c:forEach items="${nList }" var="notice" varStatus="i">            
+		                <tr>
+		                    <td>${notice.noticeNo }</td>
+		                    <td><a href="/notice/detail.do?noticeNo=${notice.noticeNo }">
+		                    ${notice.noticeSubject }
+		                    </a></td>
+		                    <td>${notice.noticeWriter }</td>
+		                    <td>${notice.noticeDate }</td>
+		                </tr>
+		            </c:forEach>
+		            </tbody>
+		        </table>
+		        
+		        <c:if test="${memberId ne 'admin' }">
+		        	<div class="d-flex flex-wrap justify-content-center align-items-center pb-5">
+	                    <div class="d-flex col-md-12 justify-content-start">
+	                        <form class="row g-1" action="/notice/search.do" method="get">
+	                            <div class="col-auto">
+	                                <select class="form-select" name="searchCondition">
+	                                <option value="all" selected>전체</option>
+				                <option value="writer">작성자</option>
+				                <option value="title">제목</option>
+				                <option value="content">내용</option>
+	                             
+	                                </select>
+	                            </div>
+	                            <div class="col-auto">
+	                                <div class="input-group">
+	                                    <input class="form-control" type="search" name="searchKeyword">
+	                                    <button type="submit" class="btn" style="background-color: #FAFAFA; border-color: #e9ecef;">검색</button>
+	                                </div>
+	                            </div>
+	                        </form>
+	                    </div>
+                    </div>
+		        </c:if>
+                <c:if test="${memberId eq 'admin' }">
+                	<div class="d-flex flex-wrap justify-content-center align-items-center pb-5">
+                    <div class="d-flex col-md-6 justify-content-start">
+                        <form class="row g-1" action="/notice/search.do" method="get">
+                            <div class="col-auto">
+                                <select class="form-select" name="searchCondition">
+                                <option value="all" selected>전체</option>
+			                <option value="writer">작성자</option>
+			                <option value="title">제목</option>
+			                <option value="content">내용</option>
+                             
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <div class="input-group">
+                                    <input class="form-control" type="search" name="searchKeyword">
+                                    <button type="submit" class="btn" style="background-color: #FAFAFA; border-color: #e9ecef;">검색</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    
+				<div class="d-flex col-md-6 justify-content-end">
+	            	<button type="button" class="btn" style="background-color: #FAFAFA; border-color: #e9ecef;" onclick="showInsertForm();">글쓰기</button>
+				</div>
+			</div>
+                </c:if>
+                
+                
+		        <div class="row mt-3 mb-5" style="margin-top:300px;">
+							<div class="col-md-12">
+								<nav aria-label="Page navigation example">					
+									<ul class="pagination justify-content-center" style="font-weight: 600; ">
+										<c:if test="${pi.startNavi ne '1' }">
+				<%-- 							<a href="/notice/list.do?page=${pi.startNavi - 1 }">[이전]</a> --%>
+											<li class="page-item">
+						                       <a class="page-link rounded-circle" href="/notice/list.do?page=${pi.startNavi - 1 }" aria-label="Previous">
+						                           <span aria-hidden="true">&laquo;</span>
+						                       </a>
+											</li>
+										</c:if>
+										<c:forEach begin="${pi.startNavi }" end="${pi.endNavi }" var="p">
+											 <li class="page-item">
+			                                     <a class="page-link rounded-circle mx-2" href="/notice/list.do?page=${p }" style="border: none; color: #313131;">
+			                                         ${p }
+			                                     </a>
+		                                 	</li>
+<%-- 											<a href="/notice/list.do?page=${p }">${p }</a> --%>
+										</c:forEach>
+										<c:if test="${pi.endNavi ne pi.naviTotalCount }">
+											<li class="page-item">
+			                                     <a class="page-link rounded-circle" href="/notice/list.do?page=${pi.endNavi + 1 }" aria-label="Next">
+			                                         <span aria-hidden="true">&raquo;</span>
+			                                     </a>
+		                                 	</li>
+<%-- 											<a href="/notice/list.do?page=${pi.endNavi + 1 }">[다음]</a> --%>
+										</c:if>
+									</ul>
+								</nav>
+							</div>
+						</div>
+	    	</div>
+        <jsp:include page="../inc/footer.jsp"></jsp:include>
         <script>
 			function showInsertForm() {
 				// 공지사항 글쓰기 페이지 이동
 				location.href="/notice/insert.do";
 			}
 		</script>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"></script>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>

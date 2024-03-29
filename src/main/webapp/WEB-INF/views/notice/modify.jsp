@@ -6,45 +6,55 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>공지사항 수정</title>
-		<link rel="stylesheet" href="../resources/css/main.css">
+		 <style>
+        	#notice-modify {
+        		width: 800px;
+        		margin: auto;
+        	}
+        	
+        </style>
 	</head>
 	<body>
-		<h1>공지사항 상세 조회</h1>
-		<form action="/notice/modify.do" method="post" enctype="multipart/form-data">
-			<input type="hidden" name="noticeNo" 		 value="${notice.noticeNo }">
-			<!--
-				1. 파일이 있으면 삭제할 수 있도록 함
-				2. 첨부파일을 선택하지 않고 수정할 때 null로 입력되는 것을 방지할 수 있음!
-			-->
-			<input type="hidden" name="noticeFileName" 	 value="${notice.noticeFileName }">
-			<input type="hidden" name="noticeFileRename" value="${notice.noticeFileRename }">
-			<input type="hidden" name="noticeFilePath" 	 value="${notice.noticeFilePath }">
-			<input type="hidden" name="noticeFileLength" value="${notice.noticeFileLength }">
-			<ul>
-				<li>
-					<label>제목</label>
-					<input type="text" name="noticeSubject" value="${notice.noticeSubject }">
-				</li>
-				<li>
-					<label>작성자</label>
-					<span>${notice.noticeWriter }</span>
-				</li>
-				<li>
-					<label>내용</label>
-					<textarea rows="4" cols="51" name="noticeContent">${notice.noticeContent }</textarea>
-				</li>
-				<li>
-					<label>첨부파일</label>
-					<span><a href="../resources/nuploadFiles/${notice.noticeFileRename }" download>${notice.noticeFileName }</a></span>
+	<jsp:include page="../inc/header.jsp"></jsp:include>
+	<div id="notice-modify">
+		<h1><b>공지사항 수정</b></h1>
+		<br><br><br>
+		<!-- General Form Elements -->
+              <form action="/notice/modify.do" method="post" enctype="multipart/form-data">
+              <input type="hidden" name="noticeNo" 		 value="${notice.noticeNo }">
+              <input type="hidden" name="noticeFileName" 	 value="${notice.noticeFileName }">
+			  <input type="hidden" name="noticeFileRename" value="${notice.noticeFileRename }">
+			  <input type="hidden" name="noticeFilePath" 	 value="${notice.noticeFilePath }">
+			  <input type="hidden" name="noticeFileLength" value="${notice.noticeFileLength }">
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">제목</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="noticeSubject" value="${notice.noticeSubject }">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputNumber" class="col-sm-2 col-form-label">첨부파일</label>
+                  <div class="col-sm-10">
+                  	<div class="box" style="padding: 4px 0 0 6px; height: 35px; border: 1px solid #DCE2E3; border-radius: 5px;">
+						<span><a style="color:black;" href='../resources/nuploadFiles/${notice.noticeFileRename }' download>${notice.noticeFileName }</a></span>
+					</div>
 					<input type="file" name="reloadFile">
-				</li>
-			</ul>
-			<br><br>
-			<div>
-				<input type="submit" value="등록하기">
-				<button type="button" onclick="showNoticeList();">목록으로 이동하기</button>
-			</div>
-		</form>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputPassword" class="col-sm-2 col-form-label">내용</label>
+                  <div class="col-sm-10">
+                    <textarea class="form-control" rows="10" cols="51" name="noticeContent">${notice.noticeContent }</textarea>
+                  </div>
+                </div>
+                <br><br>
+				<div class="d-flex col-md-12 justify-content-end">
+			            <button type="submit" class="btn" style="background-color: #FAFAFA; border-color: #e9ecef;">수정</button>
+			            <button type="button" class="btn" style="background-color: #FAFAFA; border-color: #e9ecef;" onclick="showNoticeList();">목록</button>
+				</div>
+              </form>
+              </div>
+		<jsp:include page="../inc/footer.jsp"></jsp:include>
 		<script type="text/javascript">
 			function showNoticeList() {
 				location.href = "/notice/list.do";

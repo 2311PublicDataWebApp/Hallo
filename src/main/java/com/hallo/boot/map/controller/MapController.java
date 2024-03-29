@@ -28,6 +28,8 @@ public class MapController {
 			int totalCount = mapService.getTotalCount();
 			NoticePageInfo pi = this.getPageInfo(currentPage, totalCount);
 			List<MapVO> mList = mapService.selectHallList(pi);
+			List<MapVO> allList = mapService.selectHallList();
+			mv.addObject("allList", allList);
 			mv.addObject("mList", mList);
 			mv.addObject("pi", pi);
 			mv.setViewName("map/map");

@@ -11,4 +11,6 @@ public interface MapService {
 
 	List<MapVO> selectHallList(NoticePageInfo pInfo);
 
+	List<MapVO> selectHallList();
+
 }

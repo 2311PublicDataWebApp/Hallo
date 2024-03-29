@@ -11,6 +11,8 @@ public interface MapStore {
 
 	int selectTotalCount(SqlSession session);
 
-	List<MapVO> selectNoticeList(SqlSession session, RowBounds rowBounds);
+	List<MapVO> selectMapList(SqlSession session, RowBounds rowBounds);
+
+	List<MapVO> selectMapList(SqlSession session);
 
 }
