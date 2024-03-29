@@ -66,10 +66,9 @@
 				</ul>
 			</fieldset>
 			<br>
-			<div class="d-flex justify-content-center ">
-				<input type="submit" value="가입" class="btn btn-lg " style="width: 300px; height: 60px; background-color: #6f42c1; color: #ffffff;">
-				<button type="button" id="list" onclick="showMyPage();" class="btn btn-light btn-lg rounded-pill" style="width: 300px; height: 60px; background-color: #AAAAAA; color: #ffffff;">취소</button>
-				
+			<div class="text-center">
+				<input type="submit" value="가입" class="btn btn-lg " style="width: 150px; height: 50px; background-color: #6f42c1; color: #ffffff;">
+				<button type="button" id="list" onclick="showMyPage();" class="btn btn-lg" style="width: 150px; height: 50px; background-color: #AAAAAA; color: #ffffff;">취소</button>
 			</div>
 		</form>
 		</main>
