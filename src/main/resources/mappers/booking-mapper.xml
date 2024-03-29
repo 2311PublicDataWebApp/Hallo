@@ -9,13 +9,120 @@
 	<select id="selectBookingList" resultType="BookingVO">
 		SELECT * FROM BOOKING_TBL ORDER BY BOOKING_NO DESC
 	</select>
+	<select id="getTotalCount" resultType="_int">
+		SELECT COUNT(*) FROM HALL_TBL
+	</select>
+	<select id="getTotalTime" resultType="_int">
+		SELECT ROUND((TO_DATE(TO_CHAR(BOOKING_END_TIME, 'YYYY-MM-DD HH24:MI:SS'), 'YYYY-MM-DD HH24:MI:SS') - TO_DATE(TO_CHAR(BOOKING_START_TIME, 'YYYY-MM-DD HH24:MI:SS'), 'YYYY-MM-DD HH24:MI:SS')) * 24, 2) FROM BOOKING_TBL WHERE BOOKING_NO = #{bookingNo }
+	</select>
 	<insert id="insertBooking">
-		INSERT INTO BOOKING_TBL VALUES(SEQ_BOOKING_NO.NEXTVAL, #{bookingStartTime }, #{bookingEndTime }, #{paymentNo }, #{memberId }, #{hallNo })
+		INSERT INTO BOOKING_TBL VALUES(SEQ_BOOKING_NO.NEXTVAL, #{bookingStartTime }, #{bookingEndTime }, #{memberId }, #{hallNo })
+		<selectKey keyProperty="bookingNo" resultType="int" order="AFTER">
+			SELECT SEQ_BOOKING_NO.CURRVAL FROM DUAL
+		</selectKey>
 	</insert>
 	<update id="updateBooking">
-		UPDATE BOOKING_TBL SET HALL_NAME = #{bookingStartTime }, HALL_SPACENAME = #{bookingEndTime }, HALL_ADDRESS = #{paymentNo }, HALL_PEOPLE = #{memberId }, HALL_FEE = #{hallNo } WHERE BOOKING_NO = #{bookingNo }
+		UPDATE BOOKING_TBL SET HALL_NAME = #{bookingStartTime }, HALL_SPACENAME = #{bookingEndTime }, HALL_PEOPLE = #{memberId }, HALL_FEE = #{hallNo } WHERE BOOKING_NO = #{bookingNo }
 	</update>
 	<delete id="deleteBooking">
 		DELETE FROM BOOKING_TBL WHERE BOOKING_NO = #{bookingNo }
 	</delete>
+	
+	
+	<resultMap type="BookingVO" id="bookingResultMap">
+		<id property="bookingNo" column="BOOKING_NO" />
+		<result property="memberName" column="MEMBER_NAME" />
+		<result property="memberPhone" column="MEMBER_PHONE" />
+		<result property="hallName" column="HALL_NAME" />
+		<result property="hallSpaceName" column="HALL_SPACENAME" />
+		<result property="hallAddress" column="HALL_ADDRESS" />
+		<result property="bookingStartTime" column="BOOKING_START_TIME" />
+		<result property="bookingEndTime" column="BOOKING_END_TIME" />
+	</resultMap>
+	<select id="selectTotalCount" resultType="_int">
+		SELECT COUNT(*) FROM
+		BOOKING_TBL
+	</select>
+	<select id="AdminBookingTotalCount" resultType="_int">
+		SELECT COUNT(*) FROM BOOKING_TBL A
+		INNER JOIN HALL_TBL B
+		ON A. HALL_NO=
+		B.HALL_NO
+		INNER JOIN MEMBER_TBL C
+		ON A. MEMBER_ID = C.MEMBER_ID
+		<if test="searchCondition == 'all'">
+			WHERE MEMBER_NAME LIKE '%'||#{searchKeyword }||'%'
+			OR MEMBER_PHONE LIKE '%'||#{searchKeyword }||'%'
+			OR HALL_NAME LIKE '%'||#{searchKeyword }||'%'
+			OR BOOKING_START_TIME LIKE '%'||#{searchKeyword}||'%'
+			OR BOOKING_END_TIME LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'memberName'">
+			WHERE MEMBER_NAME LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'memberPhone'">
+			WHERE MEMBER_PHONE LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'hallName'">
+			WHERE HALL_NAME LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'bookingStartTime'">
+			WHERE BOOKING_START_TIME LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'bookingEndTime'">
+			WHERE BOOKING_END_TIME LIKE '%'||#{searchKeyword }||'%'
+				</if>
+		ORDER BY BOOKING_NO DESC
+	</select>
+	<select id="searchAdminBookingByKeyword"
+		resultMap="bookingResultMap">
+		SELECT * FROM BOOKING_TBL A
+		INNER JOIN HALL_TBL B
+		ON A. HALL_NO= B.HALL_NO
+		INNER JOIN MEMBER_TBL C
+		ON A. MEMBER_ID = C.MEMBER_ID
+		<if test="searchCondition == 'all'">
+			WHERE MEMBER_NAME LIKE '%'||#{searchKeyword }||'%'
+			OR MEMBER_PHONE LIKE '%'||#{searchKeyword }||'%'
+			OR HALL_NAME LIKE '%'||#{searchKeyword }||'%'
+			OR BOOKING_START_TIME LIKE '%'||#{searchKeyword}||'%'
+			OR BOOKING_END_TIME LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'memberName'">
+			WHERE MEMBER_NAME LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'memberPhone'">
+			WHERE MEMBER_PHONE LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'hallName'">
+			WHERE HALL_NAME LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'bookingStartTime'">
+			WHERE BOOKING_START_TIME LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'bookingEndTime'">
+			WHERE BOOKING_END_TIME LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		ORDER BY BOOKING_NO DESC
+	</select>
+	<select id="selectAdminBookingList" resultMap="bookingResultMap">
+		SELECT * FROM
+		BOOKING_TBL A
+		INNER JOIN HALL_TBL B
+		ON A. HALL_NO= B.HALL_NO
+		INNER JOIN
+		MEMBER_TBL C
+		ON A. MEMBER_ID = C.MEMBER_ID
+		ORDER BY BOOKING_NO DESC
+	</select>
+	<select id="selectDBBookingList" resultMap="bookingResultMap">
+		SELECT * FROM
+		BOOKING_TBL A
+		INNER JOIN HALL_TBL B
+		ON A. HALL_NO= B.HALL_NO
+		INNER JOIN
+		MEMBER_TBL C
+		ON A. MEMBER_ID = C.MEMBER_ID
+	</select>
+	
 </mapper>

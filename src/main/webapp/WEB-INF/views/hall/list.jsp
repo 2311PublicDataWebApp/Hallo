@@ -6,8 +6,10 @@
     <head>
         <meta charset="UTF-8">
         <title>공연장 목록</title>
+        <%@ include file="../inc/head.jsp"%>
     </head>
     <body>
+    	<jsp:include page="../inc/header.jsp"></jsp:include>
     	<h1>공연장 목록</h1>
         <table>
             <thead>
@@ -34,11 +36,12 @@
 				<tr>
 					<td colspan="5" style="text-align:center">
 						<c:forEach begin="${pi.startNavi }" end="${pi.endNavi }" var="p">
-							<a href="#">${p }</a>
+							<a href="/hall/list.do?page=${p }">${p }</a>
 						</c:forEach>
 					</td>
 				</tr>
             </tfoot>
         </table>
+        <jsp:include page="../inc/footer.jsp"></jsp:include>
     </body>
 </html>
