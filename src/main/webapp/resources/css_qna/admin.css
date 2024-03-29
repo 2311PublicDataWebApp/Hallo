@@ -10,6 +10,16 @@
 
 a {
 	cursor: pointer;
+	text-decoration: none;
+	color: #6c6b6b;
+}
+
+
+select{
+	padding:4px;
+	margin-right:3px;
+	border-radius:4px;
+	border:1px solid #999;
 }
 
 /* 어드민 헤더영역 */
@@ -113,10 +123,43 @@ a {
 }
 
 /* 타이틀 영역 */
-.section_sub_title {
-	margin-left: 45%;
-	margin-bottom: 50px;
+.titletbl{
+	margin-left:10%;
+	width:700px;
+	margin-bottom:30px;
 }
+
+.section_sub_title{
+	margin-left:60%;
+	
+}
+/* Qna List */
+
+.keywordbox{
+	padding:4px 25px 4px 0px;
+	border-radius:4px;
+	border:1px solid #999;
+	margin-right:10px;
+}
+
+.search_submit{
+	padding:3px 4px 3px 4px;
+	border-radius:3px;
+	border:2px solid #4F1271;
+	background-color:#4F1271;
+	color:white;
+	
+	
+}
+
+.search_reset{	padding:3.5px 4px 3.5px 4px;
+	border-radius:3px;
+	border:1px solid #999;
+	border:1px solid #4F1271;
+	background-color:white;
+	color:#4F1271;
+	}
+	
 /* 그리드 공통 */
 .gridSection {
 	width: 90%;
@@ -124,9 +167,8 @@ a {
 
 .gridSection table {
 	border-radius: 8px;
+	width: 90%;
 }
-
-
 
 .gridtd td {
 	padding: 0.2rem;
@@ -164,3 +206,69 @@ a {
 .gridtr .sixthsection {
 	width: 200px;
 }
+
+/* 문의 상세 */
+.adm_qna_detail_table {
+	width: 500px;
+	font-size: 0.90em;
+}
+
+.adm_detail_tr .adm_detail_th {
+	width: 120px;
+	text-align: right;
+	padding-right: 20px;
+	border-bottom: 1px solid #c0c0c0;
+	vertical-align: bottom;
+}
+
+.adm_detail_tr .admin_detail_td {
+	text-align: left;
+	vertical-align: top;
+	border-bottom: 1px solid #c0c0c0;
+	margin-top:10px;
+	
+}
+.admin_detail_td:last-child{
+	padding-top:20px;
+}
+.detail_content_tr .detail_content_th, .detail_content_td {
+	height: 200px;
+	border-bottom: 1px solid #c0c0c0;
+}
+
+
+.nullmsg{
+	margin-top:50px;
+	margin-bottom:50px;
+}
+
+.detail_btn{
+	margin-left:45%;
+	margin-top:100px;
+	margin-bottom:50px;
+}
+
+
+.adm_list_btn{
+	padding: 10px 8px;
+	border:2px solid #4F1271;
+	background-color:white;
+	letter-spacing: 1px;
+	border-radius: 4px;
+	margin-right:30px;
+	color: #4F1271;
+}
+
+.adm_reply_btn{
+	border: 2px solid #4F1271;
+	background-color: #4F1271;
+	color: white;
+	padding: 10px 8px;
+	letter-spacing: 1px;
+	border-radius: 4px;
+}
+
+
+
+
+

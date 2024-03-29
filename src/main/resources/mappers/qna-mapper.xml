@@ -12,48 +12,55 @@
 		<result property="qnaCategory" column="QNA_CATEGORY" />
 		<result property="qnaStatus" column="QNA_STATUS" />
 		<result property="qnaPhone" column="QNA_PHONE" />
+		<result property="qnaComment" column="QNA_COMMENT" />
 		<result property="memberName" column="MEMBER_NAME" />
 	</resultMap>
 
 	<insert id="insertQna">
 		INSERT INTO QNA_TBL
-		VALUES(SEQ_QNA_NO.NEXTVAL, #{memberId}, #{qnaTitle},#{qnaContent},
-		DEFAULT, 'Q', DEFAULT, #{qnaPhone})
+		VALUES(SEQ_QNA_NO.NEXTVAL,
+		#{memberId}, #{qnaTitle},#{qnaContent},
+		DEFAULT, 'Q', DEFAULT,
+		#{qnaPhone},null)
 
 	</insert>
 
 	<select id="selectTotalCount" resultType="_int">
-		SELECT COUNT(*) FROM QNA_TBL
-	
+		SELECT COUNT(*) FROM
+		QNA_TBL
+
 	</select>
-	
-		<select id="selectmyQnaCount" resultType="_int">
+
+	<select id="selectmyQnaCount" resultType="_int">
 		SELECT COUNT(*) FROM
 		QNA_TBL
 		<if test="memberId != null">
 			WHERE MEMBER_ID = #{memberId }
 		</if>
+		ORDER BY QNA_DATE DESC
 	</select>
-	
-	
-	
+
+
+
 
 	<select id="selectmyQnaList" resultMap="qnaResultMap">
-		SELECT * FROM QNA_TBL 
+		SELECT * FROM QNA_TBL
 		WHERE
 		MEMBER_ID = #{memberId}
-		ORDER BY QNA_NO DESC
+		ORDER BY QNA_DATE DESC
 	</select>
 
 	<select id="selectQnaByNo" resultMap="qnaResultMap">
 		SELECT * FROM QNA_TBL WHERE
 		QNA_NO= #{qnaNo}
+		ORDER BY QNA_DATE DESC
 	</select>
 
 	<select id="selectOneById" resultMap="qnaResultMap">
 		SELECT * FROM QNA_TBL
 		WHERE
 		MEMBER_ID = #{memberId}
+		ORDER BY QNA_DATE DESC
 	</select>
 
 	<delete id="deleteQna">
@@ -68,19 +75,100 @@
 		QNA_PHONE=#{qnaPhone},
 		QNA_CONTENT=#{qnaContent},
 		QNA_DATE=DEFAULT
-		WHERE QNA_NO = #{qnaNo}
+		WHERE
+		QNA_NO = #{qnaNo}
 	</update>
 
 
 
 
 
-	<!-- Admin 코드 시작-->
+	<!-- Admin 코드 시작 -->
 	<select id="selectAdminQnaList" resultMap="qnaResultMap">
+		 SELECT * FROM QNA_TBL Q
+		INNER JOIN MEMBER_TBL M
+		ON Q.MEMBER_ID = M.MEMBER_ID
+		ORDER BY QNA_DATE DESC
+	</select>
+	<update id="updateadminQna">
+		UPDATE QNA_TBL
+		SET
+		QNA_STATUS='END',
+		QNA_COMMENT=#{qnaComment}
+		WHERE QNA_NO = #{qnaNo}
+	</update>
+	<select id="selectAdminQnaByNo" resultMap="qnaResultMap">
 		SELECT * FROM QNA_TBL Q
 		INNER JOIN MEMBER_TBL M
 		ON Q.MEMBER_ID = M.MEMBER_ID
+		WHERE QNA_NO = #{qnaNo}
+		ORDER BY QNA_DATE DESC
 	</select>
+
+<select id="searchAdminQnaByKeyword" resultMap="qnaResultMap">
+		SELECT * FROM QNA_TBL Q
+		INNER JOIN MEMBER_TBL M
+		ON Q.MEMBER_ID = M.MEMBER_ID
+		<if test="searchCondition == 'all'">
+			WHERE M.MEMBER_ID LIKE '%'||#{searchKeyword }||'%'	
+			OR MEMBER_NAME LIKE '%'||#{searchKeyword }||'%'
+			OR QNA_STATUS LIKE '%'||#{searchKeyword }||'%'
+			OR QNA_TITLE LIKE '%'||#{searchKeyword }||'%'
+			OR QNA_DATE LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'memberId'">
+			WHERE M.MEMBER_ID LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'memberName'">
+			WHERE MEMBER_NAME LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'qnaStatus'">
+			WHERE QNA_STATUS LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'qnaTitle'">
+			WHERE QNA_TITLE LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'qnaDate'">
+			WHERE QNA_DATE LIKE '%'||#{searchKeyword }||'%'
+		</if>
+
+		ORDER BY QNA_DATE DESC
+	</select>
+	
+	<select id="searchQnaAdminTotalCount" resultType="_int">
+		SELECT COUNT(*) FROM QNA_TBL Q
+		INNER JOIN MEMBER_TBL M
+		ON Q.MEMBER_ID = M.MEMBER_ID
+		<if test="searchCondition == 'all'">
+			WHERE M.MEMBER_ID LIKE '%'||#{searchKeyword }||'%'
+			OR MEMBER_NAME LIKE '%'||#{searchKeyword }||'%'
+			OR QNA_STATUS LIKE '%'||#{searchKeyword }||'%'
+			OR QNA_TITLE LIKE '%'||#{searchKeyword }||'%'
+			OR QNA_DATE LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'memberId'">
+			WHERE M.MEMBER_ID LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'memberName'">
+			WHERE MEMBER_NAME LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'qnaStatus'">
+			WHERE QNA_STATUS LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'qnaTitle'">
+			WHERE QNA_TITLE LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'qnaDate'">
+			WHERE QNA_DATE LIKE '%'||#{searchKeyword }||'%'
+		</if>
+	</select>
+	<select id="selectDBQnaList" resultMap="qnaResultMap">
+		 SELECT * FROM QNA_TBL Q
+		INNER JOIN MEMBER_TBL M
+		ON Q.MEMBER_ID = M.MEMBER_ID
+	</select>
+
+
 </mapper>
 
 

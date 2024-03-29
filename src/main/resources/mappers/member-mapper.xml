@@ -24,4 +24,85 @@
 	<delete id="deleteMember">
 		DELETE FROM MEMBER_TBL WHERE MEMBER_ID = #{memberId }
 	</delete>
+	
+	<!-- 		 김혜연 추가 /0328/     -->
+	<resultMap type="MemberVO" id="memberResultMap">
+		<id property="memberId" column="MEMBER_ID" />
+		<result property="memberPw" column="MEMBER_PW" />
+		<result property="memberName" column="MEMBER_NAME" />
+		<result property="memberAddress" column="MEMBER_ADDRESS" />
+		<result property="memberEmail" column="MEMBER_EMAIL" />
+		<result property="memberPhone" column="MEMBER_PHONE" />
+		<result property="memberDate" column="MEMBER_DATE" />
+	</resultMap>
+	
+	
+	
+<!-- 		 ADMIN 관련 코드     -->
+	
+	<select id="selectAdminMemberList" resultMap="memberResultMap">
+		 SELECT * FROM MEMBER_TBL 
+		ORDER BY MEMBER_DATE DESC
+	</select>
+	
+	<select id="selectAdminMemberById" resultMap="memberResultMap">
+		SELECT * FROM MEMBER_TBL
+		WHERE MEMBER_ID = #{memberId}
+		ORDER BY MEMBER_DATE DESC
+	</select>
+
+	<select id="searchAdminMemberByKeyword" resultMap="memberResultMap">
+		SELECT * FROM MEMBER_TBL
+		<if test="searchCondition == 'All'">
+			WHERE MEMBER_ID LIKE '%'||#{searchKeyword }||'%'	
+			OR MEMBER_NAME LIKE '%'||#{searchKeyword }||'%'
+			OR MEMBER_EMAIL LIKE '%'||#{searchKeyword }||'%'
+			OR MEMBER_PHONE LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'memberId'">
+			WHERE MEMBER_ID LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'memberName'">
+			WHERE MEMBER_NAME LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'memberEmail'">
+			WHERE MEMBER_EMAIL LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'memberPhone'">
+			WHERE MEMBER_PHONE LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		ORDER BY MEMBER_DATE DESC
+	</select>
+	
+	<select id="searchMemberAdminTotalCount" resultType="_int">
+		SELECT COUNT(*) FROM MEMBER_TBL
+
+		<if test="searchCondition == 'searchQnaAll'">
+			WHERE MEMBER_ID LIKE '%'||#{searchKeyword }||'%'
+			OR MEMBER_NAME LIKE '%'||#{searchKeyword }||'%'
+			OR MEMBER_EMAIL LIKE '%'||#{searchKeyword }||'%'
+			OR MEMBER_PHONE LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'memberId'">
+			WHERE MEMBER_ID LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'memberName'">
+			WHERE MEMBER_NAME LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'memberEmail'">
+			WHERE MEMBER_EMAIL LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'memberPhone'">
+			WHERE MEMBER_PHONE LIKE '%'||#{searchKeyword }||'%'
+		</if>
+	</select>
+	
+	<select id="selectAdminTotalCount" resultType="_int">
+		SELECT COUNT(*) FROM MEMBER_TBL
+		</select>
+		
+	<select id="selectDBMemberList" resultMap="memberResultMap">
+		 SELECT * FROM MEMBER_TBL 
+		ORDER BY MEMBER_DATE DESC
+	</select>
 </mapper>

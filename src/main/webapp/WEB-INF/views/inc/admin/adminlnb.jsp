@@ -12,7 +12,7 @@
 		<div class="admlnb">
 			<ul class="adm_lnb_ul">
 				<li class="adm_lnb_li_first">[어드민]</li>
-				<li class="adm_lnb_li_second"><a href="#">&nbsp;&nbsp;회원관리</a></li>
+				<li class="adm_lnb_li_second"><a href="/admin/memberAdminList.do">&nbsp;&nbsp;회원관리</a></li>
 				<li class="adm_lnb_li_third"><a href="#">&nbsp;&nbsp;공연장관리</a></li>
 				<li class="adm_lnb_li_fourth"><a href="#">&nbsp;&nbsp;예약관리</a></li>
 				<li class="adm_lnb_li_fifth"><a href="#">&nbsp;&nbsp;고객센터관리</a>
