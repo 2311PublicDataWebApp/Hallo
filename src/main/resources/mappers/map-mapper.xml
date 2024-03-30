@@ -17,6 +17,12 @@
 		<result property="hallAgentEmail" column="HALL_AGENT_EMAIL"/>
 		<result property="hallX" column="HALL_X"/>
 		<result property="hallY" column="HALL_Y"/>
+		<result property="hallImgNo" column="HALL_IMG_NO"/>
+		<result property="hallImgName" column="HALL_IMG_NAME"/>
+		<result property="hallImgRename" column="HALL_IMG_RENAME"/>
+		<result property="hallImgFilePath" column="HALL_IMG_FILEPATH"/>
+		<result property="hallImgFileLength" column="HALL_IMG_FILELENGTH"/>
+		<result property="hallImgIsThumbnail" column="HALL_IMG_ISTHUMBNAIL"/>
 	</resultMap> -->
 	<select id="selectTotalCount" resultType="_int">
 		SELECT COUNT(*) FROM HALL_TBL
@@ -25,5 +31,9 @@
 	<select id="selectMapList" resultType="MapVO">
 		SELECT * FROM HALL_TBL ORDER BY HALL_NO
 	</select>
+
+<!-- 	<select id="selectMapList" resultMap="mapResultMap">
+		SELECT * FROM HALL_TBL ORDER BY HALL_NO
+	</select> -->
 	
 </mapper>
