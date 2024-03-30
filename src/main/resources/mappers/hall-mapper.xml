@@ -13,7 +13,11 @@
 		SELECT COUNT(*) FROM HALL_TBL
 	</select>
 	<insert id="insertHall">
-		INSERT INTO HALL_TBL VALUES(SEQ_HALL_NO.NEXTVAL, #{hallName }, #{hallSpaceName }, #{hallAddress }, #{hallPeople }, #{hallFee }, #{hallCautions }, #{hallRefunds }, #{hallAgentName }, #{hallAgentPhone }, #{hallAgentEmail }, #{hallX }, #{hallY })
+		INSERT INTO HALL_TBL VALUES(SEQ_HALL_NO.NEXTVAL,
+		 #{hallName }, #{hallSpaceName }, #{hallAddress }, 
+		 #{hallPeople }, #{hallFee }, #{hallCautions }, 
+		 #{hallRefunds }, #{hallAgentName }, #{hallAgentPhone }, 
+		 #{hallAgentEmail }, #{hallX }, #{hallY },#{hallImgNo},#{hallImgName },#{hallImgRename },#{hallImgFilepath },#{hallFileLength },DEFAULT)
 	</insert>
 	<update id="updateHall">
 		UPDATE HALL_TBL SET HALL_NAME = #{hallName }, HALL_SPACENAME = #{hallSpaceName }, HALL_ADDRESS = #{hallAddress }, HALL_PEOPLE = #{hallPeople }, HALL_FEE = #{hallFee }, HALL_CAUTIONS = #{hallCautions }, HALL_REFUNDS = #{hallRefunds }, HALL_AGENT_NAME = #{hallAgentName }, HALL_AGENT_PHONE = #{hallAgentPhone }, HALL_AGENT_EMAIL = #{hallAgentEmail }, HALL_X = #{hallX }, HALL_Y = #{hallY } WHERE HALL_NO = #{hallNo }
@@ -21,4 +25,117 @@
 	<delete id="deleteHall">
 		DELETE FROM HALL_TBL WHERE HALL_NO = #{hallNo }
 	</delete>
+	
+	
+<!-- 	///////////////////////////////Admin 시작 ////////////////////////////// -->
+	<resultMap type="HallVO" id="hallResultMap">
+		<id property="hallNo" column="HALL_NO" />
+		<result property="hallName" column="HALL_NAME" />
+		<result property="hallSpaceName" column="HALL_SPACENAME" />
+		<result property="hallAddress" column="HALL_ADDRESS" />
+		<result property="hallPeople" column="HALL_PEOPLE" />
+		<result property="hallFee" column="HALL_FEE" />
+		<result property="hallCautions" column="HALL_CAUTIONS" />
+		<result property="hallRefunds" column="HALL_REFUNDS" />
+		<result property="hallAgentName" column="HALL_AGENT_NAME" />
+		<result property="hallAgentPhone" column="HALL_AGENT_PHONE" />
+		<result property="hallAgentEmail" column="HALL_AGENT_EMAIL" />
+		<result property="hallX" column="HALL_X" />
+		<result property="hallY" column="HALL_Y" />
+		</resultMap>
+		
+		<resultMap type="HallVO" id="hallImgResultMap">
+		<result property="hallImgNo" column="HALL_IMG_NO" />
+		<result property="hallImgName" column="HALL_IMG_NAME" />
+		<result property="hallImgRename" column="HALL_IMG_RENAME" />
+		<result property="hallImgFilepath" column="HALL_IMG_FILEPATH" />
+		<result property="hallFileLength" column="HALL_IMG_FILELENGTH" />
+		<result property="hallImgIsthumbnail" column="HALL_IMG_ISTHUMBNAIL" />
+		</resultMap>
+		
+		
+		
+	<insert id="insertImgHall">
+		INSERT INTO HALL_IMG_TBL 
+		VALUES(SEQ_HALLIMG_NO.NEXTVAL, 
+		#{hallNo},
+		#{hallImgName}, 
+		#{hallImgRename}, 
+		#{hallImgFilepath}, 
+		#{hallFileLength}, 
+		#{hallImgIsthumbnail} 
+		)
+	</insert>		
+		
+	<update id="updateHallImg">
+		UPDATE HALL_IMG_TBL 
+		SET 
+		HALL_IMG_NAME = #{hallImgName }, 
+		HALL_IMG_RENAME = #{hallImgRename }, 
+		HALL_IMG_FILEPATH = #{hallImgFilepath }, 
+		HALL_IMG_FILELENGTH = #{hallFileLength }, 
+		HALL_IMG_ISTHUMBNAIL = #{hallImgIsthumbnail }
+		WHERE HALL_IMG_NO = #{hallImgNo }
+	</update>
+
+
+
+
+
+	<select id="AdminHallTotalCount" resultType="_int">
+		SELECT COUNT(*) FROM HALL_TBL 
+		
+		<if test="searchCondition == 'all'">
+			WHERE HALL_NAME LIKE '%'||#{searchKeyword }||'%'
+			OR HALL_ADDRESS LIKE '%'||#{searchKeyword }||'%'
+			OR HALL_AGENT_NAME LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition == 'hallName'">
+			WHERE HALL_NAME LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'hallAddress'">
+			WHERE HALL_ADDRESS LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'hallAgentName'">
+			WHERE HALL_AGENT_NAME LIKE '%'||#{searchKeyword }||'%'
+		</if>
+	
+		ORDER BY HALL_NO DESC
+	</select>
+	<select id="searchAdminHallByKeyword" resultMap="hallResultMap">
+		SELECT * FROM HALL_TBL 
+		
+		<if test="searchCondition == 'all'">
+			WHERE HALL_NAME LIKE '%'||#{searchKeyword }||'%'
+			OR HALL_ADDRESS LIKE '%'||#{searchKeyword }||'%'
+			OR HALL_AGENT_NAME LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition == 'hallName'">
+			WHERE HALL_NAME LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'hallAddress'">
+			WHERE HALL_ADDRESS LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'hallAgentName'">
+			WHERE HALL_AGENT_NAME LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		ORDER BY HALL_NO DESC
+	</select>
+	<select id="selectAdminHallList" resultMap="hallResultMap">
+		SELECT * FROM HALL_TBL
+		ORDER BY HALL_NO DESC
+	</select>
+	<select id="selectDBHallList" resultMap="hallResultMap">
+		SELECT * FROM HALL_TBL 
+	</select>
+	
+	<select id="selectByAdminHallNo" resultMap="hallResultMap">
+		SELECT * FROM HALL_TBL WHERE HALL_NO = #{hallNo }
+	</select>
+		<select id="selectAdminHallByNo" resultMap="hallResultMap">
+		SELECT * FROM HALL_TBL WHERE HALL_NO = #{hallNo }
+	</select>
+	<select id="selectByHallImgNo" resultMap="hallResultMap">
+		SELECT * FROM HALL_IMG_TBL WHERE HALL_NO = #{hallNo }
+	</select>
 </mapper>

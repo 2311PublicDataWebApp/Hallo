@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>예약 관리</title>
+<title>공연장 관리</title>
 <style>
 	#adnoticesearch {
 		margin: auto;
@@ -17,7 +17,7 @@
 	<jsp:include page="../inc/adheader.jsp"></jsp:include>
 	<main id="main" class="main">
 		<div class="pagetitle">
-			<h1>예약 관리</h1>
+			<h1>공연장 관리</h1>
 		</div>
 		<!-- End Page Title -->
 		<br>
@@ -26,41 +26,46 @@
 				<div class="col-lg-12">
 					<div class="card">
 						<div class="card-body">
-							<h5 class="card-title">예약 목록</h5>
+							<h5 class="card-title">공연장 목록</h5>
 							<!-- Default Table -->
 							<table class="table table-hover">
 								<thead>
 									<tr>
 										<th>번호</th>
-										<th>회원명</th>
-										<th>휴대폰번호</th>
 										<th>공연장명</th>
-										<th>대여 장소명</th>
+										<th>대여장소명</th>
 										<th>주소</th>
-										<th>시작일</th>
-										<th>종료일</th>
+										<th>수용인원</th>
+										<th>비용</th>
+										<th>담당자명</th>
 									</tr>
 								</thead>
 								<tbody>
 								<c:choose>
 										<c:when test="${fn:length(searchList) !=0 }">
-												<c:forEach items="${searchList }" var="book" varStatus="i">
-												<tr>
-													<td><a href="/admin/bookDetail.do?bookNo=${book.bookingNo }">${i.count }</a></td>
-													<td><a href="/admin/bookDetail.do?bookNo=${book.bookingNo }">${book.memberName }</a></td>
-													<td><a href="/admin/bookDetail.do?bookNo=${book.bookingNo }">${book.memberPhone }</a></td>
-													<td><a href="/admin/bookDetail.do?bookNo=${book.bookingNo }">${book.hallName }</a></td>
-													<td><a href="/admin/bookDetail.do?bookNo=${book.bookingNo }">${book.hallSpaceName }</a></td>
-													<td><a href="/admin/bookDetail.do?bookNo=${book.bookingNo }">${book.hallAddress }</a></td>
-													<td><a href="/admin/bookDetail.do?bookNo=${book.bookingNo }">${book.bookingStartTime}</a></td>
-													<td><a href="/admin/bookDetail.do?bookNo=${book.bookingNo }">${book.bookingEndTime}</a></td>
+												<c:forEach items="${searchList }" var="hall" varStatus="i">
+												<tr class="hall_admin_list_td">
+													<td><a
+														href="/admin/hallDetail.do?hallNo=${hall.hallNo }">${i.count }</a></td>
+													<td><a
+														href="/admin/hallDetail.do?hallNo=${hall.hallNo }">${hall.hallName }</a></td>
+													<td><a
+														href="/admin/hallDetail.do?hallNo=${hall.hallNo }">${hall.hallSpaceName }</a></td>
+													<td><a
+														href="/admin/hallDetail.do?hallNo=${hall.hallNo }">${hall.hallAddress }</a></td>
+													<td><a
+														href="/admin/hallDetail.do?hallNo=${hall.hallNo }">${hall.hallPeople}</a></td>
+													<td><a
+														href="/admin/hallDetail.do?hallNo=${hall.hallNo }">${hall.hallFee}</a></td>
+													<td><a
+														href="/admin/hallDetail.do?hallNo=${hall.hallNo }">${hall.hallAgentName}</a></td>
 												</tr>
 											</c:forEach>
 										</c:when>
 										<c:otherwise>
 											<td class="admin_list_fifth_td" colspan="7">
 												<p class="nullmsg" style="width:30%; margin:0 auto; padding-top:50px;padding-bottom:50px;">
-													등록된 예약이 없습니다.<br>
+													등록된 공연장이 없습니다.<br>
 												</p>
 										</c:otherwise>
 									</c:choose>
@@ -68,16 +73,14 @@
 							</table>
 								<div class="d-flex flex-wrap justify-content-center align-items-center pb-5">
 				                    <div class="d-flex col-md-6 justify-content-start">
-				                       <form class="row g-1" action="/admin/booksearch.do"
-										name="adm_form" method="get">
+				                       <form class="row g-1" action="/admin/hallsearch.do"
+										name="adm_form" method="post">
 										<div class="col-auto">
 											<select class="form-select" name="searchCondition"  id="searchcon">
 												<option value="all" 				<c:if test="${searchCondition == 'all'}">selected</c:if>>전체</option>
-												<option value="memberName" 			<c:if test="${searchCondition == 'memberName'}">selected</c:if>>회원명</option>
-												<option value="memberPhone" 		<c:if test="${searchCondition == 'memberPhone'}">selected</c:if>>휴대폰번호</option>
-												<option value="hallName" 			<c:if test="${searchCondition == 'hallName'}">selected</c:if>>공연장명</option>
-												<option value="bookingStartTime"	<c:if test="${searchCondition == 'bookingStartTime'}">selected</c:if>>시작일</option>
-												<option value="bookingEndTime" 		<c:if test="${searchCondition == 'bookingEndTime'}">selected</c:if>>종료일</option>
+												<option value="hallName"			<c:if test="${searchCondition == 'hallName'}">selected</c:if>>공연장명</option>
+												<option value="hallAddress"			<c:if test="${searchCondition == 'hallAddress'}">selected</c:if>>주소</option>
+												<option value="hallAgentName"		<c:if test="${searchCondition == 'hallAgentName'}">selected</c:if>>담당자명</option>
 											</select>
 										</div>
 										<div class="col-auto">
@@ -98,21 +101,21 @@
 											<ul class="pagination justify-content-center" style="font-weight: 600; ">
 												<c:if test="${pInfo.startNavi ne '1' }">
 													<li class="page-item">
-								                       <a class="page-link rounded-circle" href="/admin/bookingsearch.do?page=${pInfo.startNavi - 1 }" aria-label="Previous">
+								                       <a class="page-link rounded-circle" href="/admin/hallsearch.do?page=${pInfo.startNavi - 1 }" aria-label="Previous">
 								                           <span aria-hidden="true">&laquo;</span>
 								                       </a>
 													</li>
 												</c:if>
 												<c:forEach begin="${pInfo.startNavi }" end="${pInfo.endNavi }" var="p">
 													 <li class="page-item">
-					                                     <a class="page-link rounded-circle mx-2" href="/admin/bookingsearch.do?page=${p }" style="border: none; color: #313131;">
+					                                     <a class="page-link rounded-circle mx-2" href="/admin/hallsearch.do?page=${p }" style="border: none; color: #313131;">
 					                                         ${p }
 					                                     </a>
 				                                 	</li>
 												</c:forEach>
 												<c:if test="${pInfo.endNavi ne pInfo.naviTotalCount }">
 													<li class="page-item">
-					                                     <a class="page-link rounded-circle" href="/admin/bookingsearch.do?page=${pInfo.endNavi + 1 }" aria-label="Next">
+					                                     <a class="page-link rounded-circle" href="/admin/hallsearch.do?page=${pInfo.endNavi + 1 }" aria-label="Next">
 					                                         <span aria-hidden="true">&raquo;</span>
 					                                     </a>
 				                                 	</li>

@@ -15,6 +15,90 @@
 </head>
 <body>
 	<jsp:include page="../inc/adheader.jsp"></jsp:include>
+	<!-- //	모달 시작 -->
+				<c:forEach items="${qList }" var="qna" varStatus="i">
+              <div class="modal fade" id="modalDialogScrollable${i.count }" tabindex="-1">
+                <div class="modal-dialog modal-dialog-scrollable">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">1:1문의</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <table class="table table-striped">
+								<tbody>
+
+										<tr>
+											<td style="width:230px">제목</td>
+											<td>${qna.qnaTitle }</td>
+										</tr>
+										<tr>
+											<td>회원명</td>
+											<td>${qna.memberName }</td>
+										</tr>
+										<tr>
+											<td>작성자</td>
+											<td>${qna.qnaPhone }</td>
+										</tr>
+										<tr>
+											<td>상태</td>
+											<c:set var="qStatus" value="${qna.qnaStatus }" />
+											<c:if test="${qStatus eq 'NEW' }">
+												<td class="admin_detail_td">신규등록</td>
+											</c:if>
+											<c:if test="${qStatus eq 'END'}">
+												<td class="admin_detail_td">답변완료</td>
+											</c:if>
+
+										</tr>
+										<tr>
+											<td>작성일시</td>
+											<td>${qna.qnaDate}</td>
+										</tr>
+										<tr>
+											<td>내용</td>
+											<td><textarea rows="10"
+													style="border: 0px; background-color: transparent" readonly>${qna.qnaContent }</textarea></td>
+										</tr>
+										<c:set var="qStatus" value="${qna.qnaStatus }" />
+										<c:if test="${qStatus eq 'END' }">
+											<tr>
+												<td>답변</td>
+												<td class="admin_detail_td">${qna.qnaComment}</td>
+											</tr>
+										</c:if>
+										<c:if test="${qStatus eq 'NEW'}">
+											<tr>
+												<td style="height: 150px;">답변</td>
+												<td><textarea
+														rows="10" name="qnaComment"
+														style="display:none; margin-top: -10px; border: 1px solid #c0c0c0;"></textarea><br>
+												</td>
+											</tr>
+										</c:if>
+									</tbody>
+							</table>
+                    </div>
+                    <div class="modal-footer">
+                    		<c:set var="qStatus" value="${qna.qnaStatus }" />
+										<c:if test="${qStatus eq 'END' }">
+					  						<button type="button" class="btn" style="display:none; background-color: #FAFAFA; border-color: #e9ecef;" onClick="return showReplyPage(${qna.qnaNo});">답변하기</button>
+					  						<input type="reset" class="btn" style="background-color: #FAFAFA; border-color: #e9ecef;" value="확인" data-bs-dismiss="modal" aria-label="Close"/>
+										</c:if>
+										<c:if test="${qStatus eq 'NEW'}">
+											  <button type="button" class="btn" style="background-color: #FAFAFA; border-color: #e9ecef;" onClick="return showReplyPage(${qna.qnaNo});">답변하기</button>
+											  <input type="submit" class="btn" style="background-color: #FAFAFA; border-color: #e9ecef;" value="확인" data-bs-dismiss="modal" aria-label="Close"/>
+										</c:if>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </c:forEach>
+	<!-- End Modal Dialog Scrollable-->
+	
+	
+	
 	<div id="adnoticesearch">
 	<main id="main" class="main">
 		<div class="pagetitle">
@@ -46,26 +130,26 @@
 										<c:when test="${fn:length(qList) !=0 }">
 											<c:forEach items="${qList }" var="qna" varStatus="i">
 												<tr class="qna_admin_list_td">
-													<td><a
+													<td><a data-bs-toggle="modal" data-bs-target="#modalDialogScrollable${i.count }"
 														href="/admin/qnaAdminDetail.do?qnaNo=${qna.qnaNo }">${i.count }</a></td>
 
 													<c:set var="qStatus" value="${qna.qnaStatus }" />
 													<c:if test="${qStatus eq 'NEW' }">
-														<td><a
+														<td><a data-bs-toggle="modal" data-bs-target="#modalDialogScrollable${i.count }"
 															href="/admin/qnaAdminDetail.do?qnaNo=${qna.qnaNo }">신규등록</a></td>
 													</c:if>
 													<c:if test="${qStatus eq 'END'}">
-														<td><a
+														<td><a data-bs-toggle="modal" data-bs-target="#modalDialogScrollable${i.count }"
 															href="/admin/qnaAdminDetail.do?qnaNo=${qna.qnaNo }">답변완료</a></td>
 													</c:if>
 
-													<td><a
+													<td><a data-bs-toggle="modal" data-bs-target="#modalDialogScrollable${i.count }"
 														href="/admin/qnaAdminDetail.do?qnaNo=${qna.qnaNo }">${qna.qnaTitle }</a></td>
-													<td><a
+													<td><a data-bs-toggle="modal" data-bs-target="#modalDialogScrollable${i.count }"
 														href="/admin/qnaAdminDetail.do?qnaNo=${qna.qnaNo }">${qna.memberName }</a></td>
-													<td><a
+													<td><a data-bs-toggle="modal" data-bs-target="#modalDialogScrollable${i.count }"
 														href="/admin/qnaAdminDetail.do?qnaNo=${qna.qnaNo }">${qna.qnaPhone }</a></td>
-													<td><a
+													<td><a data-bs-toggle="modal" data-bs-target="#modalDialogScrollable${i.count }"
 														href="/admin/qnaAdminDetail.do?qnaNo=${qna.qnaNo }">${qna.qnaDate}</a></td>
 												</tr>
 											</c:forEach>
@@ -167,6 +251,11 @@
 
 		}
 	}
+	function showReplyPage(qnaNo) {
+			location.href = "/admin/qnaDetail.do?qnaNo="+qnaNo;
+		}
+
+	
 	
 	</script>
 	<!-- Vendor JS Files -->

@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import com.hallo.boot.booking.domain.vo.BookingVO;
 import com.hallo.boot.booking.store.BookingStore;
+import com.hallo.boot.notice.domain.vo.NoticePageInfo;
+import com.hallo.boot.notice.domain.vo.NoticeVO;
 import com.hallo.boot.qna.domain.vo.QnaPageInfo;
 
 import lombok.NonNull;
@@ -95,5 +97,36 @@ public class BookingStoreLogic implements BookingStore {
 		List<BookingVO> bList = session.selectList("BookingMapper.selectAdminBookingList", null, rowBounds);
 		return bList;
 	}
+
+	@Override
+	public BookingVO selectAdminBookingByNo(SqlSession session, int bookingNo) {
+		BookingVO booking = session.selectOne("BookingMapper.selectAdminBookingByNo", bookingNo);
+		return booking;
+	}
+
+	@Override
+	public int deleteAdminBooking(SqlSession session, int bookingNo) {
+			int result = session.delete("BookingMapper.deleteAdminBooking", bookingNo);
+			return result;
+		
+	}
+
+	@Override
+	public int modifyAdminBook(SqlSession session, BookingVO booking) {
+		int result = session.update("BookingMapper.modifyAdminBooking", booking);
+		return result;
+	}
+
+	@Override
+	public List<BookingVO> selectDBBookList(SqlSession session, NoticePageInfo pi) {
+		int limit = pi.getBoardLimit();
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		List<BookingVO> bList = session.selectList("BookingMapper.selectDBBookingList", null, rowBounds);
+		return bList;
+	}
+
+
+
 
 }

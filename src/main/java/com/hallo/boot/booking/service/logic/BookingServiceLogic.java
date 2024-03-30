@@ -12,6 +12,9 @@ import com.hallo.boot.booking.domain.vo.BookingVO;
 import com.hallo.boot.booking.service.BookingService;
 import com.hallo.boot.booking.store.BookingStore;
 import com.hallo.boot.common.Pagination;
+import com.hallo.boot.member.domain.vo.MemberVO;
+import com.hallo.boot.notice.domain.vo.NoticePageInfo;
+import com.hallo.boot.notice.domain.vo.NoticeVO;
 import com.hallo.boot.qna.domain.vo.QnaPageInfo;
 
 import lombok.NonNull;
@@ -99,5 +102,34 @@ public class BookingServiceLogic implements BookingService {
 		List<BookingVO> bList = bStore.selectAdminBookingList(session, pInfo);
 		return bList;
 	}
+
+	@Override
+	public BookingVO selectAdminBookingByNo(int bookingNo) {
+		BookingVO booking = bStore.selectAdminBookingByNo(session, bookingNo);
+		return booking;
+	}
+
+
+	@Override
+	public int deleteAdminBooking(int bookingNo) {
+		int result = bStore.deleteAdminBooking(session, bookingNo);
+		return result;
+	}
+
+	@Override
+	public int modifyAdminBook(BookingVO booking) {
+		int result = bStore.modifyAdminBook(session, booking);
+		return result;
+	}
+
+	@Override
+	public List<BookingVO> selectDBBookList(NoticePageInfo pi) {
+		int limit = pi.getBoardLimit();
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		List<BookingVO> bList = bStore.selectDBBookList(session, pi);
+		return bList;
+	}
+
 
 }

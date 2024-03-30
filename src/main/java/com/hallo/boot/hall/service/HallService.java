@@ -1,9 +1,12 @@
 package com.hallo.boot.hall.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.hallo.boot.common.Pagination;
+import com.hallo.boot.hall.domain.vo.HallImgVO;
 import com.hallo.boot.hall.domain.vo.HallVO;
+import com.hallo.boot.qna.domain.vo.QnaPageInfo;
 
 public interface HallService {
 
@@ -47,5 +50,27 @@ public interface HallService {
 	 * @return int
 	 */
 	int getTotalCount();
+
+	
+	
+	
+	
+	///////////////////////////////Admin 시작 //////////////////////////////
+	List<HallVO> selectAdminHallList(QnaPageInfo pInfo);
+
+	int getAdminHallTotalCount(Map<String, String> paramMap);
+
+	List<HallVO> searchAdminHallByKeyword(QnaPageInfo pInfo, Map<String, String> paramMap);
+
+	//0330 추가분
+	HallVO selectByHallNo(int hallNo);
+
+	int insertImgHall(HallImgVO hallImg);
+
+	int updateHallImg(HallImgVO hallImg);
+
+	HallImgVO selectByHallImgNo(int hallNo);
+
+	HallVO selectAdminHallByNo(int hallNo);
 
 }

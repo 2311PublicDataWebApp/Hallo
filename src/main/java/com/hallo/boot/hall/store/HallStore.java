@@ -1,11 +1,14 @@
 package com.hallo.boot.hall.store;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 
+import com.hallo.boot.hall.domain.vo.HallImgVO;
 import com.hallo.boot.hall.domain.vo.HallVO;
+import com.hallo.boot.qna.domain.vo.QnaPageInfo;
 
 public interface HallStore {
 
@@ -55,5 +58,25 @@ public interface HallStore {
 	 * @return int
 	 */
 	int getTotalCount(SqlSession session);
+
+	
+	
+	///////////////////////////////Admin 시작 //////////////////////////////
+	List<HallVO> selectAdminHallList(SqlSession session, QnaPageInfo pInfo);
+
+	int getAdminHallTotalCount(SqlSession session, Map<String, String> paramMap);
+
+	List<HallVO> searchAdminHallByKeyword(SqlSession session, QnaPageInfo pInfo, Map<String, String> paramMap);
+
+	//0330 추가분
+	int insertImgHall(SqlSession session, HallImgVO hallImg);
+
+	int updateHallImg(SqlSession session, HallImgVO hallImg);
+
+	HallVO selectByHallNo(SqlSession session, int hallNo);
+
+	HallImgVO selectByHallImgNo(SqlSession session, int hallNo);
+
+	HallVO selectAdminHallByNo(SqlSession session, int hallNo);
 
 }

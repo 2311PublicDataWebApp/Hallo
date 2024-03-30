@@ -7,6 +7,7 @@ import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 
 import com.hallo.boot.booking.domain.vo.BookingVO;
+import com.hallo.boot.notice.domain.vo.NoticePageInfo;
 import com.hallo.boot.qna.domain.vo.QnaPageInfo;
 
 import lombok.NonNull;
@@ -77,5 +78,17 @@ public interface BookingStore {
 	List<BookingVO> searchAdminBookingByKeyword(SqlSession session, QnaPageInfo pInfo, Map<String, String> paramMap);
 
 	List<BookingVO> selectAdminBookingList(SqlSession session, QnaPageInfo pInfo);
+
+	BookingVO selectAdminBookingByNo(SqlSession session, int bookingNo);
+
+	int deleteAdminBooking(SqlSession session, int bookingNo);
+
+	int modifyAdminBook(SqlSession session, BookingVO booking);
+
+	List<BookingVO> selectDBBookList(SqlSession session, NoticePageInfo pi);
+
+
+
+
 
 }

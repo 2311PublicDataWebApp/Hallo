@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.hallo.boot.booking.domain.vo.BookingVO;
 import com.hallo.boot.common.Pagination;
+import com.hallo.boot.notice.domain.vo.NoticePageInfo;
 import com.hallo.boot.qna.domain.vo.QnaPageInfo;
 
 import lombok.NonNull;
@@ -68,5 +69,17 @@ public interface BookingService {
 	List<BookingVO> searchAdminBookingByKeyword(QnaPageInfo pInfo, Map<String, String> paramMap);
 
 	List<BookingVO> selectAdminBookingList(QnaPageInfo pInfo);
+
+	BookingVO selectAdminBookingByNo(int bookingNo);
+
+	int deleteAdminBooking(int bookingNo);
+
+	int modifyAdminBook(BookingVO booking);
+
+	List<BookingVO> selectDBBookList(NoticePageInfo pi);
+
+
+
+
 
 }

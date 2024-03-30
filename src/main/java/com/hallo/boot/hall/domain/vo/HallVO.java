@@ -16,7 +16,7 @@ import lombok.ToString;
 public class HallVO {
 	@NonNull
 	private Integer hallNo;
-	@NonNull
+//	@NonNull
 	private String hallName;
 	private String hallSpaceName;
 	@NonNull
@@ -32,4 +32,20 @@ public class HallVO {
 	private String hallAgentEmail;
 	private String hallX;
 	private String hallY;
+	@NonNull
+	private int hallImgNo;
+	@NonNull
+	private String hallImgName;
+	@NonNull
+	private String hallImgRename;
+	@NonNull
+	private String hallImgFilepath;
+	@NonNull
+	private long hallFileLength;
+	@NonNull
+	private String hallImgIsthumbnail;
+	
+	
+	
+	
 }

@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.hallo.boot.booking.domain.vo.BookingVO;
+import com.hallo.boot.booking.service.BookingService;
 import com.hallo.boot.map.domain.vo.MapVO;
 import com.hallo.boot.map.service.MapService;
 import com.hallo.boot.member.domain.vo.MemberVO;
@@ -43,6 +45,9 @@ public class AdNoticeController {
 
         @Autowired
         private QnaService qService;
+        
+        @Autowired
+        private BookingService bService;
 		
 		// 관리자 페이지 대시보드
 		@GetMapping("/admin.do")
@@ -54,12 +59,14 @@ public class AdNoticeController {
 				NoticePageInfo pi = this.get5PageInfo(currentPage, totalCount);
 				List<NoticeVO> nList = nService.selectNoticeList(pi);
 				List<MapVO> mapList = mapService.selectHallList(pi);
-				//List<QnaVO> qList = qService.selectDBQnaList(pi);
-                //List<MemberVO> mList = mService.selectDBMemberList(pi);
+				List<QnaVO> qList = qService.selectDBQnaList(pi);
+                List<MemberVO> mList = mService.selectDBMemberList(pi);
+                List<BookingVO> bList = bService.selectDBBookList(pi);
 				mv.addObject("nList", nList);
 				mv.addObject("mapList", mapList);
-				//mv.addObject("qList", qList);
-	            //mv.addObject("mList", mList);
+				mv.addObject("qList", qList);
+	            mv.addObject("mList", mList);
+	            mv.addObject("bList", bList);
 				mv.addObject("pi", pi);
 				mv.setViewName("ad/dashboard");
 			} catch (Exception e) {

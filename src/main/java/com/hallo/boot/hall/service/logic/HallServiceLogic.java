@@ -1,16 +1,21 @@
 package com.hallo.boot.hall.service.logic;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hallo.boot.booking.domain.vo.BookingVO;
 import com.hallo.boot.common.Pagination;
+import com.hallo.boot.hall.domain.vo.HallImgVO;
 import com.hallo.boot.hall.domain.vo.HallVO;
 import com.hallo.boot.hall.service.HallService;
 import com.hallo.boot.hall.store.HallStore;
+import com.hallo.boot.notice.domain.vo.NoticeVO;
+import com.hallo.boot.qna.domain.vo.QnaPageInfo;
 
 @Service
 public class HallServiceLogic implements HallService {
@@ -59,4 +64,62 @@ public class HallServiceLogic implements HallService {
 		return totalCount;
 	}
 
+	
+	///////////////////////////////Admin 시작 //////////////////////////////
+	@Override
+	public List<HallVO> selectAdminHallList(QnaPageInfo pInfo) {
+		List<HallVO> bList = hStore.selectAdminHallList(session, pInfo);
+		return bList;
+	}
+
+	@Override
+	public int getAdminHallTotalCount(Map<String, String> paramMap) {
+		int totalCount = hStore.getAdminHallTotalCount(session, paramMap);
+		return totalCount;
+	}
+
+	@Override
+	public List<HallVO> searchAdminHallByKeyword(QnaPageInfo pInfo, Map<String, String> paramMap) {
+		List<HallVO> bList = hStore.searchAdminHallByKeyword(session, pInfo, paramMap);
+		return bList;
+	}
+	//0330 추가분
+	@Override
+	public HallVO selectByHallNo(int hallNo) {
+		HallVO hall = hStore.selectByHallNo(session, hallNo);
+		return hall;
+	}
+
+	@Override
+	public int insertImgHall(HallImgVO hallImg) {
+		int result = hStore.insertImgHall(session, hallImg);
+		return result;
+	}
+
+	@Override
+	public int updateHallImg(HallImgVO hallImg) {
+		int result = hStore.updateHallImg(session, hallImg);
+		return result;
+	}
+
+	@Override
+	public HallImgVO selectByHallImgNo(int hallNo) {
+		HallImgVO hallImg = hStore.selectByHallImgNo(session, hallNo);
+		return hallImg;
+	}
+
+	@Override
+	public HallVO selectAdminHallByNo(int hallNo) {
+		HallVO hall =  hStore.selectAdminHallByNo(session, hallNo);
+		return hall;
+	}
+
+
+	
+	
+	
+	
+	
+	
+	
 }

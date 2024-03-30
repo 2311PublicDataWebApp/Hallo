@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.hallo.boot.booking.domain.vo.BookingVO;
+import com.hallo.boot.hall.domain.vo.HallVO;
 import com.hallo.boot.notice.domain.vo.NoticePageInfo;
 import com.hallo.boot.qna.domain.vo.QnaPageInfo;
 import com.hallo.boot.qna.domain.vo.QnaVO;
@@ -43,6 +44,7 @@ public interface QnaService {
 		List<QnaVO> searchAdminQnaByKeyword(QnaPageInfo pInfo, Map<String, String> paramMap);
 
 		List<QnaVO> selectDBQnaList(NoticePageInfo pi);
+
 
 
 

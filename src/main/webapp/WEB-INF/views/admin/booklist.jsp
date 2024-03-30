@@ -15,6 +15,80 @@
 </head>
 <body>
 	<jsp:include page="../inc/adheader.jsp"></jsp:include>
+	
+<!-- 	모달 시작 -->
+	<!-- //	모달 시작 -->
+				<c:forEach items="${bList }" var="book" varStatus="i">    
+              <div class="modal fade" id="modalDialogScrollable${i.count }" tabindex="-1">
+                <div class="modal-dialog modal-dialog-scrollable">
+                  <div class="modal-content" style="margin-top: 40%;">
+                    <div class="modal-header">
+                      <h5 class="modal-title">[예약 상세정보]</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <table class="table table-striped">
+								<tbody>
+										<tr>
+											<th colspan="2">[예약정보]</th>
+										</tr>
+
+										<tr>
+											<td style="width:230px">예약번호</td>
+											<td>${book.bookingNo}</td>
+										</tr>
+						
+										<tr>
+											<td>시작일</td>
+											<td>${book.bookingStartTime }</td>
+										</tr>
+										<tr>
+											<td>종료일</td>
+											<td>${book.bookingEndTime}</td>
+										</tr>
+										<tr>
+											<th colspan="2">[회원정보]</th>
+										</tr>
+										<tr>
+											<td>회원명</td>
+											<td>${book.memberName }</td>
+										</tr>
+										<tr>
+											<td>휴대폰번호</td>
+											<td>${book.memberPhone}</td>
+										</tr>
+										<tr>
+											<th colspan="2">[공연장 정보]</th>
+										</tr>
+										<tr>
+											<td>공연장명</td>
+											<td>${book.hallName }</td>
+										</tr>
+										<tr>
+											<td>대여장소명</td>
+											<td>${book.hallSpaceName}</td>
+										</tr>
+										<tr>
+											<td>주소</td>
+											<td>${book.hallAddress}</td>
+										</tr>
+										
+									</tbody>
+							</table>
+                    </div>
+                    <div class="modal-footer">
+                      	<button type="button" class="btn" style="background-color: #FAFAFA; border-color: #e9ecef;" onClick="showModifyPage(${book.bookingNo });">정보변경</button>
+						<input type="reset" class="btn" style="background-color: #FAFAFA; border-color: #e9ecef;" value="확인" data-bs-dismiss="modal" aria-label="Close"/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </c:forEach>
+	<!-- End Modal Dialog Scrollable-->
+	
+	
+	
+	
 	<main id="main" class="main">
 		<div class="pagetitle">
 			<h1>예약 관리</h1>
@@ -28,6 +102,7 @@
 						<div class="card-body">
 							<h5 class="card-title">예약 목록</h5>
 							<!-- Default Table -->
+							<input type="hidden" name="bookingNo" value="${book.bookingNo }" id="bookingNo"/>
 							<table class="table table-hover">
 								<thead>
 									<tr>
@@ -40,28 +115,38 @@
 										<th>시작일</th>
 										<th>종료일</th>
 									</tr>
+									
 								</thead>
 								<tbody>
 								<c:choose>
 										<c:when test="${fn:length(bList) !=0 }">
 											<c:forEach items="${bList }" var="book" varStatus="i">
 												<tr>
-													<td><a href="/admin/bookDetail.do?bookNo=${book.bookingNo }">${i.count }</a></td>
-													<td><a href="/admin/bookDetail.do?bookNo=${book.bookingNo }">${book.memberName }</a></td>
-													<td><a href="/admin/bookDetail.do?bookNo=${book.bookingNo }">${book.memberPhone }</a></td>
-													<td><a href="/admin/bookDetail.do?bookNo=${book.bookingNo }">${book.hallName }</a></td>
-													<td><a href="/admin/bookDetail.do?bookNo=${book.bookingNo }">${book.hallSpaceName }</a></td>
-													<td><a href="/admin/bookDetail.do?bookNo=${book.bookingNo }">${book.hallAddress }</a></td>
-													<td><a href="/admin/bookDetail.do?bookNo=${book.bookingNo }">${book.bookingStartTime}</a></td>
-													<td><a href="/admin/bookDetail.do?bookNo=${book.bookingNo }">${book.bookingEndTime}</a></td>
+													<td><a data-bs-toggle="modal" data-bs-target="#modalDialogScrollable${i.count }"
+													href="/admin/bookingDetail.do?bookingNo=${book.bookingNo }">${i.count }</a></td>
+													<td><a data-bs-toggle="modal" data-bs-target="#modalDialogScrollable${i.count }"
+													href="/admin/bookingDetail.do?bookingNo=${book.bookingNo }">${book.memberName }</a></td>
+													<td><a data-bs-toggle="modal" data-bs-target="#modalDialogScrollable${i.count }"
+													href="/admin/bookingDetail.do?bookingNo=${book.bookingNo }">${book.memberPhone }</a></td>
+													<td><a data-bs-toggle="modal" data-bs-target="#modalDialogScrollable${i.count }"
+													href="/admin/bookingDetail.do?bookingNo=${book.bookingNo }">${book.hallName }</a></td>
+													<td><a data-bs-toggle="modal" data-bs-target="#modalDialogScrollable${i.count }"
+													href="/admin/bookingDetail.do?bookingNo=${book.bookingNo }">${book.hallSpaceName }</a></td>
+													<td><a data-bs-toggle="modal" data-bs-target="#modalDialogScrollable${i.count }"
+													href="/admin/bookingDetail.do?bookingNo=${book.bookingNo }">${book.hallAddress }</a></td>
+													<td><a data-bs-toggle="modal" data-bs-target="#modalDialogScrollable${i.count }"
+													href="/admin/bookingDetail.do?bookingNo=${book.bookingNo }">${book.bookingStartTime}</a></td>
+													<td><a data-bs-toggle="modal" data-bs-target="#modalDialogScrollable${i.count }"
+													href="/admin/bookingDetail.do?bookingNo=${book.bookingNo }">${book.bookingEndTime}</a></td>
 												</tr>
+												
 											</c:forEach>
 											
 										</c:when>
 										<c:otherwise>
 											<td class="admin_list_fifth_td" colspan="8">
 												<p class="nullmsg" style="width:30%; margin:0 auto; padding-top:50px;padding-bottom:50px;">
-													등록된 게시물이 없습니다.<br>
+													등록된 예약이 없습니다.<br>
 												</p>
 										</c:otherwise>
 									</c:choose>
@@ -141,6 +226,10 @@
 
 	<jsp:include page="../inc/adfooter.jsp"></jsp:include>
 	<script>
+	function showModifyPage(bookingNo) {
+		location.href = "/admin/bookmodify.do?bookingNo="+bookingNo;
+	}
+	
 	function Checkalert() {
 		if (adm_form.searchKeyword.value == "") {
 			adm_form.searchKeyword

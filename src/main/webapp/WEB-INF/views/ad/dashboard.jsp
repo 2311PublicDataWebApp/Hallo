@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ADMIN Dashboard</title>
 </head>
 <body>
 <jsp:include page="../inc/adheader.jsp"></jsp:include>
@@ -62,15 +62,14 @@
 		                    <th>공연장</th>
 		                    <th>주소</th>
 		                    <th>가격</th>
-		                    <th>수용인원</th>
+		                    <th  style="font-size:0.7em;">수용인원</th>
 		                </tr>
 		            </thead>
 		            <tbody>
 		            <c:forEach items="${mapList }" var="map" varStatus="i">            
 		                <tr>
 		                    <td>${map.hallName }</td>
-		                    <td>${map.hallName }</td>
-		                    <td>${map.hallAddress }</td>
+		                    <td style="font-size:0.8em;">${map.hallAddress }</td>
 		                    <td>${map.hallFee }</td>
 		                    <td>${map.hallPeople }</td>
 		                </tr>
@@ -92,49 +91,23 @@
               <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Position</th>
-                    <th scope="col">Age</th>
-                    <th scope="col">Start Date</th>
+                    <th scope="col">No</th>
+                    <th scope="col">회원명</th>
+                    <th scope="col">공연장명</th>
+                    <th scope="col">시작일</th>
+                    <th scope="col">종료일</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Brandon Jacob</td>
-                    <td>Designer</td>
-                    <td>28</td>
-                    <td>2016-05-25</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Bridie Kessler</td>
-                    <td>Developer</td>
-                    <td>35</td>
-                    <td>2014-12-05</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Ashleigh Langosh</td>
-                    <td>Finance</td>
-                    <td>45</td>
-                    <td>2011-08-12</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-                    <td>Angus Grady</td>
-                    <td>HR</td>
-                    <td>34</td>
-                    <td>2012-06-11</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">5</th>
-                    <td>Raheem Lehner</td>
-                    <td>Dynamic Division Officer</td>
-                    <td>47</td>
-                    <td>2011-04-19</td>
-                  </tr>
+	            <c:forEach items="${bList }" var="book" varStatus="i">            
+		                <tr>
+		                	<td>${i.count}</td>
+		                    <td><a href="/admin/bookDetail.do?bookingNo=${book.bookingNo }">${book.memberName }</a></td>
+		                    <td>${book.hallName }</td>
+		                    <td>${book.bookingStartTime }</td>
+		                    <td>${book.bookingEndTime }</td>
+		                </tr>
+		            </c:forEach>
                 </tbody>
               </table>
               <!-- End Default Table Example -->
@@ -196,7 +169,7 @@
                   <c:forEach items="${qList }" var="qna" varStatus="i">            
 		                <tr>
 		               		<td>${i.count}</td>
-		                    <td><a href="/admin/qnadetail.do?qnaNo=${qna.qnaNo }">${qna.qnaTitle}</a></td>
+		                    <td><a href="/admin/qnaDetail.do?qnaNo=${qna.qnaNo }">${qna.qnaTitle}</a></td>
 		                    <td>${qna.qnaStatus }</td>
 		                    <td>${qna.memberName }</td>
 		                    <td>${qna.qnaDate }</td>

@@ -14,6 +14,57 @@
 </style>
 </head>
 <body>
+	<!-- //	모달 시작 -->
+				<c:forEach items="${mList }" var="member" varStatus="i">    
+              <div class="modal fade" id="modalDialogScrollable${i.count }" tabindex="-1">
+                <div class="modal-dialog modal-dialog-scrollable">
+                  <div class="modal-content" style="margin-top: 40%;">
+                    <div class="modal-header">
+                      <h5 class="modal-title">[회원 상세정보]</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <table class="table table-striped">
+								<tbody>
+
+										<tr>
+											<td style="width:230px">아이디</td>
+											<td>${member.memberId }</td>
+										</tr>
+										<tr>
+											<td>회원명</td>
+											<td>${member.memberName }</td>
+										</tr>
+										<tr>
+											<td>이메일</td>
+											<td>${member.memberEmail }</td>
+										</tr>
+										<tr>
+											<td>휴대폰번호</td>
+											<td>${member.memberPhone}</td>
+										</tr>
+										<tr>
+											<td>가입일</td>
+											<td>${member.memberDate}</td>
+										</tr>
+										
+									</tbody>
+							</table>
+                    </div>
+                    <div class="modal-footer">
+						<input type="reset" class="btn" style="background-color: #FAFAFA; border-color: #e9ecef;" value="확인" data-bs-dismiss="modal" aria-label="Close"/>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </c:forEach>
+	<!-- End Modal Dialog Scrollable-->
+	
+	
+
+
+
 	<jsp:include page="../inc/adheader.jsp"></jsp:include>
 	<div id="adnoticesearch">
 	<main id="main" class="main">
@@ -47,19 +98,19 @@
 										<c:when test="${fn:length(mList) !=0 }">
 											<c:forEach items="${mList }" var="member" varStatus="i">
 												<tr>
-													<td><a
+													<td><a data-bs-toggle="modal" data-bs-target="#modalDialogScrollable ${i.count }"
 														href="/admin/memberlist.do?memberId=${member.memberId}">${i.count }</a></td>
-													<td><a
+													<td><a data-bs-toggle="modal" data-bs-target="#modalDialogScrollable${i.count }"
 														href="/admin/memberlist.do?memberId=${member.memberId}">${member.memberId }</a></td>
-													<td><a
+													<td><a data-bs-toggle="modal" data-bs-target="#modalDialogScrollable${i.count }"
 														href="/admin/memberlist.do?memberId=${member.memberId}">${member.memberName }</a></td>
-													<td><a
+													<td><a data-bs-toggle="modal" data-bs-target="#modalDialogScrollable${i.count }"
 														href="/admin/memberlist.do?memberId=${member.memberId}">${member.memberEmail }</a></td>
-													<td><a
+													<td><a data-bs-toggle="modal" data-bs-target="#modalDialogScrollable${i.count }"
 														href="/admin/memberlist.do?memberId=${member.memberId}">${member.memberPhone}</a></td>
-													<td><a
+													<td><a data-bs-toggle="modal" data-bs-target="#modalDialogScrollable${i.count }"
 														href="/admin/memberlist.do?memberId=${member.memberId}">${member.memberAddress}</a></td>
-													<td><a
+													<td><a data-bs-toggle="modal" data-bs-target="#modalDialogScrollable${i.count }"
 														href="/admin/memberlist.do?memberId=${member.memberId}">${member.memberDate}</a></td>
 												</tr>
 											</c:forEach>

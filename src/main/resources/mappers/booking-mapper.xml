@@ -124,5 +124,26 @@
 		MEMBER_TBL C
 		ON A. MEMBER_ID = C.MEMBER_ID
 	</select>
-	
+		<select id="selectAdminBookingByNo" resultMap="bookingResultMap">
+		SELECT * FROM
+		BOOKING_TBL A
+		INNER JOIN HALL_TBL B
+		ON A. HALL_NO= B.HALL_NO
+		INNER JOIN
+		MEMBER_TBL C
+		ON A. MEMBER_ID = C.MEMBER_ID
+		WHERE BOOKING_NO = #{bookingNo }
+	</select>
+		<update id="modifyAdminBooking">
+		UPDATE BOOKING_TBL
+		SET 
+		BOOKING_START_TIME = #{bookingStartTime }, 
+		BOOKING_END_TIME = #{bookingEndTime }, 
+		WHERE BOOKING_NO = #{bookingNo }
+	</update>
+	<delete id="deleteAdminBooking">
+		DELETE FROM
+		BOOKING_TBL 
+		WHERE BOOKING_NO = #{bookingNo }
+	</delete>
 </mapper>
