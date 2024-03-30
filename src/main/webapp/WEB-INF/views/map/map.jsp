@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>지도</title>
 <link rel="stylesheet" href="../resources/css/main.css">
 <style type="text/css">
 html, body {

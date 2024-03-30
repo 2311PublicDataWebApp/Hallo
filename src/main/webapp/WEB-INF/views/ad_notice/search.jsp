@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>공지사항 검색</title>
 <style>
 	#adnoticesearch {
 		margin: auto;

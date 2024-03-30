@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>공지사항 작성</title>
 </head>
 <body>
 <jsp:include page="../inc/adheader.jsp"></jsp:include>
