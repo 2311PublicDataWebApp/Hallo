@@ -21,6 +21,20 @@ public interface HallStore {
 	HallVO selectOneByNo(SqlSession session, Integer hallNo);
 
 	/**
+	 * 공연장 대표 사진 Store
+	 * @param hallNo
+	 * @return HallImgVO
+	 */
+	HallImgVO selectThumbnail(SqlSession session, Integer hallNo);
+
+	/**
+	 * 공연장 사진 조회 Store
+	 * @param hallNo
+	 * @return HallImgVO
+	 */
+	List<HallImgVO> selectImgs(SqlSession session, Integer hallNo);
+
+	/**
 	 * 공연장 목록 조회 Store
 	 * @param session
 	 * @param rowBounds 
@@ -35,6 +49,14 @@ public interface HallStore {
 	 * @return int
 	 */
 	int insertHall(SqlSession session, HallVO hall);
+
+	/**
+	 * 공연장 등록 후 공연장 번호 반환 Store
+	 * @param session
+	 * @param hall
+	 * @return HallVO
+	 */
+	HallVO insertHallSelectKey(SqlSession session, HallVO hall);
 
 	/**
 	 * 공연장 수정 Store

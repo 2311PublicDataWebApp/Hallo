@@ -17,7 +17,10 @@
 		 #{hallName }, #{hallSpaceName }, #{hallAddress }, 
 		 #{hallPeople }, #{hallFee }, #{hallCautions }, 
 		 #{hallRefunds }, #{hallAgentName }, #{hallAgentPhone }, 
-		 #{hallAgentEmail }, #{hallX }, #{hallY },#{hallImgNo},#{hallImgName },#{hallImgRename },#{hallImgFilepath },#{hallFileLength },DEFAULT)
+		 #{hallAgentEmail }, null, null)
+		 <selectKey keyProperty="hallNo" resultType="int" order="AFTER">
+			SELECT SEQ_HALL_NO.CURRVAL FROM DUAL
+		</selectKey>
 	</insert>
 	<update id="updateHall">
 		UPDATE HALL_TBL SET HALL_NAME = #{hallName }, HALL_SPACENAME = #{hallSpaceName }, HALL_ADDRESS = #{hallAddress }, HALL_PEOPLE = #{hallPeople }, HALL_FEE = #{hallFee }, HALL_CAUTIONS = #{hallCautions }, HALL_REFUNDS = #{hallRefunds }, HALL_AGENT_NAME = #{hallAgentName }, HALL_AGENT_PHONE = #{hallAgentPhone }, HALL_AGENT_EMAIL = #{hallAgentEmail }, HALL_X = #{hallX }, HALL_Y = #{hallY } WHERE HALL_NO = #{hallNo }
@@ -25,6 +28,12 @@
 	<delete id="deleteHall">
 		DELETE FROM HALL_TBL WHERE HALL_NO = #{hallNo }
 	</delete>
+	<select id="selectThumbnail" resultType="HallImgVO">
+		SELECT * FROM HALL_IMG_TBL WHERE HALL_NO = #{hallNo } AND HALL_IMG_ISTHUMBNAIL = 'Y'
+	</select>
+	<select id="selectImgs" resultType="HallImgVO">
+		SELECT * FROM HALL_IMG_TBL WHERE HALL_NO = #{hallNo } AND HALL_IMG_ISTHUMBNAIL = 'N'
+	</select>
 	
 	
 <!-- 	///////////////////////////////Admin 시작 ////////////////////////////// -->
@@ -53,8 +62,18 @@
 		<result property="hallImgIsthumbnail" column="HALL_IMG_ISTHUMBNAIL" />
 		</resultMap>
 		
-		
-		
+	<insert id="insertImgHallThumbnail">
+		INSERT INTO HALL_IMG_TBL 
+		VALUES(SEQ_HALLIMG_NO.NEXTVAL, 
+		#{hallNo},
+		#{hallImgName}, 
+		#{hallImgRename}, 
+		#{hallImgFilepath}, 
+		#{hallFileLength}, 
+		'Y'
+		)
+	</insert>
+	
 	<insert id="insertImgHall">
 		INSERT INTO HALL_IMG_TBL 
 		VALUES(SEQ_HALLIMG_NO.NEXTVAL, 
@@ -63,9 +82,9 @@
 		#{hallImgRename}, 
 		#{hallImgFilepath}, 
 		#{hallFileLength}, 
-		#{hallImgIsthumbnail} 
+		DEFAULT 
 		)
-	</insert>		
+	</insert>
 		
 	<update id="updateHallImg">
 		UPDATE HALL_IMG_TBL 

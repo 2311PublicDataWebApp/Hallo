@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hallo.boot.common.Pagination;
+import com.hallo.boot.hall.domain.vo.HallImgVO;
 import com.hallo.boot.hall.domain.vo.HallVO;
 import com.hallo.boot.hall.service.HallService;
 
@@ -24,12 +25,16 @@ public class HallController {
 	public String showHallDetail(Model model, Integer hallNo) {
 		try {
 			HallVO hall = hService.selectOneByNo(hallNo);
-			if (hall != null) {
+			HallImgVO hThumbnail = hService.selectThumbnail(hallNo);
+			List<HallImgVO> hImgs = hService.selectImgs(hallNo);
+			if (hall != null && hThumbnail != null && hImgs != null) {
 				List<String> cautions = arrayToList(hall.getHallCautions());
 				List<String> refunds = arrayToList(hall.getHallRefunds());
 				model.addAttribute("cautions", cautions);
 				model.addAttribute("refunds", refunds);
 				model.addAttribute("hall", hall);
+				model.addAttribute("hThumbnail", hThumbnail);
+				model.addAttribute("hImgs", hImgs);
 				return "hall/detail";
 			} else {
 				model.addAttribute("msg", "No Data Found");

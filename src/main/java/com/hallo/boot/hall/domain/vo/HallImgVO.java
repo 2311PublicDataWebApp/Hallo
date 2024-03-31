@@ -12,20 +12,16 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@RequiredArgsConstructor
 public class HallImgVO {
 		@NonNull
-		private int hallImgNo;
+		private Integer hallImgNo;
 		@NonNull
-		private int hallNo;
-		@NonNull
+		private Integer hallNo;
 		private String hallImgName;
-		@NonNull
 		private String hallImgRename;
-		@NonNull
 		private String hallImgFilepath;
-		@NonNull
 		private long hallFileLength;
-		@NonNull
 		private String hallImgIsthumbnail;
 		
 }

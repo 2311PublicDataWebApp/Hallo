@@ -7,11 +7,9 @@ import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.hallo.boot.booking.domain.vo.BookingVO;
 import com.hallo.boot.hall.domain.vo.HallImgVO;
 import com.hallo.boot.hall.domain.vo.HallVO;
 import com.hallo.boot.hall.store.HallStore;
-import com.hallo.boot.notice.domain.vo.NoticeVO;
 import com.hallo.boot.qna.domain.vo.QnaPageInfo;
 
 @Repository
@@ -24,6 +22,18 @@ public class HallStoreLogic implements HallStore {
 	}
 
 	@Override
+	public HallImgVO selectThumbnail(SqlSession session, Integer hallNo) {
+		HallImgVO hThumbnail = session.selectOne("HallMapper.selectThumbnail", hallNo);
+		return hThumbnail;
+	}
+
+	@Override
+	public List<HallImgVO> selectImgs(SqlSession session, Integer hallNo) {
+		List<HallImgVO> hImgs = session.selectList("HallMapper.selectImgs", hallNo);
+		return hImgs;
+	}
+
+	@Override
 	public List<HallVO> selectHallList(SqlSession session, RowBounds rowBounds) {
 		List<HallVO> hList = session.selectList("HallMapper.selectHallList", null, rowBounds);
 		return hList;
@@ -33,6 +43,11 @@ public class HallStoreLogic implements HallStore {
 	public int insertHall(SqlSession session, HallVO hall) {
 		int result = session.insert("HallMapper.insertHall", hall);
 		return result;
+	}
+	@Override
+	public HallVO insertHallSelectKey(SqlSession session, HallVO hall) {
+		session.insert("HallMapper.insertHall", hall);
+		return hall;
 	}
 
 	@Override

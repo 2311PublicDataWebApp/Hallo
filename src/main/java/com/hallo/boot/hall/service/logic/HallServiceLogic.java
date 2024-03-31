@@ -8,13 +8,11 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hallo.boot.booking.domain.vo.BookingVO;
 import com.hallo.boot.common.Pagination;
 import com.hallo.boot.hall.domain.vo.HallImgVO;
 import com.hallo.boot.hall.domain.vo.HallVO;
 import com.hallo.boot.hall.service.HallService;
 import com.hallo.boot.hall.store.HallStore;
-import com.hallo.boot.notice.domain.vo.NoticeVO;
 import com.hallo.boot.qna.domain.vo.QnaPageInfo;
 
 @Service
@@ -32,6 +30,18 @@ public class HallServiceLogic implements HallService {
 	}
 
 	@Override
+	public HallImgVO selectThumbnail(Integer hallNo) {
+		HallImgVO hThumbnail = hStore.selectThumbnail(session, hallNo);
+		return hThumbnail;
+	}
+
+	@Override
+	public List<HallImgVO> selectImgs(Integer hallNo) {
+		List<HallImgVO> hImgs = hStore.selectImgs(session, hallNo);
+		return hImgs;
+	}
+
+	@Override
 	public List<HallVO> selectHallList(Pagination pi) {
 		int limit = pi.getBoardLimit();
 		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
@@ -44,6 +54,12 @@ public class HallServiceLogic implements HallService {
 	public int insertHall(HallVO hall) {
 		int result = hStore.insertHall(session, hall);
 		return result;
+	}
+	
+	@Override
+	public HallVO insertHallSelectKey(HallVO hall) {
+		HallVO hOne = hStore.insertHallSelectKey(session, hall);
+		return hOne;
 	}
 
 	@Override

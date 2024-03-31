@@ -63,7 +63,7 @@
 									<div class="row mb-3">
 					                  <label for="inputNumber" class="col-sm-2 col-form-label">썸네일이미지</label>
 					                  <div class="col-sm-5">
-										<span><a style="color:black;" href='../resources/nuploadFiles/${hall.hallImgRename }'>${hall.hallImgName }</a></span>
+<%-- 										<span><a style="color:black;" href='../resources/nuploadFiles/${hall.hallImgRename }'>${hall.hallImgName }</a></span> --%>
 					                  </div>
 					                </div>
 					                 <div class="row mb-3">

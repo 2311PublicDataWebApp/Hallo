@@ -11,26 +11,19 @@
 	<body>
 		<jsp:include page="../inc/header.jsp"></jsp:include>
 		<div class="container" style="height: 1200px;">
-			<div class="row">
+			<div class="row mb-5">
 				<div class="col p-auto">
-					<img src="../resources/img/c09f5c46-4212-4ba3-9467-97d77c6229f8.jpg" alt="장소 이미지" class="img-fluid">
+					<img src="../resources/nuploadFiles/${hThumbnail.hallImgRename }" alt="장소 이미지" class="img-fluid">
 				</div>
-				<div class="col p-auto">
-					<div class="row">
-						<div class="col">
-							<img src="../resources/img/fbbffdb0-a36e-41dd-a8dd-b8e7a93ef17d.jpg" alt="장소 이미지" class="img-fluid">
-						</div>
-						<div class="col">
-							<img src="../resources/img/e5dc050a-7bb0-4dc9-8ee6-ea3adf4a3615.jpg" alt="장소 이미지" class="img-fluid">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col">
-							<img src="../resources/img/2c7e50a2-583d-4d71-b671-1aa29a434d18.jpg" alt="장소 이미지" class="img-fluid">
-						</div>
-						<div class="col">
-							<img src="../resources/img/71f4c09c-a21b-4f70-81f4-e42bcaa560f7.jpg" alt="장소 이미지" class="img-fluid">
-						</div>
+				<div class="col text-center p-auto">
+					<div class="row g-1">
+						<c:forEach items="${hImgs }" var="Img">
+							<div class="col-6">
+								<div class="p-1">
+									<img src="../resources/nuploadFiles/${Img.hallImgRename }" alt="장소 이미지" class="img-fluid">
+								</div>
+							</div>						
+						</c:forEach>
 					</div>
 				</div>
 			</div>

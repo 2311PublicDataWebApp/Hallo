@@ -63,6 +63,30 @@
 									<div class="row mb-3">
 					                  <label for="inputNumber" class="col-sm-2 col-form-label">썸네일이미지</label>
 					                  <div class="col-sm-5">
+										<input type="file" name="uploadFile1" style="background-color: #FAFAFA; border-color: #e9ecef;">
+					                  </div>
+					                </div>
+					                <div class="row mb-3">
+					                  <label for="inputNumber" class="col-sm-2 col-form-label">추가이미지</label>
+					                  <div class="col-sm-5">
+										<input type="file" name="uploadFile" style="background-color: #FAFAFA; border-color: #e9ecef;">
+					                  </div>
+					                </div>
+					                <div class="row mb-3">
+					                  <label for="inputNumber" class="col-sm-2 col-form-label">추가이미지</label>
+					                  <div class="col-sm-5">
+										<input type="file" name="uploadFile" style="background-color: #FAFAFA; border-color: #e9ecef;">
+					                  </div>
+					                </div>
+					                <div class="row mb-3">
+					                  <label for="inputNumber" class="col-sm-2 col-form-label">추가이미지</label>
+					                  <div class="col-sm-5">
+										<input type="file" name="uploadFile" style="background-color: #FAFAFA; border-color: #e9ecef;">
+					                  </div>
+					                </div>
+					                <div class="row mb-3">
+					                  <label for="inputNumber" class="col-sm-2 col-form-label">추가이미지</label>
+					                  <div class="col-sm-5">
 										<input type="file" name="uploadFile" style="background-color: #FAFAFA; border-color: #e9ecef;">
 					                  </div>
 					                </div>
@@ -81,13 +105,13 @@
 					                 <div class="row mb-3">
 					                  <label for="inputText" class="col-sm-2 col-form-label">담당자 연락번호 ＊</label>
 						                  <div class="col-sm-3">
-						                 	  <p><input type="number" class="form-control" name="hallAgentPhone"></p>
+						                 	  <p><input type="text" class="form-control" name="hallAgentPhone"></p>
 						                 </div>
 					                 </div>
 					                 <div class="row mb-3">
 					                  <label for="inputText" class="col-sm-2 col-form-label">담당자 이메일</label>
 					                  <div class="col-sm-3">
-					                     <input type="text" class="form-control" name="hallAgentEmail">
+					                     <input type="email" class="form-control" name="hallAgentEmail">
 					                 </div>
 					                  
 					                  

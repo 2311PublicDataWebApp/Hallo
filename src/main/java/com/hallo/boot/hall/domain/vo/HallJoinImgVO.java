@@ -8,13 +8,12 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter
-@Setter
+@Getter @Setter
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @RequiredArgsConstructor
-public class HallVO {
+public class HallJoinImgVO {
 	@NonNull
 	private Integer hallNo;
 	@NonNull
@@ -33,5 +32,20 @@ public class HallVO {
 	private String hallAgentEmail;
 	private String hallX;
 	private String hallY;
-
+	@NonNull
+	private int hallImgNo;
+	@NonNull
+	private String hallImgName;
+	@NonNull
+	private String hallImgRename;
+	@NonNull
+	private String hallImgFilepath;
+	@NonNull
+	private long hallFileLength;
+	@NonNull
+	private String hallImgIsthumbnail;
+	
+	
+	
+	
 }

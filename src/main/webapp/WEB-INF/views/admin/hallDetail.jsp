@@ -63,7 +63,7 @@
 <%-- 										<c:if test="${hall.hallImgFileRename ne null }"> --%>
 										<tr>
 											<td>첨부파일</td>
-											<td><span><a style="color:black;" href='../resources/nuploadFiles/${hall.hallImgRename }'>${hall.hallImgName }</a></span></td>
+<%-- 											<td><span><a style="color:black;" href='../resources/nuploadFiles/${hall.hallImgRename }'>${hall.hallImgName }</a></span></td> --%>
 										</tr>
 <%-- 										</c:if> --%>
 											<tr>
