@@ -24,6 +24,7 @@ public class BookingVO {
 	private String memberId;
 	@NonNull
 	private Integer hallNo;
+	private String paymentYn;
 	private String startTime;
 	private String endTime;
 	private Integer totalTime;

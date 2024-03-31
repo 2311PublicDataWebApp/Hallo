@@ -40,8 +40,13 @@ public class PaymentController {
 		return "Good";
 	}
 	
-	@GetMapping("/payment/detail.do")
-	public String showPaymentDetail() {
-		return "payment/detail";
+	@GetMapping("/payment/success.do")
+	public String showPaymentSuccess() {
+		return "payment/paymentSuccess";
+	}
+	
+	@GetMapping("/payment/fail.do")
+	public String showPaymentFail() {
+		return "payment/paymentFail";
 	}
 }

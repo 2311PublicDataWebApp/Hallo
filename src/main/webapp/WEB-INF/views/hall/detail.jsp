@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -35,10 +36,10 @@
 			</div>
 			<div class="row">
 				<div class="col-8">
-					<div class="row">
+					<div class="row mb-4">
 						<div class="row">
 							<p class="fs-6 fw-light">
-								한성대학교
+								${hall.hallSpaceName }
 							</p>
 						</div>
 						<div class="row">
@@ -56,23 +57,44 @@
 							<p class="fs-6 fw-medium">${hall.hallPeople }명</p>
 						</div>
 					</div>
-					<div class="row"></div>
-					<div class="row"></div>
+					<hr>
+					<div class="row my-4">
+						<p class="fs-3 fw-mefium">
+							주의사항
+						</p>
+						<c:forEach items="${cautions }" var="caution">
+							<p>
+								${caution }							
+							</p>
+						</c:forEach>
+					</div>
+					<hr>
+					<div class="row mt-4">
+						<p class="fs-3 fw-mefium">
+							환불규정
+						</p>
+						<c:forEach items="${refunds }" var="refund">
+							<p>
+								${refund }							
+							</p>
+						</c:forEach>
+					</div>
 				</div>
 				<div class="col-4 pe-4" style="height: 1200px;">
-					<div class="sticky-top">
+					<div class="sticky-top z-0">
 						<div class="card text-center">
-							<div class="card-body">
-								<div class="row">
+							<div class="card-body py-4">
+								<div class="row mb-3">
 									<div class="col-8">
-										<h3 class="card-title pe-5">275000 원~</h3>
+										<h3 class="card-title pe-5">${hall.hallFee } 원~</h3>
 									</div>
 									<div class="col-4">
 										<p class="card-text pt-2">/1시간</p>
 									</div>
 								</div>
 								<div class="row px-4">
-									<a href="/booking/insert.do?hallNo=${hall.hallNo }" class="btn btn-primary">예약하기</a>
+<%-- 									<a href="/booking/insert.do?hallNo=${hall.hallNo }" class="btn btn-primary">예약하기</a> --%>
+									<button class="btn btn-primary" type="button" onclick="letsbooking('${memberId}', ${hall.hallNo })" style="background-color: #6930EF;">예약하기</button>
 								</div>
 							</div>
 						</div>
@@ -81,5 +103,14 @@
 			</div>
 		</div>
 		<jsp:include page="../inc/footer.jsp"></jsp:include>
+		<script>
+			function letsbooking(memberId, hallNo) {
+				if(memberId != '') {
+					location.href="/booking/insert.do?hallNo="+hallNo;
+                } else {
+                    alert("로그인 후 이용가능한 서비스입니다.")
+                }
+			}
+		</script>
 	</body>
 </html>

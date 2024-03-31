@@ -57,7 +57,7 @@ public class BookingController {
 	@GetMapping("/booking/insert.do")
 	public String showInsertBooking(Model model, Integer hallNo) {
 		try {
-			List<BookingVO> bList = bService.selectBookingList();
+			List<BookingVO> bList = bService.selectBookingList(hallNo);
 			if (bList != null) {
 				model.addAttribute("bList", bList);
 				model.addAttribute("hallNo", hallNo);

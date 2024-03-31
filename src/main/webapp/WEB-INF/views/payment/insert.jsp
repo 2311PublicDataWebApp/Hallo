@@ -98,7 +98,7 @@
 						<p class="fs-3">결제수단 선택</p>
 						<hr>
 						<div class="form-check">
-							<input class="form-check-input" type="radio" name="howtoPay" id="kakaopay" value="kakaopay">
+							<input class="form-check-input" type="radio" name="howtoPay" id="kakaopay" value="kakaopay" required="required">
 							<label class="form-check-label" for="kakaopay">
 								카카오페이
 							</label>
@@ -106,7 +106,7 @@
 					</div>
 				</div>
 				<div class="col-5 px-5">
-					<div class="sticky-top">
+					<div class="sticky-top z-0">
 						<div class="card">
 							<div class="card-body">
 								<div class="px-3">
@@ -140,7 +140,7 @@
 							</div>
 							<div class="px-3 mb-3">
 								<div class="row px-4">
-									<button type="button" class="btn btn-primary" onclick="requestPay()">예약하기</button>
+									<button type="button" class="btn btn-primary" onclick="requestPay()" style="background-color: #6930EF;">예약하기</button>
 								</div>
 							</div>
 						</div>
@@ -180,6 +180,7 @@
 							paymentAjax(rsp);
 						} else {
 							alert("결제가 실패하였습니다.");
+							location.href = "/payment/fail.do"
 						}
 					}
 				);
@@ -201,10 +202,10 @@
 					type : "POST",
 					success : function() {
 						alert("결제가 완료되었습니다.");
-						location.href = "/payment/detail.do"
+						location.href = "/payment/success.do"
 					},
 					error : function() {
-						alert("결제 실패");
+						alert("통신 실패");
 					}
 				})
 			}
