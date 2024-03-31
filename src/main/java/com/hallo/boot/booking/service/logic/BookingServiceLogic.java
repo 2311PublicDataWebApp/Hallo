@@ -12,9 +12,7 @@ import com.hallo.boot.booking.domain.vo.BookingVO;
 import com.hallo.boot.booking.service.BookingService;
 import com.hallo.boot.booking.store.BookingStore;
 import com.hallo.boot.common.Pagination;
-import com.hallo.boot.member.domain.vo.MemberVO;
 import com.hallo.boot.notice.domain.vo.NoticePageInfo;
-import com.hallo.boot.notice.domain.vo.NoticeVO;
 import com.hallo.boot.qna.domain.vo.QnaPageInfo;
 
 import lombok.NonNull;
@@ -36,6 +34,12 @@ public class BookingServiceLogic implements BookingService {
 	@Override
 	public List<BookingVO> selectBookingList() {
 		List<BookingVO> bList = bStore.selectBookingList(session);
+		return bList;
+	}
+	
+	@Override
+	public List<BookingVO> selectBookingList(Integer hallNo) {
+		List<BookingVO> bList = bStore.selectBookingList(session, hallNo);
 		return bList;
 	}
 

@@ -29,6 +29,15 @@ public interface BookingStore {
 	 * @return List<BookingVO>
 	 */
 	List<BookingVO> selectBookingList(SqlSession session);
+	
+	/**
+	 * 해당 공연장 예약 목록 Store
+	 * @param session
+	 * @param hallNo
+	 * @return
+	 */
+	List<BookingVO> selectBookingList(SqlSession session, Integer hallNo);
+	
 	List<BookingVO> selectBookingList(SqlSession session, RowBounds rowBounds);
 
 	/**

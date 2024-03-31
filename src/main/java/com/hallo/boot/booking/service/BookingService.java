@@ -25,6 +25,14 @@ public interface BookingService {
 	 * @return List<BookingVO>
 	 */
 	List<BookingVO> selectBookingList();
+	
+	/**
+	 * 해당 공연장 예약 목록 Service
+	 * @param hallNo
+	 * @return
+	 */
+	List<BookingVO> selectBookingList(Integer hallNo);
+	
 	List<BookingVO> selectBookingList(Pagination pi);
 
 	/**

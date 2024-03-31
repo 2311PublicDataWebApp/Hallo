@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 import com.hallo.boot.booking.domain.vo.BookingVO;
 import com.hallo.boot.booking.store.BookingStore;
 import com.hallo.boot.notice.domain.vo.NoticePageInfo;
-import com.hallo.boot.notice.domain.vo.NoticeVO;
 import com.hallo.boot.qna.domain.vo.QnaPageInfo;
 
 import lombok.NonNull;
@@ -27,6 +26,12 @@ public class BookingStoreLogic implements BookingStore {
 	@Override
 	public List<BookingVO> selectBookingList(SqlSession session) {
 		List<BookingVO> bList = session.selectList("BookingMapper.selectBookingList");
+		return bList;
+	}
+	
+	@Override
+	public List<BookingVO> selectBookingList(SqlSession session, Integer hallNo) {
+		List<BookingVO> bList = session.selectList("BookingMapper.selectBookingListCal", hallNo);
 		return bList;
 	}
 

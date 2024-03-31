@@ -9,6 +9,9 @@
 	<select id="selectBookingList" resultType="BookingVO">
 		SELECT * FROM BOOKING_TBL ORDER BY BOOKING_NO DESC
 	</select>
+	<select id="selectBookingListCal" resultType="BookingVO">
+		SELECT * FROM BOOKING_TBL WHERE HALL_NO = #{hallNo } ORDER BY BOOKING_NO DESC
+	</select>
 	<select id="getTotalCount" resultType="_int">
 		SELECT COUNT(*) FROM HALL_TBL
 	</select>
@@ -16,7 +19,7 @@
 		SELECT ROUND((TO_DATE(TO_CHAR(BOOKING_END_TIME, 'YYYY-MM-DD HH24:MI:SS'), 'YYYY-MM-DD HH24:MI:SS') - TO_DATE(TO_CHAR(BOOKING_START_TIME, 'YYYY-MM-DD HH24:MI:SS'), 'YYYY-MM-DD HH24:MI:SS')) * 24, 2) FROM BOOKING_TBL WHERE BOOKING_NO = #{bookingNo }
 	</select>
 	<insert id="insertBooking">
-		INSERT INTO BOOKING_TBL VALUES(SEQ_BOOKING_NO.NEXTVAL, #{bookingStartTime }, #{bookingEndTime }, #{memberId }, #{hallNo })
+		INSERT INTO BOOKING_TBL VALUES(SEQ_BOOKING_NO.NEXTVAL, #{bookingStartTime }, #{bookingEndTime }, #{memberId }, #{hallNo }, DEFAULT)
 		<selectKey keyProperty="bookingNo" resultType="int" order="AFTER">
 			SELECT SEQ_BOOKING_NO.CURRVAL FROM DUAL
 		</selectKey>
