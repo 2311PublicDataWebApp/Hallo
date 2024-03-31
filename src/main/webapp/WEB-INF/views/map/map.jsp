@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>지도</title>
 <link rel="stylesheet" href="../resources/css/main.css">
 <style type="text/css">
 html, body {
@@ -136,7 +136,8 @@ html, body {
 				title : '${all.hallName }',
 				address : '${all.hallAddress }',
 				hallPeople : '${all.hallPeople }',
-				latlng : new kakao.maps.LatLng('${all.hallX }', '${all.hallY }')
+				latlng : new kakao.maps.LatLng('${all.hallX }', '${all.hallY }'),
+				hallImg: '${all.hallImgRename }'
 			});
 		</c:forEach>
 		
@@ -181,7 +182,7 @@ html, body {
             '        </div>' + 
             '        <div class="body">' + 
             '            <div class="img">' +
-            '                <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/thumnail.png" width="73" height="70">' +
+            '                <img src="../resources/nuploadFiles/'+positions[i].hallImg+'" width="73" height="70">' +
             '           </div>' + 
             '            <div class="desc">' + 
             '                <div class="ellipsis">'+positions[i].address+'</div>' + 

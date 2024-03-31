@@ -31,4 +31,10 @@ public class MapVO {
 	private String hallAgentEmail;
 	private String hallX;
 	private String hallY;
+	private String hallImgNo;
+	private String hallImgName;
+	private String hallImgRename;
+	private String hallImgFilePath;
+	private long hallImgFileLength;
+	private String hallImgIsThumbnail;
 }

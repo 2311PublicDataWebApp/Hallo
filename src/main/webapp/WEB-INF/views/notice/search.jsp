@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>공지사항 목록</title>
+        <title>공지사항 검색</title>
     	<link rel="stylesheet" href="../resources/css/main.css">
     	<style>
     		#notice-search {
