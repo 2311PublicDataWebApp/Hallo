@@ -7,18 +7,7 @@
 		<meta charset='utf-8' />
 		<title>예매하기</title>
 		<link href='/docs/dist/demo-to-codepen.css' rel='stylesheet'>
-		<style>
-			html, body {
-				margin: 0;
-				padding: 0;
-				font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-				font-size: 14px;
-			}
-			#calendar {
-				max-width: 1100px;
-				margin: 40px auto;
-			}
-		</style>
+		<link rel="stylesheet" href="/resources/css/booking/insert.css">
 		<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 		<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
 		<script src='fullcalendar/dist/index.global.js'></script>
@@ -27,13 +16,13 @@
 	<body>
 		<jsp:include page="../inc/header.jsp"></jsp:include>
 		<div id='calendar'></div>
-		<div>
+		<div id="container">
 			<form action="/booking/insert.do" method="post">
-				<input type="text" name="startTime" id="bookingStartTime" value="">
-				<input type="text" name="endTime" id="bookingEndTime" value="">
-				<input type="text" name="memberId" value="${memberId }">
-				<input type="text" name="hallNo" value="${hallNo }">
-				<input type="submit" value="예약하기">
+				<input type="hidden" name="startTime" id="bookingStartTime" value="">
+				<input type="hidden" name="endTime" id="bookingEndTime" value="">
+				<input type="hidden" name="memberId" value="${memberId }">
+				<input type="hidden" name="hallNo" value="${hallNo }">
+				<input id="submitBtn" type="submit" value="예약하기" style="background-color: #6930EF;">
 			</form>
 		</div>
 		<script>
@@ -43,6 +32,7 @@
 				var calendar = new FullCalendar.Calendar(calendarEl, {
 					initialView: 'timeGridWeek',
 					selectable: true,
+					eventColor: '#6930EF',
 				    select: function(info) {
 				    	$.ajax({
 				    		url : "/booking/insert/ajax.do",

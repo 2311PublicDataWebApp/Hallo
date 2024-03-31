@@ -1,5 +1,6 @@
 package com.hallo.boot.hall.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,10 @@ public class HallController {
 		try {
 			HallVO hall = hService.selectOneByNo(hallNo);
 			if (hall != null) {
+				List<String> cautions = arrayToList(hall.getHallCautions());
+				List<String> refunds = arrayToList(hall.getHallRefunds());
+				model.addAttribute("cautions", cautions);
+				model.addAttribute("refunds", refunds);
 				model.addAttribute("hall", hall);
 				return "hall/detail";
 			} else {
@@ -134,4 +139,14 @@ public class HallController {
 			return "common/errorPage";
 		}
 	}
+
+	private List<String> arrayToList(String string) {
+		String[] strArray = string.split("\\^");
+		List<String> strList = new ArrayList<String>();
+		for (String str : strArray) {
+			strList.add(str);
+		}
+		return strList;
+	}
+	
 }
