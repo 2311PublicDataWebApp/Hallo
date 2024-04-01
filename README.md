@@ -109,5 +109,6 @@ QNA 관리  | 관리자는 회원들이 작성한 1:1문의를 확인할 수 있
 <img src="https://github.com/2311PublicDataWebApp/Hallo/assets/134207283/5d125306-5f79-4813-8036-fc1456648fcc"></img> <br/>
 
 ### 관리자 예약 변경 페이지
-<img src="(https://github.com/2311PublicDataWebApp/Hallo/assets/134207283/fb437e2b-c32b-43c1-8e4d-0a587762843d"></img> <br/>
+<img src="https://github.com/2311PublicDataWebApp/Hallo/assets/134207283/fb437e2b-c32b-43c1-8e4d-0a587762843d"></img> <br/>
+
 
