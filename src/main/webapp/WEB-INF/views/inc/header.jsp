@@ -48,7 +48,6 @@
         <ul>
           <li><a class="nav-link scrollto active" href="/">HALLO</a></li>
           <li><a class="nav-link scrollto" href="/map.do">지도</a></li>
-          <li><a class="nav-link scrollto" href="/booking/insert.do">예약</a></li>
           <li><a class="nav-link scrollto " href="/notice/list.do">공지사항</a></li>
           <c:if test="${memberId eq null }">          
 	          <li><a class="nav-link scrollto" href="/member/login.do">로그인</a></li>

@@ -23,7 +23,7 @@ public class Pagination {
 		super();
 		this.currentPage = currentPage;
 		this.totalCount = totalCount;
-		this.naviLimit = 10;
+		this.naviLimit = 5;
 		this.boardLimit = boardLimit;
 		this.naviTotalCount = (int) Math.ceil((double) totalCount / boardLimit);
 		this.startNavi = ((int) ((double) currentPage / naviLimit + 0.9) - 1) * naviLimit + 1;

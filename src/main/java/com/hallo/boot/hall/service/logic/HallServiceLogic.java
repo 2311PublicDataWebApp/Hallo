@@ -113,6 +113,11 @@ public class HallServiceLogic implements HallService {
 	}
 
 	@Override
+	public void insertImgHallTh(HallImgVO hImage) {
+		hStore.insertImgHallTh(session, hImage);
+	}
+
+	@Override
 	public int updateHallImg(HallImgVO hallImg) {
 		int result = hStore.updateHallImg(session, hallImg);
 		return result;

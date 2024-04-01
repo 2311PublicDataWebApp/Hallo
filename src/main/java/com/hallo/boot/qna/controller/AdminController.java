@@ -320,27 +320,26 @@ public class AdminController {
 		return mv;
 	}
     
-//    // 예약정보 수정 정보 수정시 오류 발생합니다. 확인 부탁드립니다.
-//    @PostMapping("/admin/bookmodify.do")
-//	public ModelAndView modifyAdminBook(
-//			ModelAndView mv
-//			, @ModelAttribute BookingVO booking
-//			, HttpServletRequest request) {
-//		try {
-//			int result = bService.modifyAdminBook(booking);
-//			if(result > 0) {
-//				mv.setViewName("redirect:/admin/bookdetail.do?bookingNo="+booking.getBookingNo());
-//			}else {
-//				mv.addObject("msg", "데이터가 존재하지 않습니다.");
-//				mv.setViewName("common/errorPage");
-//			}
-//		} catch(Exception e) {
-//			mv.addObject("msg", e.getMessage());
-//			mv.setViewName("common/errorPage");
-//		}
-//		return mv;
-//	}
-//    
+    @PostMapping("/admin/bookmodify.do")
+	public ModelAndView modifyAdminBook(
+			ModelAndView mv
+			, @ModelAttribute BookingVO booking
+			, HttpServletRequest request) {
+		try {
+			int result = bService.modifyAdminBook(booking);
+			if(result > 0) {
+				mv.setViewName("redirect:/admin/bookdetail.do?bookingNo="+booking.getBookingNo());
+			}else {
+				mv.addObject("msg", "데이터가 존재하지 않습니다.");
+				mv.setViewName("common/errorPage");
+			}
+		} catch(Exception e) {
+			mv.addObject("msg", e.getMessage());
+			mv.setViewName("common/errorPage");
+		}
+		return mv;
+	}
+    
 //예약정보 삭제
     @GetMapping("/admin/bookingdelete.do")
     public ModelAndView deleteBooking(ModelAndView mv, int bookingNo) {
@@ -428,18 +427,9 @@ public class AdminController {
 				try {
 					HallVO hOne = hService.insertHallSelectKey(hall);
 					if (uploadFile1 != null && !uploadFile1.getOriginalFilename().equals("")) {
-//						Map<String, Object> infoMap = this.savehallFile(uploadFile, request);
-//						String fileName 	= (String) infoMap.get("fileName");
-//						String fileRename 	= (String) infoMap.get("fileRename");
-//						String filePath 	= (String) infoMap.get("filePath");
-//						long fileLength 	= (long) infoMap.get("fileSize");
-//						hall.setHallImgName(fileName);
-//						hall.setHallImgRename(fileRename);
-//						hall.setHallImgFilepath(filePath);
-//						hall.setHallFileLength(fileLength);
 						HallImgVO hImage = this.savehallFile(uploadFile1, request);
 						hImage.setHallNo(hOne.getHallNo());
-						hService.insertImgHall(hImage);
+						hService.insertImgHallTh(hImage);
 					}
 					if (uploadFiles != null) {
 						for (MultipartFile uploadFile : uploadFiles) {

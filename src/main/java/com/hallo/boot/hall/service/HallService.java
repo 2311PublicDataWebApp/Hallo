@@ -89,6 +89,8 @@ public interface HallService {
 
 	int insertImgHall(HallImgVO hallImg);
 
+	void insertImgHallTh(HallImgVO hImage);
+
 	int updateHallImg(HallImgVO hallImg);
 
 	HallImgVO selectByHallImgNo(int hallNo);

@@ -110,6 +110,11 @@ public class HallStoreLogic implements HallStore {
 	}
 
 	@Override
+	public void insertImgHallTh(SqlSession session, HallImgVO hImage) {
+		session.insert("HallMapper.insertImgHallThumbnail", hImage);
+	}
+
+	@Override
 	public int updateHallImg(SqlSession session, HallImgVO hallImg) {
 		int result = session.update("HallMapper.updateHallImg", hallImg);
 		return result;

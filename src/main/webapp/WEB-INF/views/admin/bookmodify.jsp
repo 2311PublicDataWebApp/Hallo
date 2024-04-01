@@ -33,13 +33,13 @@
 					                  <div class="row mb-3">
 					                  <label for="inputText" class="col-sm-2 col-form-label">시작일</label>
 					                  <div class="col-sm-2">
-					                    <input type="date" class="form-control" name="bookingStartTime" value="${book.bookingStartTime }">
+					                    <input type="datetime-local" class="form-control" name="bookingStartTime" value="${book.bookingStartTime }">
 					                  </div>
 					                </div>
 					                <div class="row mb-3">
 					                  <label for="inputText" class="col-sm-2 col-form-label">종료일</label>
 					                  <div class="col-sm-2">
-										<input type="date" class="form-control" name="bookingEndTime" value="${book.bookingEndTime }">
+										<input type="datetime-local" class="form-control" name="bookingEndTime" value="${book.bookingEndTime }">
 					                  </div>
 					                </div>
 					                  <div class="row mb-3">
