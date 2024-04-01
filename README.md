@@ -52,6 +52,12 @@
 공지사항 관리  | 관리자는 사용자 페이지에 보여지는 공지사항을 등록할 수 있으며, 수정, 삭제 할 수 있다.
 QNA 관리  | 관리자는 회원들이 작성한 1:1문의를 확인할 수 있으며 답변 등록 할 수 있다.
 
+
+##사용 ERD 
+<img src="https://github.com/2311PublicDataWebApp/Hallo/assets/134207283/07093d5a-b3c5-47f7-8bcd-37edcfeaca62"></img><br/>
+
+
+
 ## 구현화면
 ### 메인 페이지
 <img src="https://github.com/2311PublicDataWebApp/Hallo/assets/134207283/f7dce194-c25f-4d54-8323-2d255ee2b3a9"></img> <br/>
