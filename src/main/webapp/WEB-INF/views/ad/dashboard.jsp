@@ -62,14 +62,14 @@
 		                    <th>공연장</th>
 		                    <th>주소</th>
 		                    <th>가격</th>
-		                    <th  style="font-size:0.7em;">수용인원</th>
+		                    <th>수용인원</th>
 		                </tr>
 		            </thead>
 		            <tbody>
 		            <c:forEach items="${mapList }" var="map" varStatus="i">            
 		                <tr>
 		                    <td>${map.hallName }</td>
-		                    <td style="font-size:0.8em;">${map.hallAddress }</td>
+		                    <td>${map.hallAddress }</td>
 		                    <td>${map.hallFee }</td>
 		                    <td>${map.hallPeople }</td>
 		                </tr>
