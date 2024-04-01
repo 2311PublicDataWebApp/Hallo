@@ -29,8 +29,7 @@
 	</select>
 	
 	<select id="selectMapList" resultType="MapVO">
-<!-- 		SELECT * FROM HALL_TBL LEFT OUTER JOIN HALL_IMG_TBL USING(HALL_NO) ORDER BY HALL_NO -->
-		SELECT * FROM HALL_TBL ORDER BY HALL_NO
+		SELECT * FROM HALL_TBL JOIN HALL_IMG_TBL USING(HALL_NO) WHERE HALL_IMG_ISTHUMBNAIL = 'Y'
 	</select>
 
 <!-- 	<select id="selectMapList" resultMap="mapResultMap">
