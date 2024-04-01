@@ -25,11 +25,11 @@
 		<result property="hallImgIsThumbnail" column="HALL_IMG_ISTHUMBNAIL"/>
 	</resultMap> -->
 	<select id="selectTotalCount" resultType="_int">
-		SELECT COUNT(*) FROM HALL_TBL
+		SELECT COUNT(*) FROM HALL_TBL JOIN HALL_IMG_TBL USING(HALL_NO) WHERE HALL_IMG_ISTHUMBNAIL = 'Y' ORDER BY HALL_NO
 	</select>
 	
 	<select id="selectMapList" resultType="MapVO">
-		SELECT * FROM HALL_TBL JOIN HALL_IMG_TBL USING(HALL_NO) WHERE HALL_IMG_ISTHUMBNAIL = 'Y'
+		SELECT * FROM HALL_TBL JOIN HALL_IMG_TBL USING(HALL_NO) WHERE HALL_IMG_ISTHUMBNAIL = 'Y' ORDER BY HALL_NO
 	</select>
 
 <!-- 	<select id="selectMapList" resultMap="mapResultMap">
