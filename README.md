@@ -53,8 +53,9 @@
 QNA 관리  | 관리자는 회원들이 작성한 1:1문의를 확인할 수 있으며 답변 등록 할 수 있다.
 
 
-##사용 ERD 
-<img src="https://github.com/2311PublicDataWebApp/Hallo/assets/134207283/07093d5a-b3c5-47f7-8bcd-37edcfeaca62"></img><br/>
+## 사용 ERD 
+Link : https://www.erdcloud.com/d/hw9Hi48ShkWEJhaZo
+<img src="https://github.com/2311PublicDataWebApp/Hallo/assets/134207283/74f9a1d7-e4a6-4f9f-b995-53511caf2f39"></img><br/>
 
 
 
