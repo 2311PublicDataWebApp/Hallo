@@ -1,9 +1,10 @@
 <img src="https://github.com/2311PublicDataWebApp/Hallo/assets/134207283/2f0a547e-fc5f-4ad9-a9b2-c0fbad908981" width="1450px" height="400px"></img> <br/>
 # TEAM WIN
-### TEAM WIN
+### PROJECT [HALLO]
 <br><br>
 
-## : [HALLO] 프로젝트 소개
+## [HALLO] 프로젝트 소개
+### HALLO 는 HALL + LOCATION의 합성어 및 줄임말 입니다.
 ### 현재 공연장 대관 만을 위한 사이트는 따로 존재하지 않으며, 공연장 대관 시 전화 예약, 구두 확인 등 번거로운 절차를 거쳐야 합니다.
 ### 대관 과정을 시각화하여 사용자의 불편을 최소화 하기 위하여 프로젝트를 기획하게 되었습니다.
 <br>
@@ -54,7 +55,7 @@ QNA 관리  | 관리자는 회원들이 작성한 1:1문의를 확인할 수 있
 
 
 ## 사용 ERD 
-Link : https://www.erdcloud.com/d/hw9Hi48ShkWEJhaZo
+Link : https://www.erdcloud.com/d/hw9Hi48ShkWEJhaZo <br/>
 <img src="https://github.com/2311PublicDataWebApp/Hallo/assets/134207283/74f9a1d7-e4a6-4f9f-b995-53511caf2f39"></img><br/>
 
 
